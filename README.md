@@ -1037,4 +1037,130 @@ Special thanks to:
 
 ---
 
+# 📸 System Documentation Screenshots
+
+This section provides visual documentation and a tour of the application's user interface and core functionality, referencing the files found in the `screenshots/` directory.
+
+---
+
+### Application Startup and User Authentication
+
+| Screenshot | Description |
+| :---: | :--- |
+| **1.** | Application Splash Screen/Initial Startup |
+| ![Splash Screen](screenshots/1.png) | The first screen displayed when launching the application. |
+| **2.** | Main Login Panel |
+| ![Login Panel](screenshots/2.png) | The entry point for users to authenticate. |
+| **3.** | Initial Sign-Up Panel (New User Registration) |
+| ![Initial Sign-Up Panel](screenshots/3.png) | The form for creating a new user account or administrative profile. |
+
+---
+
+### Dashboard and Main Navigation
+
+| Screenshot | Description |
+| :---: | :--- |
+| **4.** | Main Application Dashboard (Overview) |
+| ![Main Dashboard](screenshots/4.png) | Shows key metrics like total products, stock value, and overall profit. |
+| **5.** | Dashboard - Out-of-Stock Alert |
+| ![Out-of-Stock Alert](screenshots/5.png) | Highlights products nearing or at zero inventory levels. |
+| **6.** | Dashboard - Detailed Metrics View (Current Inventory) |
+| ![Detailed Inventory](screenshots/6.png) | Breakdown of current stock quantities and value. |
+| **7.** | Dashboard - Profit Analysis Chart |
+| ![Profit Chart](screenshots/7.png) | Visual representation of profit over a specified date range. |
+| **8.** | Dashboard - Income Analysis Chart |
+| ![Income Chart](screenshots/8.png) | Visual representation of revenue generation over a specified date range. |
+| **9.** | Dashboard - Date Range Filter Panel |
+| ![Date Range Filter](screenshots/9.png) | Interface for selecting specific start and end dates for data analysis. |
+
+---
+
+### Product Management (Products Panel)
+
+| Screenshot | Description |
+| :---: | :--- |
+| **10.** | Products Panel - Main View |
+| ![Products Panel Main View](screenshots/10.png) | Listing of all current products with quick search functionality. |
+| **11.** | Products Panel - Adding a New Product |
+| ![Add New Product Form](screenshots/11.png) | Form used to input details for a new inventory item. |
+| **12.** | Products Panel - Updating/Editing a Product |
+| ![Edit Product Form](screenshots/12.png) | Modifying details of an existing inventory item. |
+| **13.** | Products Panel - Deleting a Product Confirmation |
+| ![Delete Product Confirmation](screenshots/13.png) | Confirmation dialog before permanently removing a product. |
+| **14.** | Products Panel - Searching and Filtering |
+| ![Search and Filtering](screenshots/14.png) | Demonstration of filtering products by category or name. |
+
+---
+
+### Stock Control (Stock Panel)
+
+| Screenshot | Description |
+| :---: | :--- |
+| **15.** | Stock Panel - Main View |
+| ![Stock Panel Main View](screenshots/15.png) | Interface for managing inventory levels (in/out transactions). |
+| **16.** | Stock Panel - Adding Stock (Stock-In) |
+| ![Adding Stock (Stock-In)](screenshots/16.png) | Recording new inventory received from a supplier. |
+| **17.** | Stock Panel - Removing Stock (Stock-Out) |
+| ![Removing Stock (Stock-Out)](screenshots/17.png) | Recording inventory removal due to sales, damage, or use. |
+| **18.** | Stock Panel - Searching and Sorting Stock Records |
+| ![Searching Stock Records](screenshots/18.png) | Filtering stock movement history. |
+
+---
+
+### Transaction Records and Reports
+
+| Screenshot | Description |
+| :---: | :--- |
+| **19.** | Records Panel - Main View (All Transactions) |
+| ![Records Panel Main View](screenshots/19.png) | Comprehensive log of all sales, profit, cost, and income records. |
+| **20.** | Records Panel - Filtering by Date Range |
+| ![Filtering Records by Date](screenshots/20.png) | Applying date filters to view transaction data for a specific period. |
+| **21.** | Records Panel - CSV Export Confirmation |
+| ![CSV Export Confirmation](screenshots/21.png) | Dialog confirming the successful export of records to a CSV file. |
+| **22.** | Records Panel - View Transaction Details |
+| ![Transaction Details View](screenshots/22.png) | Pop-up showing detailed information about a single transaction. |
+
+---
+
+### Advanced Features and Settings
+
+| Screenshot | Description |
+| :---: | :--- |
+| **23.** | QR Code Panel - Main View (Generating QR Codes) |
+| ![QR Code Generation](screenshots/23.png) | Tool for generating scannable QR codes for products. |
+| **24.** | QR Code Panel - Generated QR Code Example |
+| ![Generated QR Code Example](screenshots/24.png) | Output showing a successfully generated QR code image. |
+| **25.** | Store Settings Dialog - Main View |
+| ![Store Settings Dialog](screenshots/25.png) | Interface to configure basic store information (name, address, etc.). |
+| **26.** | Employee Manager Dialog - Main View |
+| ![Employee Manager Dialog](screenshots/26.png) | Administrative tool for managing user accounts and roles. |
+| **27.** | Employee Manager - Adding a New Employee |
+| ![Adding New Employee](screenshots/27.png) | Form for creating a new user account with employee credentials. |
+| **28.** | Employee Manager - Editing Employee Details |
+| ![Editing Employee Details](screenshots/28.png) | Modifying an existing employee's information. |
+| **29.** | Employee Manager - Deleting an Employee |
+| ![Deleting an Employee](screenshots/29.png) | Confirmation dialog before removing a user account. |
+| **30.** | Help/About Panel - User Guide View |
+| ![Help/User Guide](screenshots/30.png) | Provides information or a guide on using the system. |
+| **31.** | About Panel - Credits/Developer Information |
+| ![About/Credits Panel](screenshots/31.png) | Displays information about the developers and the capstone project team. |
+
+---
+
+### System Operations and Error Handling
+
+| Screenshot | Description |
+| :---: | :--- |
+| **32.** | Successful Operation Confirmation |
+| ![Success Confirmation](screenshots/32.png) | A common dialog box confirming a transaction or operation succeeded. |
+| **33.** | Error Message/Invalid Input |
+| ![Invalid Input Error](screenshots/33.png) | An alert shown when required fields are empty or input data is invalid. |
+| **34.** | Database Connection Failure |
+| ![Database Connection Failure](screenshots/34.png) | Error message when the application cannot connect to the database. |
+| **35.** | Successful User Logout |
+| ![Successful Logout](screenshots/35.png) | Confirmation that the user has securely exited the system. |
+
+---
+
 **💼 SmartStock - Empowering Small Businesses with Smart Inventory Solutions**
+
