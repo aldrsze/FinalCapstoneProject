@@ -114,232 +114,231 @@
 
 ## 📸 System Screenshots
 
-### 1. Application Startup & Authentication
+### 1. Application Startup & Authentication 🔒
 
-![Application Splash Screen](screenshots/1.png)
+![](screenshots/1.png)
 
-**Figure 1.1:**
-
----
-
-![Login Panel](screenshots/2.png)
-
-**Figure 1.2:** 
+**Figure 1.1:** Application Splash Screen
 
 ---
 
-![Sign-Up Panel](screenshots/3.png)
+![](screenshots/2.png)
 
-**Figure 1.3:**
-
----
-
-### 2. Dashboard & Analytics
-
-![Main Dashboard](screenshots/4.png)
-
-**Figure 2.1:** 
+**Figure 1.2:** Login Panel
 
 ---
 
-![Out-of-Stock Alert](screenshots/5.png)
+![](screenshots/3.png)
 
-**Figure 2.2:** 
-
----
-
-![Detailed Metrics](screenshots/6.png)
-
-**Figure 2.3:** 
+**Figure 1.3:** Sign-Up Panel
 
 ---
 
+### 2. Dashboard & Analytics 📊
 
-### 3. Product Management
+![](screenshots/4.png)
 
-![Profit Analysis Chart](screenshots/7.png)
-
-**Figure 2.4:** 
-
----
-
-![Income Analysis Chart](screenshots/8.png)
-
-**Figure 2.5:** 
+**Figure 2.1:** Main Dashboard View
 
 ---
 
-![Date Range Filter](screenshots/9.png)
+![](screenshots/5.png)
 
-**Figure 2.6:** 
-
----
-
-![Products Panel Main View](screenshots/10.png)
-
-**Figure 3.1:** 
+**Figure 2.2:** Out-of-Stock Alert
 
 ---
 
-![Add New Product](screenshots/11.png)
+![](screenshots/6.png)
 
-**Figure 3.2:** 
-
----
-
-![Edit Product](screenshots/12.png)
-
-**Figure 3.3:** 
-
-![Delete Product Confirmation](screenshots/13.png)
-
-**Figure 3.4:** 
+**Figure 2.3:** Detailed Metrics
 
 ---
 
-![Search and Filter](screenshots/14.png)
+![](screenshots/7.png)
 
-**Figure 3.5:** 
-
----
-
-![Stock Panel Main View](screenshots/15.png)
-
-**Figure 4.1:** 
+**Figure 2.4:** Profit Analysis Chart
 
 ---
 
-![Adding Stock (Stock-In)](screenshots/16.png)
+![](screenshots/8.png)
 
-**Figure 4.2:** 
-
----
-
-### 4. QR CODE
-
-![Removing Stock (Stock-Out)](screenshots/17.png)
-
-**Figure 4.3:** 
+**Figure 2.5:** Income Analysis Chart
 
 ---
 
-![Stock Records Search](screenshots/18.png)
+![](screenshots/9.png)
 
-**Figure 4.4:** 
-
----
-
-### 5. Transaction Records
-
-![Records Panel Main View](screenshots/19.png)
-
-**Figure 5.1:** 
+**Figure 2.6:** Date Range Filter
 
 ---
 
-![Date Range Filtering](screenshots/20.png)
+### 3. Product Management 📦
 
-**Figure 5.2:** 
+![](screenshots/10.png)
 
----
-
-![CSV Export Confirmation](screenshots/21.png)
-
-**Figure 5.3:** 
+**Figure 3.1:** Products Panel Main View
 
 ---
 
-### 6. QR Code Features
+![](screenshots/11.png)
 
-![Transaction Details](screenshots/22.png)
-
-**Figure 5.4:**
+**Figure 3.2:** Add New Product Form
 
 ---
 
-![QR Code Generation](screenshots/23.png)
+![](screenshots/12.png)
 
-**Figure 6.1:** 
-
----
-
-### 7. ABOUT US
-
-![Generated QR Code](screenshots/24.png)
-
-**Figure 6.2:**
+**Figure 3.3:** Edit Product Interface
 
 ---
 
-### 8. Settings & Administration
+![](screenshots/13.png)
 
-![Store Settings](screenshots/25.png)
-
-**Figure 7.1:**
+**Figure 3.4:** Delete Product Confirmation
 
 ---
 
-![Employee Manager](screenshots/26.png)
+![](screenshots/14.png)
 
-**Figure 7.2:**
-
----
-
-![Add Employee](screenshots/27.png)
-
-**Figure 7.3:**
+**Figure 3.5:** Search and Filter Functionality
 
 ---
 
-![Edit Employee](screenshots/28.png)
+### 4. Stock Control 🛒
 
-**Figure 7.4:**
+![](screenshots/15.png)
 
----
-
-### 9. Employee Customization
-
-![Delete Employee](screenshots/29.png)
-
-**Figure 7.5:**
+**Figure 4.1:** Stock Panel Main View
 
 ---
 
-![Help/User Guide](screenshots/30.png)
+![](screenshots/16.png)
 
-**Figure 7.6:**
-
----
-
-![About/Credits](screenshots/31.png)
-
-**Figure 7.7:**
+**Figure 4.2:** Adding Stock (Stock-In)
 
 ---
 
-![Success Confirmation](screenshots/32.png)
+![](screenshots/17.png)
 
-**Figure 8.1:**
-
----
-
-![Invalid Input Error](screenshots/33.png)
-
-**Figure 8.2:**
-
-### 10. Help and User Guide Dialog
+**Figure 4.3:** Removing Stock (Stock-Out)
 
 ---
 
-![Database Connection Failure](screenshots/34.png)
+![](screenshots/18.png)
 
-**Figure 8.3:**
+**Figure 4.4:** Stock Records Search
 
-### 11. Logging out
+---
+
+### 5. Transaction Records 🧾
+
+![](screenshots/19.png)
+
+**Figure 5.1:** Records Panel Main View
+
+---
+
+![](screenshots/20.png)
+
+**Figure 5.2:** Date Range Filtering
+
+---
+
+![](screenshots/21.png)
+
+**Figure 5.3:** CSV Export Confirmation
+
+---
+
+![](screenshots/22.png)
+
+**Figure 5.4:** Transaction Details
+
+---
+
+### 6. QR Code Features 🤳
+
+![](screenshots/23.png)
+
+**Figure 6.1:** QR Code Generation Interface
+
+---
+
+![](screenshots/24.png)
+
+**Figure 6.2:** Generated QR Code Sample
+
+---
+
+### 7. Settings & Administration ⚙️
+
+![](screenshots/25.png)
+
+**Figure 7.1:** Store Settings
+
+---
+
+![](screenshots/26.png)
+
+**Figure 7.2:** Employee Manager
+
+---
+
+![](screenshots/27.png)
+
+**Figure 7.3:** Add Employee Form
+
+---
+
+![](screenshots/28.png)
+
+**Figure 7.4:** Edit Employee Interface
+
+---
+
+![](screenshots/29.png)
+
+**Figure 7.5:** Delete Employee Confirmation
+
+---
+
+### 8. Help and Information
+
+![](screenshots/30.png)
+
+**Figure 7.6:** Help/User Guide Panel
+
+---
+
+![](screenshots/31.png)
+
+**Figure 7.7:** About/Credits Panel
+
+---
+
+### 9. System Operations & Dialogs ✅
+
+![](screenshots/32.png)
+
+**Figure 8.1:** Success Confirmation Dialog
+
+---
+
+![](screenshots/33.png)
+
+**Figure 8.2:** Invalid Input Error Dialog
+
+---
+
+![](screenshots/34.png)
+
+**Figure 8.3:** Database Connection Failure Dialog
+
+---
 
 ![](screenshots/35.png)
 
-**Figure 8.4:**
+**Figure 8.4:** Logging Out Confirmation
 
 ---
 
@@ -505,6 +504,7 @@ This project is developed as an academic capstone project for educational purpos
 *SmartStock - Empowering Filipino Retailers with Smart Inventory Management*
 
 ---
+
 
 
 
