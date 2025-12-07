@@ -13,7 +13,7 @@
 - **Subject:** Introduction to Programming (Capstone Project 1)
 - **Institution:** Quezon City University
 - **Section:** BSIT-1B | Group #3
-- **Development Period:** October 3 - December 2, 2025 (30 days)
+- **Development Period:** October 3 - December 13, 2025 (30 days)
 
 ### Development Team
 | Name | Role |
@@ -71,15 +71,6 @@
 
 ## 💻 System Requirements
 
-### Minimum Requirements
-- **OS:** Windows 7/8/10/11, macOS 10.14+, Linux
-- **Java:** JDK 21 or higher
-- **Database:** XAMPP (MySQL 8.0)
-- **RAM:** 4GB minimum, 8GB recommended
-- **Storage:** 500MB
-- **Display:** 1024x768 minimum (optimized for 1366x768)
-
-### Optional
 - Webcam for QR code scanning
 - Microsoft Excel 2007+ for CSV viewing
 
@@ -121,231 +112,99 @@
 
 ---
 
-## 📸 System Screenshots
+# 📸 System Documentation Screenshots
 
-### 1. Application Startup & Authentication
+## 🔑 Login and Sign-up Panel
 
-![Application Splash Screen](screenshots/1.png)
-
-**Figure 1.1:** Application splash screen displaying during startup with SmartStock branding and loading progress.
-
----
-
-![Login Panel](screenshots/2.png)
-
-**Figure 1.2:** Main login interface where users authenticate with username and password. Features include password visibility toggle and sign-up option for new users.
+| Image | Image |
+| :---: | :---: |
+| **Splash Screen** | **Main Login Panel** |
+| ![Application Splash Screen](screenshots/1.png) | ![Main Login Panel](screenshots/2.png) |
+| **Initial Sign-Up Panel** | |
+| ![Initial Sign-Up Panel](screenshots/3.png) | |
 
 ---
 
-![Sign-Up Panel](screenshots/3.png)
+## 🖥️ Dashboard Panel
 
-**Figure 1.3:** User registration screen for creating new admin accounts. Only administrators can be registered through this interface; employee accounts are created by admins within the system.
-
----
-
-### 2. Dashboard & Analytics
-
-![Main Dashboard](screenshots/4.png)
-
-**Figure 2.1:** Primary dashboard displaying key business metrics including total products, inventory value, sales data, and net profit. Features date range filtering for customized reporting periods.
-
----
-
-![Out-of-Stock Alert](screenshots/5.png)
-
-**Figure 2.2:** Dashboard view highlighting products with critical stock levels, showing color-coded status indicators (Out of Stock, Critical, Low Stock, Good, Overstocked).
+| Image | Image |
+| :---: | :---: |
+| **Main Overview** | **Out-of-Stock Alert** |
+| ![Main Dashboard Overview](screenshots/4.png) | ![Out-of-Stock Alert](screenshots/5.png) |
+| **Detailed Inventory** | **Profit Analysis Chart** |
+| ![Detailed Inventory View](screenshots/6.png) | ![Profit Analysis Chart](screenshots/7.png) |
+| **Income Analysis Chart** | **Date Range Filter Panel** |
+| ![Income Analysis Chart](screenshots/8.png) | ![Date Range Filter Panel](screenshots/9.png) |
 
 ---
 
-![Detailed Metrics](screenshots/6.png)
+## 📦 Products Panel
 
-**Figure 2.3:** Detailed inventory metrics panel showing comprehensive breakdown of current stock values and quantities across all product categories.
-
----
-
-![Profit Analysis Chart](screenshots/7.png)
-
-**Figure 2.4:** Visual representation of profit trends over selected date range, displaying the net profit calculation based on historical cost tracking.
-
----
-
-![Income Analysis Chart](screenshots/8.png)
-
-**Figure 2.5:** Revenue analysis chart showing total sales income over time, with date range customization options for specific period analysis.
+| Image | Image |
+| :---: | :---: |
+| **Products Panel - Main View** | **Adding a New Product** |
+| ![Products Panel Main View](screenshots/10.png) | ![Adding New Product Form](screenshots/11.png) |
+| **Updating/Editing a Product** | **Deleting a Product Confirmation** |
+| ![Updating/Editing Product Form](screenshots/12.png) | ![Delete Product Confirmation](screenshots/13.png) |
+| **Searching and Filtering** | |
+| ![Products Panel Searching and Filtering](screenshots/14.png) | |
 
 ---
 
-![Date Range Filter](screenshots/9.png)
+## 📈 Stock Control Panel
 
-**Figure 2.6:** Date range selection panel with quick preset options (Today, Yesterday, Last 7 Days, Last 30 Days, This Month, Last Month, All Time) for filtering dashboard data.
-
----
-
-### 3. Product Management
-
-![Products Panel Main View](screenshots/10.png)
-
-**Figure 3.1:** Main product management interface displaying complete inventory list with columns for ID, Name, Category, Unit, Cost Price, Total Cost, Markup %, Retail Price, Total Retail, and Stock. Features include search functionality, column sorting, and bulk operations.
+| Image | Image |
+| :---: | :---: |
+| **Stock Panel - Main View** | **Adding Stock (Stock-In)** |
+| ![Stock Panel Main View](screenshots/15.png) | ![Adding Stock (Stock-In)](screenshots/16.png) |
+| **Removing Stock (Stock-Out)** | **Searching and Sorting Records** |
+| ![Removing Stock (Stock-Out)](screenshots/17.png) | ![Searching Stock Records](screenshots/18.png) |
 
 ---
 
-![Add New Product](screenshots/11.png)
+## 📑 Transactions Records Panel
 
-**Figure 3.2:** Product entry form for adding new items to inventory. Fields include Product Name, Category, Unit of Measurement, Cost Price, and Stock Quantity. The system auto-generates product IDs.
-
----
-
-![Edit Product](screenshots/12.png)
-
-**Figure 3.3:** Product editing interface allowing modification of existing product details. Product ID is read-only during edit operations to maintain data integrity.
-
----
-
-![Delete Product Confirmation](screenshots/13.png)
-
-**Figure 3.4:** Safety confirmation dialog before permanently deleting a product from the system. Warning message emphasizes that this action cannot be undone.
+| Image | Image |
+| :---: | :---: |
+| **Records Panel - Main View** | **Filtering by Date Range** |
+| ![Records Panel Main View](screenshots/19.png) | ![Records Panel Filtering by Date Range](screenshots/20.png) |
+| **CSV Export Confirmation** | **View Transaction Details** |
+| ![Records Panel CSV Export Confirmation](screenshots/21.png) | ![Records Panel View Transaction Details](screenshots/22.png) |
 
 ---
 
-![Search and Filter](screenshots/14.png)
+## ⚙️ Advanced Features and Settings
 
-**Figure 3.5:** Advanced search and filtering capabilities allowing real-time filtering of products by any column data (name, category, price, stock level, etc.).
-
----
-
-### 4. Stock Control
-
-![Stock Panel Main View](screenshots/15.png)
-
-**Figure 4.1:** Stock summary interface displaying product inventory movements with columns for Stock In, Stock Out, and Available quantities. Color-coded status indicators show inventory health.
-
----
-
-![Adding Stock (Stock-In)](screenshots/16.png)
-
-**Figure 4.2:** Stock-In operation interface for recording new inventory received from suppliers or returns from customers.
+| Image | Image |
+| :---: | :---: |
+| **QR Code Generation Panel** | **Generated QR Code Example** |
+| ![QR Code Panel Main View](screenshots/23.png) | ![QR Code Generated Example](screenshots/24.png) |
+| **Store Settings Dialog** | **Employee Manager - Main View** |
+| ![Store Settings Dialog](screenshots/25.png) | ![Employee Manager Dialog Main View](screenshots/26.png) |
+| **Employee Manager - Add New** | **Employee Manager - Edit Details** |
+| ![Employee Manager Adding New Employee](screenshots/27.png) | ![Employee Manager Editing Employee Details](screenshots/28.png) |
+| **Employee Manager - Delete** | |
+| ![Employee Manager Deleting an Employee](screenshots/29.png) | |
 
 ---
 
-![Removing Stock (Stock-Out)](screenshots/17.png)
+## ℹ️ About and Help Panel
 
-**Figure 4.3:** Stock-Out operation for processing sales, removals, rejects, or disposal. Includes quantity validation against current stock levels.
-
----
-
-![Stock Records Search](screenshots/18.png)
-
-**Figure 4.4:** Stock movement history with search and filter capabilities, showing all inventory transactions with date range filtering options.
+| Image | Image |
+| :---: | :---: |
+| **Help/User Guide View** | **About Panel (Credits)** |
+| ![Help/About Panel User Guide View](screenshots/30.png) | ![About Panel Credits/Developer Information](screenshots/31.png) |
 
 ---
 
-### 5. Transaction Records
+## ⚠️ System Operations and Errors
 
-![Records Panel Main View](screenshots/19.png)
-
-**Figure 5.1:** Complete transaction history displaying all stock movements including Stock-In, Stock-Out, Customer Returns, Refunds, and Deletions. Each transaction shows date, product details, quantity, cost, and retail values.
-
----
-
-![Date Range Filtering](screenshots/20.png)
-
-**Figure 5.2:** Transaction records filtered by custom date range, showing period-specific inventory movements for focused analysis.
-
----
-
-![CSV Export Confirmation](screenshots/21.png)
-
-**Figure 5.3:** Success notification after exporting transaction records to CSV format. Files are Excel-ready with UTF-8 BOM encoding and professional formatting.
-
----
-
-![Transaction Details](screenshots/22.png)
-
-**Figure 5.4:** Detailed view of individual transaction showing complete information including product details, transaction type, quantities, prices, and any associated notes.
-
----
-
-### 6. QR Code Features
-
-![QR Code Generation](screenshots/23.png)
-
-**Figure 6.1:** QR Code generation interface where users can create scannable QR codes for products. Generated codes contain embedded JSON data including product ID, name, category, unit, cost price, and stock information.
-
----
-
-![Generated QR Code](screenshots/24.png)
-
-**Figure 6.2:** Sample generated QR code output displaying product information below the code. QR codes can be saved as PNG files for printing on product labels or packaging.
-
----
-
-### 7. Settings & Administration
-
-![Store Settings](screenshots/25.png)
-
-**Figure 7.1:** Store configuration interface with multiple tabs for Profile (store name, location, contact), Username change, Password change, and Account Deletion options. Includes default markup percentage setting for pricing automation.
-
----
-
-![Employee Manager](screenshots/26.png)
-
-**Figure 7.2:** Employee management interface (Admin only) displaying list of employee accounts with options to add, edit, or remove employee users.
-
----
-
-![Add Employee](screenshots/27.png)
-
-**Figure 7.3:** Employee account creation form where admins can add new employee users with username and password credentials.
-
----
-
-![Edit Employee](screenshots/28.png)
-
-**Figure 7.4:** Employee account editing interface allowing admins to modify existing employee credentials after password authentication.
-
----
-
-![Delete Employee](screenshots/29.png)
-
-**Figure 7.5:** Employee account deletion confirmation dialog ensuring secure removal of employee access.
-
----
-
-![Help/User Guide](screenshots/30.png)
-
-**Figure 7.6:** Comprehensive help and user guide panel providing instructions on system features including Getting Started, Product Management, Sales & Transactions, QR Code Features, Dashboard & Analytics, Reports & Export, Settings, and Troubleshooting.
-
----
-
-![About/Credits](screenshots/31.png)
-
-**Figure 7.7:** About panel displaying development team information, academic details (BSIT-1B Group #3), project overview, and copyright information.
-
----
-
-### 8. System Operations
-
-![Success Confirmation](screenshots/32.png)
-
-**Figure 8.1:** Success message dialog confirming successful completion of operations such as product addition, updates, sales processing, or data export.
-
----
-
-![Invalid Input Error](screenshots/33.png)
-
-**Figure 8.2:** Input validation error message guiding users to correct invalid or missing data entries.
-
----
-
-![Database Connection Failure](screenshots/34.png)
-
-**Figure 8.3:** Database connection error notification alerting users when the system cannot connect to MySQL database (typically when XAMPP is not running).
-
----
-
-![Successful Logout](screenshots/35.png)
-
-**Figure 8.4:** Logout confirmation message ensuring users have successfully and securely exited the system.
+| Image | Image |
+| :---: | :---: |
+| **Successful Confirmation** | **Error Message (Invalid Input)** |
+| ![Successful Operation Confirmation](screenshots/32.png) | ![Error Message Invalid Input](screenshots/33.png) |
+| **Database Connection Failure** | **Successful User Logout** |
+| ![Database Connection Failure](screenshots/34.png) | ![Successful User Logout](screenshots/35.png) |
 
 ---
 
@@ -411,11 +270,11 @@ java -jar SmartStock.jar
 ## 🎓 Academic Highlights
 
 ### Why SmartStock?
-✅ **Filipino-Focused** - Built for sari-sari stores with relevant products  
+✅ **Filipino-Focused** - Built for small sari-sari stores with relevant products  
 ✅ **Student-Friendly** - Clean code with educational documentation  
 ✅ **Production-Ready** - Robust error handling and data validation  
 ✅ **Excel Integration** - One-click CSV exports for business reporting  
-✅ **Modern Technology** - QR code integration for contactless operations  
+✅ **Modern Technology** - QR code integration for automatic operations  
 ✅ **Accurate Accounting** - Historical cost tracking for true profit margins
 
 ### Learning Outcomes
@@ -502,6 +361,7 @@ This project is developed as an academic capstone project for educational purpos
 - **Classmates** - For feedback and testing
 - **Filipino Retailers** - For real-world requirements
 - **Open Source Community** - For excellent libraries and tools
+- **Nicole G. Diaz** - For supporting me since day one of development
 
 ---
 
@@ -511,6 +371,3 @@ This project is developed as an academic capstone project for educational purpos
 
 ---
 
-**Version:** 1.0.0  
-**Last Updated:** December 2, 2025  
-**Status:** ✅ Production Ready
