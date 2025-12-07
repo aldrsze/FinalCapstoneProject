@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: App
+Class-Path: lib/mysql-connector-j-9.5.0.jar lib/core-3.5.3.jar lib/javase-3.5.3.jar lib/jcalendar-1.4.jar lib/json-20250517.jar lib/webcam-capture-0.3.12.jar lib/bridj-0.6.3-20130316.190111-13.jar lib/slf4j-api-1.7.2.jar
+

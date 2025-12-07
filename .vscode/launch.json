@@ -1,0 +1,192 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "FINAL_CAPSTONE_PROJECT_14dc6910"
+    },
+    {
+      "type": "java",
+      "name": "productsPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.productsPanel",
+      "projectName": "FINAL_CAPSTONE_PROJECT_3c076ffd"
+    },
+    {
+      "type": "java",
+      "name": "QRCodePanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.QRCodePanel",
+      "projectName": "FINAL_CAPSTONE_PROJECT_3c076ffd"
+    },
+    {
+      "type": "java",
+      "name": "AboutPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.AboutPanel",
+      "projectName": "FINAL_CAPSTONE_PROJECT_3c076ffd"
+    },
+    {
+      "type": "java",
+      "name": "HelpDialog",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.HelpDialog",
+      "projectName": "FINAL_CAPSTONE_PROJECT_3c076ffd"
+    },
+    {
+      "type": "java",
+      "name": "dashboardPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.dashboardPanel",
+      "projectName": "FINAL_CAPSTONE_PROJECT_3c076ffd"
+    },
+    {
+      "type": "java",
+      "name": "recordsPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.recordsPanel",
+      "projectName": "FINAL_CAPSTONE_PROJECT_3c076ffd"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "FINAL_CAPSTONE_PROJECT_3c076ffd"
+    },
+    {
+      "type": "java",
+      "name": "dashboardPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.dashboardPanel",
+      "projectName": "FINAL_CAPSTONE_PROJECT_43d1c5b"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "FINAL_CAPSTONE_PROJECT_43d1c5b"
+    },
+    {
+      "type": "java",
+      "name": "LoginPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.LoginPanel",
+      "projectName": "CapstoneProject101_835e5846"
+    },
+    {
+      "type": "java",
+      "name": "StoreSettingsDialog",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.StoreSettingsDialog",
+      "projectName": "CapstoneProject101_835e5846"
+    },
+    {
+      "type": "java",
+      "name": "EmployeeManagerDialog",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.EmployeeManagerDialog",
+      "projectName": "CapstoneProject101_835e5846"
+    },
+    {
+      "type": "java",
+      "name": "DateRangePanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.DateRangePanel",
+      "projectName": "CapstoneProject101_835e5846"
+    },
+    {
+      "type": "java",
+      "name": "stockPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.stockPanel",
+      "projectName": "CapstoneProject101_76c562c5"
+    },
+    {
+      "type": "java",
+      "name": "HelpDialog",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.HelpDialog",
+      "projectName": "CapstoneProject101_76c562c5"
+    },
+    {
+      "type": "java",
+      "name": "AboutPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.AboutPanel",
+      "projectName": "CapstoneProject101_76c562c5"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "CapstoneProject101_76c562c5"
+    },
+    {
+      "type": "java",
+      "name": "SettingsPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.SettingsPanel",
+      "projectName": "CapstoneProject101_835e5846"
+    },
+    {
+      "type": "java",
+      "name": "recordsPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.recordsPanel",
+      "projectName": "CapstoneProject101_835e5846"
+    },
+    {
+      "type": "java",
+      "name": "stockPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.stockPanel",
+      "projectName": "CapstoneProject101_835e5846"
+    },
+    {
+      "type": "java",
+      "name": "dashboardPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.dashboardPanel",
+      "projectName": "CapstoneProject101_835e5846"
+    },
+    {
+      "type": "java",
+      "name": "SignupPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.SignupPanel",
+      "projectName": "CapstoneProject101_835e5846"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "CapstoneProject101_835e5846",
+      "console": "internalConsole"
+    },
+    {
+      "type": "java",
+      "name": "productsPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.productsPanel",
+      "projectName": "CapstoneProject101_835e5846",
+      "console": "internalConsole"
+    },
+    {
+      "type": "java",
+      "name": "Current File",
+      "request": "launch",
+      "mainClass": "${file}",
+      "console": "internalConsole"
+    }
+  ]
+}
