@@ -477,14 +477,8 @@ For questions or issues:
 This project is developed as an academic capstone project for educational purposes.
 
 **Project Type:** Academic Capstone Project  
-**Development Period:** 2024-2025  
-**Purpose:** Educational demonstration of software engineering principles
-
-### Usage Rights
-✅ Educational use and learning  
-✅ Portfolio demonstration  
-✅ Academic presentations  
-❌ Commercial distribution without permission
+**Development Period:** September - December 2025 
+**Purpose:** Educational Purposes
 
 ---
 
@@ -504,6 +498,7 @@ This project is developed as an academic capstone project for educational purpos
 *SmartStock - Empowering Filipino Retailers with Smart Inventory Management*
 
 ---
+
 
 
 
