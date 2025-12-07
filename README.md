@@ -203,8 +203,6 @@
 
 ---
 
-### 4. Stock Control
-
 ![Stock Panel Main View](screenshots/15.png)
 
 **Figure 4.1:** 
@@ -216,6 +214,8 @@
 **Figure 4.2:** 
 
 ---
+
+### 4. QR CODE
 
 ![Removing Stock (Stock-Out)](screenshots/17.png)
 
@@ -249,13 +249,13 @@
 
 ---
 
+### 6. QR Code Features
+
 ![Transaction Details](screenshots/22.png)
 
 **Figure 5.4:**
 
 ---
-
-### 6. QR Code Features
 
 ![QR Code Generation](screenshots/23.png)
 
@@ -263,13 +263,15 @@
 
 ---
 
+### 7. ABOUT US
+
 ![Generated QR Code](screenshots/24.png)
 
 **Figure 6.2:**
 
 ---
 
-### 7. Settings & Administration
+### 8. Settings & Administration
 
 ![Store Settings](screenshots/25.png)
 
@@ -295,6 +297,8 @@
 
 ---
 
+### 9. Employee Customization
+
 ![Delete Employee](screenshots/29.png)
 
 **Figure 7.5:**
@@ -313,8 +317,6 @@
 
 ---
 
-### 8. System Operations
-
 ![Success Confirmation](screenshots/32.png)
 
 **Figure 8.1:**
@@ -325,11 +327,19 @@
 
 **Figure 8.2:**
 
+### 10. Help and User Guide Dialog
+
 ---
 
 ![Database Connection Failure](screenshots/34.png)
 
 **Figure 8.3:**
+
+### 11. Logging out
+
+![](screenshots/35.png)
+
+**Figure 8.4:**
 
 ---
 
@@ -495,5 +505,6 @@ This project is developed as an academic capstone project for educational purpos
 *SmartStock - Empowering Filipino Retailers with Smart Inventory Management*
 
 ---
+
 
 
