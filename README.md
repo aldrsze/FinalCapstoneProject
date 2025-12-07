@@ -112,99 +112,223 @@
 
 ---
 
-# 📸 System Documentation Screenshots
+## 📸 System Screenshots
 
-## 🔑 Login and Sign-up Panel
+### 1. Application Startup & Authentication
 
-| Image | Image |
-| :---: | :---: |
-| **Splash Screen** | **Main Login Panel** |
-| ![Application Splash Screen](screenshots/1.png) | ![Main Login Panel](screenshots/2.png) |
-| **Initial Sign-Up Panel** | |
-| ![Initial Sign-Up Panel](screenshots/3.png) | |
+![Application Splash Screen](screenshots/1.png)
+
+**Figure 1.1:**
 
 ---
 
-## 🖥️ Dashboard Panel
+![Login Panel](screenshots/2.png)
 
-| Image | Image |
-| :---: | :---: |
-| **Main Overview** | **Out-of-Stock Alert** |
-| ![Main Dashboard Overview](screenshots/4.png) | ![Out-of-Stock Alert](screenshots/5.png) |
-| **Detailed Inventory** | **Profit Analysis Chart** |
-| ![Detailed Inventory View](screenshots/6.png) | ![Profit Analysis Chart](screenshots/7.png) |
-| **Income Analysis Chart** | **Date Range Filter Panel** |
-| ![Income Analysis Chart](screenshots/8.png) | ![Date Range Filter Panel](screenshots/9.png) |
+**Figure 1.2:** 
 
 ---
 
-## 📦 Products Panel
+![Sign-Up Panel](screenshots/3.png)
 
-| Image | Image |
-| :---: | :---: |
-| **Products Panel - Main View** | **Adding a New Product** |
-| ![Products Panel Main View](screenshots/10.png) | ![Adding New Product Form](screenshots/11.png) |
-| **Updating/Editing a Product** | **Deleting a Product Confirmation** |
-| ![Updating/Editing Product Form](screenshots/12.png) | ![Delete Product Confirmation](screenshots/13.png) |
-| **Searching and Filtering** | |
-| ![Products Panel Searching and Filtering](screenshots/14.png) | |
+**Figure 1.3:**
 
 ---
 
-## 📈 Stock Control Panel
+### 2. Dashboard & Analytics
 
-| Image | Image |
-| :---: | :---: |
-| **Stock Panel - Main View** | **Adding Stock (Stock-In)** |
-| ![Stock Panel Main View](screenshots/15.png) | ![Adding Stock (Stock-In)](screenshots/16.png) |
-| **Removing Stock (Stock-Out)** | **Searching and Sorting Records** |
-| ![Removing Stock (Stock-Out)](screenshots/17.png) | ![Searching Stock Records](screenshots/18.png) |
+![Main Dashboard](screenshots/4.png)
+
+**Figure 2.1:** 
 
 ---
 
-## 📑 Transactions Records Panel
+![Out-of-Stock Alert](screenshots/5.png)
 
-| Image | Image |
-| :---: | :---: |
-| **Records Panel - Main View** | **Filtering by Date Range** |
-| ![Records Panel Main View](screenshots/19.png) | ![Records Panel Filtering by Date Range](screenshots/20.png) |
-| **CSV Export Confirmation** | **View Transaction Details** |
-| ![Records Panel CSV Export Confirmation](screenshots/21.png) | ![Records Panel View Transaction Details](screenshots/22.png) |
+**Figure 2.2:** 
 
 ---
 
-## ⚙️ Advanced Features and Settings
+![Detailed Metrics](screenshots/6.png)
 
-| Image | Image |
-| :---: | :---: |
-| **QR Code Generation Panel** | **Generated QR Code Example** |
-| ![QR Code Panel Main View](screenshots/23.png) | ![QR Code Generated Example](screenshots/24.png) |
-| **Store Settings Dialog** | **Employee Manager - Main View** |
-| ![Store Settings Dialog](screenshots/25.png) | ![Employee Manager Dialog Main View](screenshots/26.png) |
-| **Employee Manager - Add New** | **Employee Manager - Edit Details** |
-| ![Employee Manager Adding New Employee](screenshots/27.png) | ![Employee Manager Editing Employee Details](screenshots/28.png) |
-| **Employee Manager - Delete** | |
-| ![Employee Manager Deleting an Employee](screenshots/29.png) | |
+**Figure 2.3:** 
 
 ---
 
-## ℹ️ About and Help Panel
+![Profit Analysis Chart](screenshots/7.png)
 
-| Image | Image |
-| :---: | :---: |
-| **Help/User Guide View** | **About Panel (Credits)** |
-| ![Help/About Panel User Guide View](screenshots/30.png) | ![About Panel Credits/Developer Information](screenshots/31.png) |
+**Figure 2.4:** 
 
 ---
 
-## ⚠️ System Operations and Errors
+![Income Analysis Chart](screenshots/8.png)
 
-| Image | Image |
-| :---: | :---: |
-| **Successful Confirmation** | **Error Message (Invalid Input)** |
-| ![Successful Operation Confirmation](screenshots/32.png) | ![Error Message Invalid Input](screenshots/33.png) |
-| **Database Connection Failure** | **Successful User Logout** |
-| ![Database Connection Failure](screenshots/34.png) | ![Successful User Logout](screenshots/35.png) |
+**Figure 2.5:** 
+
+---
+
+![Date Range Filter](screenshots/9.png)
+
+**Figure 2.6:** 
+
+---
+
+### 3. Product Management
+
+![Products Panel Main View](screenshots/10.png)
+
+**Figure 3.1:** 
+
+---
+
+![Add New Product](screenshots/11.png)
+
+**Figure 3.2:** 
+
+---
+
+![Edit Product](screenshots/12.png)
+
+**Figure 3.3:** 
+
+![Delete Product Confirmation](screenshots/13.png)
+
+**Figure 3.4:** 
+
+---
+
+![Search and Filter](screenshots/14.png)
+
+**Figure 3.5:** 
+
+---
+
+### 4. Stock Control
+
+![Stock Panel Main View](screenshots/15.png)
+
+**Figure 4.1:** 
+
+---
+
+![Adding Stock (Stock-In)](screenshots/16.png)
+
+**Figure 4.2:** 
+
+---
+
+![Removing Stock (Stock-Out)](screenshots/17.png)
+
+**Figure 4.3:** 
+
+---
+
+![Stock Records Search](screenshots/18.png)
+
+**Figure 4.4:** 
+
+---
+
+### 5. Transaction Records
+
+![Records Panel Main View](screenshots/19.png)
+
+**Figure 5.1:** 
+
+---
+
+![Date Range Filtering](screenshots/20.png)
+
+**Figure 5.2:** 
+
+---
+
+![CSV Export Confirmation](screenshots/21.png)
+
+**Figure 5.3:** 
+
+---
+
+![Transaction Details](screenshots/22.png)
+
+**Figure 5.4:**
+
+---
+
+### 6. QR Code Features
+
+![QR Code Generation](screenshots/23.png)
+
+**Figure 6.1:** 
+
+---
+
+![Generated QR Code](screenshots/24.png)
+
+**Figure 6.2:**
+
+---
+
+### 7. Settings & Administration
+
+![Store Settings](screenshots/25.png)
+
+**Figure 7.1:**
+
+---
+
+![Employee Manager](screenshots/26.png)
+
+**Figure 7.2:**
+
+---
+
+![Add Employee](screenshots/27.png)
+
+**Figure 7.3:**
+
+---
+
+![Edit Employee](screenshots/28.png)
+
+**Figure 7.4:**
+
+---
+
+![Delete Employee](screenshots/29.png)
+
+**Figure 7.5:**
+
+---
+
+![Help/User Guide](screenshots/30.png)
+
+**Figure 7.6:**
+
+---
+
+![About/Credits](screenshots/31.png)
+
+**Figure 7.7:**
+
+---
+
+### 8. System Operations
+
+![Success Confirmation](screenshots/32.png)
+
+**Figure 8.1:**
+
+---
+
+![Invalid Input Error](screenshots/33.png)
+
+**Figure 8.2:**
+
+---
+
+![Database Connection Failure](screenshots/34.png)
+
+**Figure 8.3:**
 
 ---
 
