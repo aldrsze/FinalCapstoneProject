@@ -462,16 +462,6 @@ java -jar SmartStock.jar
 
 ---
 
-## 📞 Support
-
-For questions or issues:
-1. Check troubleshooting section
-2. Review installation guide
-3. Verify MySQL service status
-4. Contact project advisors
-
----
-
 ## 📄 License
 
 This project is developed as an academic capstone project for educational purposes.
@@ -498,6 +488,7 @@ This project is developed as an academic capstone project for educational purpos
 *SmartStock - Empowering Filipino Retailers with Smart Inventory Management*
 
 ---
+
 
 
 
