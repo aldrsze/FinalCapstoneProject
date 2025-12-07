@@ -470,15 +470,24 @@ This project is developed as an academic capstone project for educational purpos
 **Development Period:** September - December 2025 
 **Purpose:** Educational Purposes
 
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 ## 🙏 Acknowledgments
 
 - **Quezon City University** - For educational support and guidance
-- **Project Advisors** - For mentorship throughout development
+- **Project Professor* - For mentorship throughout development
 - **Classmates** - For feedback and testing
-- **Filipino Retailers** - For real-world requirements
-- **Open Source Community** - For excellent libraries and tools
 - **Nicole G. Diaz** - For supporting me since day one of development
 
 ---
@@ -488,6 +497,7 @@ This project is developed as an academic capstone project for educational purpos
 *SmartStock - Empowering Filipino Retailers with Smart Inventory Management*
 
 ---
+
 
 
 
