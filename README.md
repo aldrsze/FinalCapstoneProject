@@ -1,1166 +1,419 @@
-# 🏪 SmartStock Inventory Management System
+# SmartStock Inventory Management System - Documentation
 
 **A Professional Inventory Solution for Filipino Sari-Sari Stores**
 
-SmartStock is a comprehensive Java-based inventory management system featuring QR code integration, real-time analytics, Excel-optimized CSV exports, and multi-user support. Designed specifically for retail businesses like sari-sari stores.
+---
+
+## 📋 Project Overview
+
+**SmartStock** is a comprehensive Java-based inventory management system designed specifically for Filipino retail businesses, featuring QR code integration, real-time analytics, and multi-user support.
+
+### Academic Information
+- **Course:** Bachelor of Science in Information Technology
+- **Subject:** Introduction to Programming (Capstone Project 1)
+- **Institution:** Quezon City University
+- **Section:** BSIT-1B | Group #3
+- **Development Period:** October 3 - December 2, 2025 (30 days)
+
+### Development Team
+| Name | Role |
+|------|------|
+| George Harold A. Alcantara | Project Manager / Documentation Writer |
+| Aldrin Miguel A. Jariel | System Analyst / Developer / QA / Documentation Writer |
+| John Christoper A. Perez | UI/UX Designer / Documentation Writer |
+| Ron Paulo G. Angeles | Documentation Writer |
+| Matthew Dane D. Calangian | Documentation Writer |
 
 ---
 
-## 📋 Table of Contents
+## 🎯 Key Features
 
-- [Quick Start](#-quick-start)
-- [Features](#-features)
-- [System Requirements](#-system-requirements)
-- [Installation Guide](#-installation-guide)
-- [Database Setup](#-database-setup)
-- [Usage](#-usage)
-- [Project Structure](#-project-structure)
-- [Technologies Used](#-technologies-used)
-- [Screenshots](#-screenshots)
-- [Troubleshooting](#-troubleshooting)
-- [License](#-license)
+### Product Management
+- CRUD operations with validation
+- Smart pricing with automatic retail price calculation
+- 8 built-in categories (Beverages, Snacks, Canned Goods, etc.)
+- Bulk operations (Set markup, bulk delete, mass returns)
+- Advanced search and dynamic sorting
+- Stock alerts with visual indicators
 
----
+### QR Code Integration
+- Smart generation with embedded JSON product data
+- Multiple modes: Add/Update, Stock-Out, Delete
+- Webcam support for real-time scanning
+- Image file scanning capability
+- Auto-save QR codes as PNG files
 
-## 🚀 Quick Start
+### Sales & Transaction Management
+- Stock-Out operations (sales, removals, rejects)
+- Historical cost tracking for accurate profit calculation
+- Return processing (4 types: Customer Return, Damaged, Refund, Dispose)
+- Complete transaction log with date/time stamps
+- Date range filtering
 
-### For Presentation (With Sample Data)
+### Dashboard & Analytics
+- Real-time statistics (products, stock, sales, revenue)
+- Best sellers report
+- Stock alerts overview
+- Daily sales summary with profit margins
 
-1. **Install MySQL** - Ensure MySQL 8.0 or higher is running
-2. **Import Database** - Import `Database/smartstock_db.sql` from project folder
-3. **Build Project** - Run `build.bat` (creates SmartStock.jar)
-4. **Run Application** - Execute `SmartStock.jar` or double-click SmartStock.exe
-5. **Login** - Username: `admin`, Password: `admin123`
+### CSV Export (Excel-Optimized)
+- One-click export with UTF-8 BOM encoding
+- Professional formatting (currency, percentages, dates)
+- Excel-ready reports with metadata headers
 
-### For Fresh Installation (Empty Database)
-
-1. **Import Clean Schema** - Import `Database/smartstock_clean.sql` (creates `smartstock_clean` database)
-2. **Update Config** - Edit `src/config.properties`:
-   ```properties
-   db.url=jdbc:mysql://localhost:3306/smartstock_clean
-   db.user=root
-   db.password=
-   ```
-3. **Build & Run** - Execute `build.bat` then run the JAR file
-4. **Create Account** - Use the signup feature to create your first admin account
-
----
-
-## ✨ Features
-
-### 📦 Product Management
-
-- **CRUD Operations**: Add, edit, delete products with validation
-- **Smart Pricing**: Cost price, markup percentage, automatic retail price calculation
-- **Category System**: 8 built-in categories (Beverages, Snacks, Canned Goods, etc.)
-- **Bulk Operations**: Set markup for multiple products, bulk delete, mass returns
-- **Advanced Search**: Real-time search across product names and categories
-- **Dynamic Sorting**: Click column headers to sort, automatic row renumbering
-- **Stock Alerts**: Visual indicators for out-of-stock and low-stock items
-
-### 🏷️ QR Code Integration
-
-- **Smart Generation**: Create QR codes with embedded JSON product data
-- **Multiple Modes**: Add/Update, Stock-Out , or Delete products via QR scanning
-- **Webcam Support**: Real-time scanning using device camera
-- **Image Scanning**: Upload and scan QR images from files
-- **Auto-Save**: QR codes saved as PNG with sanitized filenames
-- **Data Embedding**: QR contains ID, name, category, unit, cost, retail price, stock
-
-### 💰 Sales & Transaction Management
-
-- **Stock-Out Operations**: Remove Products from inventory (includes sales, removals, rejects)
-- **Historical Cost Tracking**: Saves cost at time of Stock-Out for accurate profit calculation
-- **Profit Analysis**: Calculate margins using actual COGS, not current cost
-- **Return Processing**: 4 return types (Customer Return, Damaged, Refund, Dispose)
-- **Transaction Log**: Complete audit trail with date/time stamps
-- **Date Filtering**: View transactions by custom date ranges
-- **Transaction Safety**: Database locks prevent concurrent modification issues
-
-### 📊 Dashboard & Analytics
-
-- **Real-Time Stats**: Total products, low stock alerts, today's sales, revenue
-- **Quick Actions**: Direct access to Add Product, Process Sale, Generate QR
-- **Stock Alerts**: Immediate visibility of inventory issues
-- **Sales Overview**: Daily sales summary with profit margins
-- **Store Information**: Display store name, location, contact details
-
-### 📁 CSV Export (Excel-Optimized)
-
-- **One-Click Export**: Export products, stock, or transactions to CSV
-- **Excel-Ready**: UTF-8 BOM encoding for perfect Excel compatibility
-- **Smart Formatting**:
-  - Currency: `PHP 45.00` format
-  - Percentages: `33.33%` format
-  - Dates: `02-Dec-2024 08:15 AM` format
-  - Numbers: Whole numbers for quantities
-- **Metadata Headers**: Report type, generation date, record count
-- **Clean Data**: Row numbers excluded, empty values show as "-"
-- **Professional Reports**: Ready for printing or further analysis
-
-### 👥 User Management
-
-- **Role-Based Access**: Admin and Employee roles with different permissions
-- **Employee Management**: Admins can add/remove employees, manage credentials
-- **Secure Authentication**: Password validation and account security
-- **Access Control**: Employees view-only access to analytics and records
-- **Account Management**: Change username, password, or delete account with authentication
-
-### ⚙️ Store Settings
-
-- **Profile Management**: Store name, location, contact information
-- **Default Markup**: Set default markup percentage for new products
-- **Account Settings**: Change username and password with verification
-- **Account Deletion**: Secure account deletion with password authentication and cascade cleanup
-- **Multi-Tab Interface**: Organized settings with 4 tabs (Profile, Username, Password, Delete Account)
+### User Management
+- Role-based access (Admin and Employee)
+- Secure authentication
+- Employee management interface
+- Account settings and security
 
 ---
 
 ## 💻 System Requirements
 
 ### Minimum Requirements
+- **OS:** Windows 7/8/10/11, macOS 10.14+, Linux
+- **Java:** JDK 21 or higher
+- **Database:** XAMPP (MySQL 8.0)
+- **RAM:** 4GB minimum, 8GB recommended
+- **Storage:** 500MB
+- **Display:** 1024x768 minimum (optimized for 1366x768)
 
-- **Operating System**: Windows 7/8/10/11, macOS 10.14+, or Linux
-- **Java**: JDK 21 or higher
-- **Database**: XAMPP (includes MySQL 8.0 and phpMyAdmin)
-- **RAM**: 4GB minimum, 8GB recommended
-- **Disk Space**: 500MB for application and database
-- **Display**: 1024x768 minimum resolution
-
-### Optional Requirements
-
-- **Webcam**: For QR code scanning functionality
-- **Excel**: Microsoft Excel 2007+ for CSV file viewing (optional)
+### Optional
+- Webcam for QR code scanning
+- Microsoft Excel 2007+ for CSV viewing
 
 ---
 
-## 📥 Installation Guide
+## 🗄️ Database Architecture
 
-### Step 1: Install Java Development Kit (JDK 21)
+### Tables
+1. **users** - User accounts with roles
+2. **stores** - Store profiles and settings
+3. **categories** - Product categories
+4. **products** - Product information
+5. **units** - Units of measurement
+6. **sales** - Sales transactions
+7. **sale_items** - Individual sale line items
+8. **stock_log** - Inventory change history
 
-1. Download JDK 21 from [Oracle](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/)
-2. Install and set up `JAVA_HOME` environment variable
-3. Verify installation:
-   ```bash
-   java -version
-   javac -version
-   ```
+---
 
-### Step 2: Install XAMPP
+## 🔧 Technology Stack
 
-1. Download XAMPP from [Apache Friends](https://www.apachefriends.org/)
-2. Install XAMPP with MySQL component
-3. Start XAMPP Control Panel
-4. Start Apache and MySQL services
+### Core Technologies
+- **Java 21** - Main programming language
+- **Swing** - GUI framework
+- **JDBC** - Database connectivity
+- **MySQL 8.0** - Database management
 
-### Step 3: Download SmartStock
+### Libraries
+- **ZXing 3.5.0** - QR code generation/decoding
+- **Webcam Capture 0.3.12** - Camera integration
+- **JSON** - Data serialization
+- **JCalendar 1.4** - Date picker components
 
-1. Clone or download this repository
-2. Extract to your preferred location (e.g., `E:\CapstoneProject101`)
+### Design Patterns
+- Repository Pattern (data access)
+- MVC Architecture (separation of concerns)
+- Record Pattern (immutable data models)
+- Singleton (database connections)
 
-### Step 4: Configure Database Connection
+---
 
-Edit `src/config.properties` and `bin/config.properties`:
+## 📸 System Screenshots
 
+### 1. Application Startup & Authentication
+![Application Splash Screen](screenshots/1.png)
+*Initial loading screen with progress indicator*
+
+![Login Panel](screenshots/2.png)
+*User authentication interface*
+
+![Sign-Up Panel](screenshots/3.png)
+*New user registration form*
+
+---
+
+### 2. Dashboard & Analytics
+![Main Dashboard](screenshots/4.png)
+*Overview of key metrics and statistics*
+
+![Out-of-Stock Alert](screenshots/5.png)
+*Products requiring immediate attention*
+
+![Detailed Metrics](screenshots/6.png)
+*Current inventory breakdown*
+
+![Profit Analysis Chart](screenshots/7.png)
+*Visual profit trends*
+
+![Income Analysis Chart](screenshots/8.png)
+*Revenue generation overview*
+
+![Date Range Filter](screenshots/9.png)
+*Custom date range selection*
+
+---
+
+### 3. Product Management
+![Products Panel Main View](screenshots/10.png)
+*Complete product listing with search*
+
+![Add New Product](screenshots/11.png)
+*Product entry form*
+
+![Edit Product](screenshots/12.png)
+*Product modification interface*
+
+![Delete Product Confirmation](screenshots/13.png)
+*Deletion safety confirmation*
+
+![Search and Filter](screenshots/14.png)
+*Advanced filtering options*
+
+---
+
+### 4. Stock Control
+![Stock Panel Main View](screenshots/15.png)
+*Inventory level management*
+
+![Adding Stock (Stock-In)](screenshots/16.png)
+*Recording new inventory*
+
+![Removing Stock (Stock-Out)](screenshots/17.png)
+*Processing inventory removal*
+
+![Stock Records Search](screenshots/18.png)
+*Filtering stock movement history*
+
+---
+
+### 5. Transaction Records
+![Records Panel Main View](screenshots/19.png)
+*Complete transaction history*
+
+![Date Range Filtering](screenshots/20.png)
+*Period-specific records*
+
+![CSV Export Confirmation](screenshots/21.png)
+*Successful export notification*
+
+![Transaction Details](screenshots/22.png)
+*Individual transaction information*
+
+---
+
+### 6. QR Code Features
+![QR Code Generation](screenshots/23.png)
+*Creating product QR codes*
+
+![Generated QR Code](screenshots/24.png)
+*Scannable QR code output*
+
+---
+
+### 7. Settings & Administration
+![Store Settings](screenshots/25.png)
+*Store configuration interface*
+
+![Employee Manager](screenshots/26.png)
+*User account management*
+
+![Add Employee](screenshots/27.png)
+*Creating new employee accounts*
+
+![Edit Employee](screenshots/28.png)
+*Modifying employee details*
+
+![Delete Employee](screenshots/29.png)
+*Employee removal confirmation*
+
+![Help/User Guide](screenshots/30.png)
+*System usage instructions*
+
+![About/Credits](screenshots/31.png)
+*Development team information*
+
+---
+
+### 8. System Operations
+![Success Confirmation](screenshots/32.png)
+*Operation completed successfully*
+
+![Invalid Input Error](screenshots/33.png)
+*Input validation message*
+
+![Database Connection Failure](screenshots/34.png)
+*Connection error handling*
+
+![Successful Logout](screenshots/35.png)
+*Secure session termination*
+
+---
+
+## 🚀 Installation & Setup
+
+### 1. Install Java Development Kit (JDK 21)
+```bash
+# Verify installation
+java -version
+javac -version
+```
+
+### 2. Install XAMPP
+- Download from [Apache Friends](https://www.apachefriends.org/)
+- Start Apache and MySQL services
+
+### 3. Database Setup
+**Option A: With Sample Data**
+```sql
+-- Import via phpMyAdmin: smartstock_presentation.sql
+-- Test Accounts:
+-- Admin: admin / admin123
+-- Employee: employee1 / emp123
+```
+
+**Option B: Clean Installation**
+```sql
+-- Import: smartstock_clean.sql
+-- Create first admin account via signup
+```
+
+### 4. Configure Database Connection
+Edit `src/config.properties`:
 ```properties
 db.url=jdbc:mysql://localhost:3306/smartstock
 db.user=root
-db.password=your_mysql_password
+db.password=
 ```
 
----
-
-## 🗄️ Database Setup
-
-### Option 1: Presentation Database (With Sample Data)
-
-Perfect for demonstrations and testing.
-
-1. Open phpMyAdmin (http://localhost/phpmyadmin)
-2. Click "Import" tab
-3. Choose file: `smartstock_presentation.sql`
-4. Click "Go" to import
-
-**Included Sample Data:**
-
-- 2 users (1 admin, 1 employee)
-- 1 store profile (Tindahan ni Maria)
-- 8 product categories
-- 42 products (Filipino sari-sari store items)
-- 42 sales transactions
-- 85 sale items
-- 25 stock log entries
-
-**Test Accounts:**
-
-- Admin: `admin` / `admin123`
-- Employee: `employee1` / `emp123`
-
-### Option 2: Empty Database (Clean Installation)
-
-For production use or custom setup.
-
-### Option 2: Empty Database (Clean Installation)
-
-For production use or custom setup.
-
-1. Open phpMyAdmin (http://localhost/phpmyadmin)
-2. Click "Import" tab
-3. Choose file: `Database/smartstock_clean.sql`
-4. Click "Go" to import
-5. Update `config.properties` to use `smartstock_clean` database:
-   ```properties
-   db.url=jdbc:mysql://localhost:3306/smartstock_clean
-   ```
-6. Run application and create your first admin account via signup
-
-**Database Tables:**
-
-- `users` - User accounts with roles
-- `stores` - Store profiles and settings
-- `categories` - Product categories
-- `products` - Product information
-- `sales` - Sales transactions
-- `sale_items` - Individual sale line items
-- `stock_log` - Inventory change history
-
----
-
-## 🎯 Usage
-
-### Building the Application
-
-Run the build script:
-
+### 5. Build & Run
 ```bash
+# Build
 build.bat
-```
 
-- Compiles all Java source files
-- Creates class files in `bin/` directory
-- Generates `SmartStock.jar` executable
-- Pauses on errors for debugging
-
-### Running the Application
-
-Execute the JAR file:
-
-```bash
+# Run
 java -jar SmartStock.jar
 ```
-
-Or double-click `SmartStock.exe` on Windows.
-
-- Launches the SmartStock application
-- Opens login screen
-- Requires database connection
-
-### First-Time Setup
-
-1. **Create Account**: Click "Sign Up" on login screen
-2. **Setup Store**: After first login, configure store details
-3. **Add Categories**: Pre-configured categories are ready
-4. **Add Products**: Start adding your inventory
-5. **Set Markup**: Configure default markup percentage
-
-### Daily Operations
-
-#### Product Management
-
-1. Navigate to **Products** tab
-2. Click **+ Add Product** to add new items
-3. Fill in product details (name, category, cost, markup)
-4. Click **Save** to add to inventory
-5. Use **Sell**, **Edit**, or **Delete** buttons for individual products
-6. Use **Actions** button for bulk operations
-
-#### Processing Sales
-
-1. Select product from table
-2. Click **Sell** button
-3. Enter quantity to sell
-4. Confirm sale - stock updates automatically
-5. Profit recorded using historical cost
-
-#### QR Code Operations
-
-1. Click **Generate QR** on Products panel
-2. Switch to **Generation** tab in QR panel
-3. Select product and generate QR code
-4. Save QR code as PNG for printing
-5. Use **Scanning** tab to scan QR codes via webcam or image upload
-
-#### Viewing Reports
-
-1. Go to **Stock** tab for inventory levels
-2. Go to **Records** tab for transaction history
-3. Use date range filter for specific periods
-4. Click **↓ Export CSV** to download Excel-ready reports
-
-#### Managing Users (Admin Only)
-
-1. Click **⚙ Settings** in top-right
-2. Select **Manage Employees**
-3. Add new employees with username/password
-4. Remove employees as needed
-
----
-
-## 📁 Project Structure
-
-```
-CapstoneProject101/
-├── src/                          # Source code
-│   ├── App.java                  # Application entry point
-│   ├── config.properties         # Database configuration
-│   └── com/inventorysystem/
-│       ├── data/                 # Repository layer (DAO)
-│       │   ├── DatabaseConnection.java
-│       │   ├── ProductRepository.java
-│       │   ├── UserRepository.java
-│       │   ├── StoreRepository.java
-│       │   ├── RecordsRepository.java
-│       │   ├── StockRepository.java
-│       │   └── DashboardRepository.java
-│       ├── model/                # Data models (Records)
-│       │   ├── Product.java
-│       │   ├── User.java
-│       │   ├── Store.java
-│       │   ├── Category.java
-│       │   ├── TransactionRecord.java
-│       │   └── StockRecord.java
-│       ├── gui/                  # User interface
-│       │   ├── userFrame.java
-│       │   ├── LoginPanel.java
-│       │   ├── SignupPanel.java
-│       │   ├── MainApplicationPanel.java
-│       │   ├── dashboardPanel.java
-│       │   ├── productsPanel.java
-│       │   ├── stockPanel.java
-│       │   ├── recordsPanel.java
-│       │   ├── QRCodePanel.java
-│       │   ├── SettingsPanel.java
-│       │   ├── StoreSettingsDialog.java
-│       │   ├── EmployeeManagerDialog.java
-│       │   ├── DateRangePanel.java
-│       │   └── UIConstants.java
-│       └── util/                 # Utility classes
-│           ├── DebugLogger.java
-│           └── CSVExporter.java
-├── bin/                          # Compiled classes
-│   ├── config.properties
-│   └── com/inventorysystem/...
-├── lib/                          # External libraries (JAR files)
-│   ├── core-3.5.0.jar           # ZXing core
-├── lib/                          # External libraries (JAR files)
-│   ├── core-3.5.0.jar           # ZXing core
-│   ├── javase-3.5.0.jar         # ZXing JavaSE
-│   ├── webcam-capture-*.jar     # Webcam support
-│   ├── mysql-connector-*.jar    # MySQL JDBC driver
-│   └── jcalendar-*.jar          # Date picker
-├── smartstock_presentation.sql   # Database with sample data
-├── run.bat                       # Run script
-├── MANIFEST.MF                   # JAR manifest file
-└── README.md                     # This file
-```
-
----
-
-## 🔧 Technologies Used
-
-### Programming Languages
-
-- **Java 21**: Core application language
-
-### Frameworks & Libraries
-
-- **Swing**: GUI framework for desktop interface
-- **JDBC**: Database connectivity
-- **ZXing 3.5.0**: QR code generation and decoding
-- **Webcam Capture 0.3.12**: Camera access for QR scanning
-- **JSON**: Data serialization for QR codes
-- **JCalendar 1.4**: Date picker components
-
-### Database
-
-- **MySQL 8.0**: Relational database management
-- **InnoDB**: Storage engine with transaction support
-
-### Design Patterns
-
-- **Repository Pattern**: Data access abstraction
-- **MVC Architecture**: Separation of concerns
-- **Record Pattern**: Immutable data models (Java 14+)
-- **Singleton**: Database connection management
-
-### Database
-
-- **MySQL 8.0** (via XAMPP): Relational database management
-- **InnoDB**: Storage engine with transaction support
-- **phpMyAdmin**: Web-based database administration
-- **Batch Scripts**: Build automation
-- **Windows PowerShell**: Terminal environment
-
----
-
-## 📸 Screenshots
-
-### Login Screen
-
-Clean and modern authentication interface with signup option.
-
-### Dashboard
-
-Real-time analytics with sales overview, stock alerts, and quick actions.
-
-### Products Panel
-
-Comprehensive product management with search, sort, and bulk operations.
-
-### QR Code Generation
-
-Generate QR codes with embedded product data, save as PNG.
-
-### QR Code Scanning
-
-Scan QR codes via webcam or upload images for instant product lookup.
-
-### Transaction Records
-
-Complete sales history with date filtering and CSV export.
-
-### Stock Management
-
-Monitor inventory levels with visual alerts and export capabilities.
-
-### Settings Panel
-
-Configure store profile, default markup, and manage employees.
-
----
-
-## 🐛 Troubleshooting
-
-### Database Connection Issues
-
-**Problem**: "Could not connect to database"
-
-### Database Connection Issues
-
-**Problem**: "Could not connect to database"
-**Solutions**:
-
-1. Verify XAMPP MySQL service is running (green in XAMPP Control Panel)
-2. Check `config.properties` credentials (default XAMPP: user=root, password=empty)
-3. Open phpMyAdmin to verify database exists
-4. Ensure port 3306 is not blocked by firewall
-   **Problem**: "javac is not recognized"
-   **Solution**: Add Java to PATH environment variable
-
-```bash
-set PATH=%PATH%;C:\Program Files\Java\jdk-21\bin
-```
-
-### Webcam Not Working
-
-**Problem**: QR scanner shows black screen
-**Solutions**:
-
-1. Grant camera permissions to Java
-2. Close other apps using webcam
-3. Update webcam drivers
-4. Try different USB port
-
-### CSV Export Not Opening in Excel
-
-**Problem**: Garbled characters in Excel
-**Solution**: File already has UTF-8 BOM encoding. If issues persist:
-
-1. Right-click CSV → Open With → Excel
-2. Or Import as Text File in Excel with UTF-8 encoding
-
-### Application Won't Start
-
-**Problem**: ClassNotFoundException or NoClassDefFoundError
-**Solutions**:
-
-1. Rebuild using `build.bat`
-2. Verify all JARs are in `lib/` folder
-3. Check MANIFEST.MF has correct classpath
-
-### Low Stock Alerts Not Showing
-
-**Problem**: Products with low stock not highlighted
-**Solution**: Check `products` table `quantity_in_stock` values. Low stock = 10 or less, Out of stock = 0
-
----
-
-## 📚 Additional Documentation
-
-Comprehensive guides available in `docs/` folder:
-
-### Low Stock Alerts Not Showing
-
-**Problem**: Products with low stock not highlighted
-**Solution**: Check `products` table `quantity_in_stock` values. Low stock = 10 or less, Out of stock = 0
-
-### XAMPP MySQL Won't Start
-
-**Problem**: MySQL service won't start in XAMPP
-**Solutions**:
-
-1. Check if port 3306 is already in use (another MySQL instance)
-2. Click "Config" → "my.ini" and change port to 3307 if needed
-3. Update `config.properties` with new port: `jdbc:mysql://localhost:3307/smartstock`
-4. Restart XAMPP as Administrator
-
-# Run the application
-
-run.bat
-
-````
-
-### Code Style Guidelines
-- **Naming**: camelCase for variables, PascalCase for classes
-- **Comments**: Use // identifier for student-friendly code
-- **Formatting**: Consistent indentation, clear spacing
-- **Error Handling**: Try-catch blocks with user-friendly messages
-
-### Adding New Features
-1. Create new classes in appropriate packages (`data/`, `model/`, `gui/`, or `util/`)
-2. Update repository classes for database operations
-3. Add UI components in `gui/` package
-4. Update this README with new features
-5. Test thoroughly before committing
-
-### Database Migrations
-To modify database structure:
-```sql
--- Add new column
-ALTER TABLE products ADD COLUMN new_field VARCHAR(255);
-
--- Modify existing column
-ALTER TABLE products MODIFY COLUMN product_name VARCHAR(200);
-
--- Add index for performance
-CREATE INDEX idx_product_name ON products(product_name);
-````
-
----
-
-## 🔐 Security Features
-
-- **Password Protection**: Secure user authentication
-- **Role-Based Access**: Admin and Employee permissions
-- **SQL Injection Prevention**: Prepared statements used throughout
-- **Transaction Safety**: Database locks prevent race conditions
-- **Input Validation**: Client-side and server-side validation
-- **Error Handling**: Graceful error messages without exposing system details
-
----
-
-## 🚀 Performance Optimizations
-
-- **Database Indexing**: Primary keys and foreign keys indexed
-- **Connection Pooling**: Efficient database connection management
-- **Lazy Loading**: Load data only when needed
-- **Prepared Statements**: Reusable SQL statements for better performance
-- **Transaction Batching**: Bulk operations wrapped in transactions
-- **CSV Streaming**: Large exports handled efficiently
-
----
-
-## 🎯 Key Highlights
-
-### Why SmartStock?
-
-✅ **Filipino-Focused**: Built for sari-sari stores with relevant products  
-✅ **Student-Friendly**: Clean code with educational documentation  
-✅ **Production-Ready**: Robust error handling and data validation  
-✅ **Excel Integration**: One-click CSV exports for business reporting  
-✅ **Modern QR Technology**: Contactless product management  
-✅ **Accurate Accounting**: Historical cost tracking for true profit margins
-
-### Business Benefits
-
-- 📊 **Real-Time Insights**: Instant sales and inventory analytics
-- 💰 **Profit Tracking**: Accurate profit calculation using COGS
-- ⏱️ **Time Savings**: Automated stock updates and calculations
-- 📱 **QR Integration**: Modern, efficient product scanning
-- 📈 **Growth Ready**: Multi-user support for expanding businesses
-- 📑 **Professional Reports**: Excel-ready exports for accounting
-
----
-
-## 📄 License
-
-This project is developed as a capstone project for educational purposes.
-
-**Project Type**: Academic Capstone Project  
-**Development Period**: 2024-2025  
-**Purpose**: Educational demonstration of software engineering principles
-
-### Usage Rights
-
-- ✅ Educational use and learning
-- ✅ Portfolio demonstration
-- ✅ Academic presentations
-- ❌ Commercial distribution without permission
-- ❌ Claiming as original work without attribution
-
----
-
-## 🤝 Contributing
-
-This is a student capstone project. For academic integrity, external contributions are not accepted during the academic period.
-
-After project submission, contributions may be welcome for:
-
-- Bug fixes
-- Feature enhancements
-- Documentation improvements
-- Translation to other languages
-
----
-
-## 📞 Support & Contact
-
-### For Questions or Issues:
-
-1. 📖 Check the `docs/` folder for detailed guides
-2. 🔍 Review the troubleshooting section above
-3. 📧 Contact project maintainers (academic purposes only)
-
-### Reporting Bugs
-
-If you encounter issues:
-
-1. Check if the issue is already documented
-2. Verify your setup follows installation guide
-3. Check MySQL service and database connection
-4. Review error logs in terminal/console
-
----
-
-## 🎓 Acknowledgments
-
-### Technology Providers
-
-### Reporting Bugs
-
-If you encounter issues:
-
-1. Check if the issue is already documented
-2. Verify XAMPP MySQL service is running
-3. Check database connection via phpMyAdmin
-4. Review error logs in terminal/console
-
-- Java Documentation and Tutorials
-- MySQL Official Documentation
-- Stack Overflow Community
-- GitHub Open Source Projects
-
-### Special Thanks
-
-- **Project Advisors**: For guidance throughout development
-- **Classmates**: For feedback and testing
-- **Filipino Retailers**: For real-world requirements and insights
-- **Open Source Community**: For excellent libraries and tools
 
 ---
 
 ## 📊 Project Statistics
 
-- **Total Lines of Code**: ~8,000+ lines
-- **Java Classes**: 30+ classes
-- **Database Tables**: 7 tables
-- **Features Implemented**: 50+ features
-- **Documentation Pages**: 2,000+ lines
-- **Development Time**: 3-4 months
-- **Testing Hours**: 100+ hours
+- **Total Lines of Code:** 8,000+
+- **Java Classes:** 30+
+- **Database Tables:** 7
+- **Features Implemented:** 50+
+- **Documentation:** 2,000+ lines
+- **Development Time:** 30 days
+- **Testing Hours:** 100+
 
 ---
 
-## 🗺️ Roadmap (Future Enhancements)
+## 🎓 Academic Highlights
 
-### Planned Features (Post-Academic)
+### Why SmartStock?
+✅ **Filipino-Focused** - Built for sari-sari stores with relevant products  
+✅ **Student-Friendly** - Clean code with educational documentation  
+✅ **Production-Ready** - Robust error handling and data validation  
+✅ **Excel Integration** - One-click CSV exports for business reporting  
+✅ **Modern Technology** - QR code integration for contactless operations  
+✅ **Accurate Accounting** - Historical cost tracking for true profit margins
 
-- [ ] **Mobile App**: Android/iOS companion app
-- [ ] **Cloud Sync**: Multi-device synchronization
-- [ ] **Barcode Support**: Standard barcode scanning
-- [ ] **Email Reports**: Automated daily/weekly reports
-- [ ] **Multi-Store**: Support multiple store locations
-- [ ] **Advanced Analytics**: Charts, graphs, trend analysis
-- [ ] **Supplier Management**: Track suppliers and purchase orders
-- [ ] **Customer Database**: Loyalty program and customer tracking
-- [ ] **Print Receipts**: Receipt printer integration
-- [ ] **Backup/Restore**: Automated database backups
-
----
-
-## 💡 Tips & Best Practices
-
-### For Developers
-
-- Read `CODE_EXPLANATION.txt` for detailed code walkthrough
-- Use `7_DAY_RECREATION_GUIDE.txt` to rebuild from scratch
-- Check `DebugLogger.java` for troubleshooting utilities
-- Follow repository pattern for new database operations
-
-### For Users
-
-- **Backup Regularly**: Export database weekly
-- **Monitor Stock**: Check alerts daily
-- **Review Reports**: Analyze sales trends monthly
-- **Update Prices**: Keep markup percentages current
-- **Train Staff**: Ensure employees understand the system
-
-### For Presentations
-
-### For Developers
-
-- Study the source code structure in `src/com/inventorysystem/`
-- Use phpMyAdmin to inspect database structure and relationships
-- Check `DebugLogger.java` for troubleshooting utilities
-- Follow repository pattern for new database operations
+### Learning Outcomes
+- Full-stack Java desktop application development
+- Database design and SQL optimization
+- MVC architecture implementation
+- User interface/experience design
+- Software testing and quality assurance
+- Team collaboration and project management
+- Technical documentation writing
 
 ---
 
-<div align="center">
+## 🔐 Security Features
 
-## 🏆 SmartStock
-
-**Empowering Filipino Retailers with Smart Inventory Management**
-
-[![Java](https://img.shields.io/badge/Java-21-orange?style=flat&logo=java)](https://www.oracle.com/java/)
-[![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?style=flat&logo=mysql)](https://www.mysql.com/)
-[![License](https://img.shields.io/badge/License-Educational-green?style=flat)](LICENSE)
-
----
-
-### Quick Links
-
-[📥 Download](#-installation-guide) •
-[📖 Documentation](docs/) •
-[🐛 Report Bug](#-support--contact) •
-[💡 Request Feature](#-roadmap-future-enhancements)
+- Password-protected authentication
+- Role-based access control (Admin/Employee)
+- SQL injection prevention (prepared statements)
+- Transaction safety (database locks)
+- Input validation (client and server-side)
+- Secure error handling
 
 ---
 
-**Made with ❤️ by Capstone Development Team**
+## 📝 Default Accounts
 
-_Supporting local businesses through technology_
-
----
-
-_Last Updated: December 2, 2025_  
-_Version: 1.0.0_  
-_Status: ✅ Production Ready_
-
-</div>
-
-- **Pattern:** MVC (Model-View-Controller) with Repository pattern
-- **Database Access:** Try-with-resources for automatic connection management
-- **Transaction Management:** BEGIN/COMMIT/ROLLBACK with FOR UPDATE locks
-- **UI Design:** Custom UIConstants for consistent styling, dynamic row renderers
-- **Security:** PreparedStatement with parameterized queries (SQL injection prevention)
-- **Code Style:** Student-friendly simple comments (identifier-based)
+| Username | Password | Role | Access Level |
+|----------|----------|------|--------------|
+| admin | admin123 | Admin | Full Access |
+| employee1 | emp123 | Employee | View Only |
 
 ---
 
-## 📁 Project Structure
+## 🐛 Troubleshooting
 
-```
-CapstoneProject101/
-├── src/                       - Java source code
-│   ├── App.java              - Application entry point
-│   ├── config.properties     - Database configuration
-│   │
-│   └── com/inventorysystem/
-│       ├── data/             - Repository classes (database access)
-│       │   ├── DatabaseConnection.java
-│       │   ├── ProductRepository.java
-│       │   ├── UserRepository.java
-│       │   ├── DashboardRepository.java
-│       │   ├── StockRepository.java
-│       │   ├── RecordsRepository.java
-│       │   └── StoreRepository.java
-│       │
-│       ├── gui/              - User interface components
-│       │   ├── userFrame.java           - Main application frame
-│       │   ├── LoginPanel.java          - Authentication
-│       │   ├── SignupPanel.java         - User registration
-│       │   ├── dashboardPanel.java      - Analytics dashboard
-│       │   ├── productsPanel.java       - Product management (3000+ lines)
-│       │   ├── stockPanel.java          - Stock movements
-│       │   ├── recordsPanel.java        - Transaction history
-│       │   ├── QRCodePanel.java         - QR code generation
-│       │   ├── AboutPanel.java          - Team information
-│       │   ├── UIConstants.java         - UI styling constants
-│       │   ├── DateRangePanel.java      - Date filtering widget
-│       │   ├── MainApplicationPanel.java - Main layout
-│       │   ├── EmployeeManagerDialog.java - Employee management
-│       │   ├── StoreSettingsDialog.java - Store settings
-│       │   └── CustomTableRenderer.java - Dynamic row numbering
-│       │
-│       ├── model/            - Data models (POJOs)
-│       │   ├── User.java
-│       │   ├── Product.java
-│       │   ├── Category.java
-│       │   ├── Store.java
-│       │   ├── TransactionRecord.java
-│       │   └── StockRecord.java
-│       │
-│       └── util/             - Utility classes
-│           ├── DebugLogger.java - Logging utility
-│           └── SoundUtil.java   - Sound effects
-│
-├── bin/                      - Compiled .class files
-│   ├── config.properties
-│   ├── com/inventorysystem/  - Compiled package structure
-│   └── resources/
-│
-├── lib/                      - External JAR libraries
-│   ├── core-3.4.1.jar       - ZXing core
-│   ├── javase-3.4.1.jar     - ZXing Java SE
-│   ├── webcam-capture-*.jar - Webcam library
-│   ├── json-*.jar           - JSON processing
-│   └── mysql-connector-*.jar - MySQL driver
-│
-├── resources/                - Application resources
-│   ├── student_inventory_db.sql - Database schema and sample data
-│   └── avatars/              - Team member avatars (for About panel)
-│
-├── .vscode/                  - VS Code workspace settings
-├── SmartStock.jar            - Executable application (runnable JAR)
-├── MANIFEST.MF               - JAR manifest file
-├── build.bat                 - Windows compilation script
-├── run.bat                   - Windows launch script
-└── README.md                 - This file (project overview)
-```
+### Common Issues
 
----
+**Database Connection Error**
+- Verify XAMPP MySQL is running
+- Check config.properties credentials
+- Ensure database exists in phpMyAdmin
 
-## 📋 System Requirements
+**Webcam Not Working**
+- Grant camera permissions
+- Close other apps using webcam
+- Update webcam drivers
 
-### Minimum Requirements
-
-- **Java Runtime:** JRE 21 or higher (OpenJDK or Oracle JDK)
-- **Database:** MySQL 5.7+ or MariaDB 10.2+
-- **Memory:** 512 MB RAM
-- **Display:** 1280x720 resolution
-- **Storage:** 100 MB free space
-- **OS:** Windows 7+, Linux, macOS
-
-### Recommended Configuration
-
-- **Java Runtime:** JRE 21 (latest update)
-- **Database:** MySQL 8.0+ or MariaDB 10.6+
-- **Memory:** 1 GB RAM or more
-- **Display:** 1366x768 or higher
-- **Webcam:** For QR code scanning feature
-
----
-
-## 🎯 Default Accounts
-
-| Username  | Password | Role     | Access Level | Permissions                                      |
-| --------- | -------- | -------- | ------------ | ------------------------------------------------ |
-| Admin     | 123      | Admin    | Full Access  | All features, settings, employee management      |
-| Employee1 | 123      | Employee | Limited      | View/manage products (admin's data), no settings |
-
-**Note:** Employees see their admin's inventory data. Create new employees via Settings > Employee Manager.
-
-## 📞 Support & Troubleshooting
-
-Having issues? Common solutions:
-
-1. **Common Issues:**
-
-   - Database connection error → Check XAMPP MySQL is running
-   - Login failed → Verify database imported correctly (use `resources/student_inventory_db.sql`)
-   - QR Scanner not working → Allow webcam permissions
-   - Compilation errors → Ensure all JARs in lib/ folder
-
-2. **Database Reset:**
-   - Re-import `resources/student_inventory_db.sql` in phpMyAdmin
-   - Verify database name is `capstone_inventory_db`
-
----
-
-## 🎓 Academic Information
-
-**Course:** Bachelor of Science in Information Technology  
-**Subject:** Capstone Project 1 (1st Semester, AY 2025-2026)  
-**Institution:** Manuel S. Enverga University Foundation - Candelaria, Inc.  
-**Section:** BSIT-1B  
-**Group:** #3
-
-### Development Team
-
-| Name                       | Role                                                   |
-| -------------------------- | ------------------------------------------------------ |
-| George Harold A. Alcantara | Project Manager / Documentation Writer                 |
-| Aldrin Miguel A. Jariel    | System Analyst / Developer / QA / Documentation Writer |
-| John Christoper A. Perez   | UI/UX Designer / Documentation Writer                  |
-| Ron Paulo G. Angeles       | Documentation Writer                                   |
-| Matthew Dane D. Calangian  | Documentation Writer                                   |
-
----
-
-## 📝 License & Usage
-
-This is an educational capstone project developed for academic purposes.
-
-**License:** Free to use for learning and educational purposes  
-**Development Period:** October 3 - November 2, 2025 (30 days)  
-**Version:** 1.0.0 (Build 20251202)  
-**Last Updated:** December 2, 2025
-
----
-
-## 🌟 Highlights & Achievements
-
-- ✅ Complete inventory management system with 7 main modules
-- ✅ QR code integration with JSON data structure (Add/Update/Sell/Delete modes)
-- ✅ **Historical cost tracking** for accurate profit calculation (critical business feature)
-- ✅ Real-time analytics dashboard with date range filtering
-- ✅ Multi-user system with role-based access control (Admin/Employee)
-- ✅ Professional UI/UX with dynamic row numbering
-- ✅ Comprehensive documentation (7+ detailed guides)
-- ✅ Bulk operations: Set Markup, Remove Stock, Delete, Return (4 types)
-- ✅ **Transaction integrity** with BEGIN/COMMIT/ROLLBACK and FOR UPDATE locks
-- ✅ **Stock validation** to prevent negative inventory
-- ✅ Secure database access with try-with-resources and PreparedStatement
-- ✅ Webcam integration for real-time QR scanning
-- ✅ Student-friendly code style (simple comments, clear structure)
-
----
-
-## 🔮 Future Enhancements
-
-Potential features for future versions:
-
-- Password hashing (currently plain text for demo)
-- PDF/Excel export for reports
-- Email notifications for low stock alerts
-- Barcode support (in addition to QR codes)
-- Mobile application companion
-- Advanced analytics with sales forecasting
-- Multi-store support with centralized management
-- Supplier management module
-- Purchase order system
-- Backup/restore functionality
-- Audit trail for all transactions
-
----
-
-## 🙏 Acknowledgments
-
-Special thanks to:
-
-- Our instructors and advisors
-- Manuel S. Enverga University Foundation - Candelaria, Inc.
-- Open-source library contributors (ZXing, Webcam Capture)
-- The Java and MySQL communities
-
----
-
-**📖 For complete documentation, visit the `/docs/` folder and start with `INDEX.txt`**
-
-**💼 SmartStock - Streamline Your Business, Maximize Your Profits**
-
-© 2025 SmartStock Development Team. All Rights Reserved.
-
-## 💡 Usage Guide
-
-### Dashboard
-
-- View key metrics: total products, stock, out-of-stock count
-- Monitor financial data: cost, income, profit
-- Analyze best sellers and stock alerts
-- Filter data by date range
-
-### Products Panel
-
-- **Add Product:** Click Add/Update → Fill form → Save
-- **Edit Product:** Select row → Click Add/Update → Modify → Save
-- **Sell Product:** Select row → Click Sell → Enter quantity → Confirm
-- **Return Product:** Select row → Return → Choose type (Customer Return/Reject/Refund/Dispose) → Process
-- **Remove Stock:** Select row(s) → Remove Stock → Enter quantity and reason → Confirm
-- **Generate QR:** Select product → Generate QR → Save as PNG
-- **Scan QR:** Enable Scanner → Choose mode (Add/Sell/Delete) → Point webcam at QR code
-- **Bulk Operations:** Select multiple rows → Bulk Operations → Choose action (Set Markup/Remove Stock/Delete/Return)
-- **Search:** Use search bar to filter by any column
-- **Sort:** Click column headers to sort
-
-### Stock Panel
-
-- View stock movements (In, Out, Available)
-- Filter by date range
-- Track inventory changes over time
-
-### Records Panel
-
-- View complete transaction history
-- Filter by date range
-- See sales, purchases, returns
-
-### Settings
-
-- **Store Settings:** Customize store name, address, contact
-- **Employee Manager:** Add/view employees (Admin only)
-- **User Profile:** View account information
+**CSV Files Won't Open**
+- Right-click → Open with Excel
+- File has UTF-8 BOM encoding
 
 ---
 
 ## 📞 Support
 
-**Common Troubleshooting:**
-
-1. **Database Connection Issues:**
-
-   - Ensure XAMPP MySQL is running (port 3306)
-   - Verify `config.properties` has correct credentials
-   - Database name: `capstone_inventory_db`
-
-2. **Import Database:**
-
-   - Open phpMyAdmin (http://localhost/phpmyadmin)
-   - Create database: `capstone_inventory_db`
-   - Import: `resources/student_inventory_db.sql`
-
-3. **Build Issues:**
-   - Ensure all JARs are in `lib/` folder
-   - Run `build.bat` from project root
-   - Check Java version: `java -version` (need JDK 21+)
+For questions or issues:
+1. Check troubleshooting section
+2. Review installation guide
+3. Verify MySQL service status
+4. Contact project advisors
 
 ---
 
-# 📸 System Documentation Screenshots
+## 📄 License
 
-This section provides visual documentation and a tour of the application's user interface and core functionality, referencing the files found in the `screenshots/` directory.
+This project is developed as an academic capstone project for educational purposes.
 
----
+**Project Type:** Academic Capstone Project  
+**Development Period:** 2024-2025  
+**Purpose:** Educational demonstration of software engineering principles
 
-### Application Startup and User Authentication
-
-| Screenshot | Description |
-| :---: | :--- |
-| **1.** | Application Splash Screen/Initial Startup |
-| ![Splash Screen](screenshots/1.png) | The first screen displayed when launching the application. |
-| **2.** | Main Login Panel |
-| ![Login Panel](screenshots/2.png) | The entry point for users to authenticate. |
-| **3.** | Initial Sign-Up Panel (New User Registration) |
-| ![Initial Sign-Up Panel](screenshots/3.png) | The form for creating a new user account or administrative profile. |
+### Usage Rights
+✅ Educational use and learning  
+✅ Portfolio demonstration  
+✅ Academic presentations  
+❌ Commercial distribution without permission
 
 ---
 
-### Dashboard and Main Navigation
+## 🙏 Acknowledgments
 
-| Screenshot | Description |
-| :---: | :--- |
-| **4.** | Main Application Dashboard (Overview) |
-| ![Main Dashboard](screenshots/4.png) | Shows key metrics like total products, stock value, and overall profit. |
-| **5.** | Dashboard - Out-of-Stock Alert |
-| ![Out-of-Stock Alert](screenshots/5.png) | Highlights products nearing or at zero inventory levels. |
-| **6.** | Dashboard - Detailed Metrics View (Current Inventory) |
-| ![Detailed Inventory](screenshots/6.png) | Breakdown of current stock quantities and value. |
-| **7.** | Dashboard - Profit Analysis Chart |
-| ![Profit Chart](screenshots/7.png) | Visual representation of profit over a specified date range. |
-| **8.** | Dashboard - Income Analysis Chart |
-| ![Income Chart](screenshots/8.png) | Visual representation of revenue generation over a specified date range. |
-| **9.** | Dashboard - Date Range Filter Panel |
-| ![Date Range Filter](screenshots/9.png) | Interface for selecting specific start and end dates for data analysis. |
+- **Quezon City University** - For educational support and guidance
+- **Project Advisors** - For mentorship throughout development
+- **Classmates** - For feedback and testing
+- **Filipino Retailers** - For real-world requirements
+- **Open Source Community** - For excellent libraries and tools
 
 ---
 
-### Product Management (Products Panel)
+**© 2025 SmartStock Development Team. All Rights Reserved.**
 
-| Screenshot | Description |
-| :---: | :--- |
-| **10.** | Products Panel - Main View |
-| ![Products Panel Main View](screenshots/10.png) | Listing of all current products with quick search functionality. |
-| **11.** | Products Panel - Adding a New Product |
-| ![Add New Product Form](screenshots/11.png) | Form used to input details for a new inventory item. |
-| **12.** | Products Panel - Updating/Editing a Product |
-| ![Edit Product Form](screenshots/12.png) | Modifying details of an existing inventory item. |
-| **13.** | Products Panel - Deleting a Product Confirmation |
-| ![Delete Product Confirmation](screenshots/13.png) | Confirmation dialog before permanently removing a product. |
-| **14.** | Products Panel - Searching and Filtering |
-| ![Search and Filtering](screenshots/14.png) | Demonstration of filtering products by category or name. |
+*SmartStock - Empowering Filipino Retailers with Smart Inventory Management*
 
 ---
 
-### Stock Control (Stock Panel)
-
-| Screenshot | Description |
-| :---: | :--- |
-| **15.** | Stock Panel - Main View |
-| ![Stock Panel Main View](screenshots/15.png) | Interface for managing inventory levels (in/out transactions). |
-| **16.** | Stock Panel - Adding Stock (Stock-In) |
-| ![Adding Stock (Stock-In)](screenshots/16.png) | Recording new inventory received from a supplier. |
-| **17.** | Stock Panel - Removing Stock (Stock-Out) |
-| ![Removing Stock (Stock-Out)](screenshots/17.png) | Recording inventory removal due to sales, damage, or use. |
-| **18.** | Stock Panel - Searching and Sorting Stock Records |
-| ![Searching Stock Records](screenshots/18.png) | Filtering stock movement history. |
-
----
-
-### Transaction Records and Reports
-
-| Screenshot | Description |
-| :---: | :--- |
-| **19.** | Records Panel - Main View (All Transactions) |
-| ![Records Panel Main View](screenshots/19.png) | Comprehensive log of all sales, profit, cost, and income records. |
-| **20.** | Records Panel - Filtering by Date Range |
-| ![Filtering Records by Date](screenshots/20.png) | Applying date filters to view transaction data for a specific period. |
-| **21.** | Records Panel - CSV Export Confirmation |
-| ![CSV Export Confirmation](screenshots/21.png) | Dialog confirming the successful export of records to a CSV file. |
-| **22.** | Records Panel - View Transaction Details |
-| ![Transaction Details View](screenshots/22.png) | Pop-up showing detailed information about a single transaction. |
-
----
-
-### Advanced Features and Settings
-
-| Screenshot | Description |
-| :---: | :--- |
-| **23.** | QR Code Panel - Main View (Generating QR Codes) |
-| ![QR Code Generation](screenshots/23.png) | Tool for generating scannable QR codes for products. |
-| **24.** | QR Code Panel - Generated QR Code Example |
-| ![Generated QR Code Example](screenshots/24.png) | Output showing a successfully generated QR code image. |
-| **25.** | Store Settings Dialog - Main View |
-| ![Store Settings Dialog](screenshots/25.png) | Interface to configure basic store information (name, address, etc.). |
-| **26.** | Employee Manager Dialog - Main View |
-| ![Employee Manager Dialog](screenshots/26.png) | Administrative tool for managing user accounts and roles. |
-| **27.** | Employee Manager - Adding a New Employee |
-| ![Adding New Employee](screenshots/27.png) | Form for creating a new user account with employee credentials. |
-| **28.** | Employee Manager - Editing Employee Details |
-| ![Editing Employee Details](screenshots/28.png) | Modifying an existing employee's information. |
-| **29.** | Employee Manager - Deleting an Employee |
-| ![Deleting an Employee](screenshots/29.png) | Confirmation dialog before removing a user account. |
-| **30.** | Help/About Panel - User Guide View |
-| ![Help/User Guide](screenshots/30.png) | Provides information or a guide on using the system. |
-| **31.** | About Panel - Credits/Developer Information |
-| ![About/Credits Panel](screenshots/31.png) | Displays information about the developers and the capstone project team. |
-
----
-
-### System Operations and Error Handling
-
-| Screenshot | Description |
-| :---: | :--- |
-| **32.** | Successful Operation Confirmation |
-| ![Success Confirmation](screenshots/32.png) | A common dialog box confirming a transaction or operation succeeded. |
-| **33.** | Error Message/Invalid Input |
-| ![Invalid Input Error](screenshots/33.png) | An alert shown when required fields are empty or input data is invalid. |
-| **34.** | Database Connection Failure |
-| ![Database Connection Failure](screenshots/34.png) | Error message when the application cannot connect to the database. |
-| **35.** | Successful User Logout |
-| ![Successful Logout](screenshots/35.png) | Confirmation that the user has securely exited the system. |
-
----
-
-**💼 SmartStock - Empowering Small Businesses with Smart Inventory Solutions**
-
+**Version:** 1.0.0  
+**Last Updated:** December 2, 2025  
+**Status:** ✅ Production Ready
