@@ -154,6 +154,9 @@
 
 ---
 
+
+### 3. Product Management
+
 ![Profit Analysis Chart](screenshots/7.png)
 
 **Figure 2.4:** 
@@ -171,8 +174,6 @@
 **Figure 2.6:** 
 
 ---
-
-### 3. Product Management
 
 ![Products Panel Main View](screenshots/10.png)
 
@@ -494,4 +495,5 @@ This project is developed as an academic capstone project for educational purpos
 *SmartStock - Empowering Filipino Retailers with Smart Inventory Management*
 
 ---
+
 
