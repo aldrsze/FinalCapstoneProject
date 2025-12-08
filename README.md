@@ -342,6 +342,8 @@
 
 ---
 
+### Step by step guide on running the Program
+
 ### 1. Install Java Development Kit (JDK 21)
 ```bash
 # Verify installation
