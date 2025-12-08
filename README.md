@@ -455,6 +455,7 @@ This project is developed as an academic capstone project for educational purpos
 
 **Project Type:** Academic Capstone Project  
 **Development Period:** September - December 2025 
+
 **Purpose:** Educational Purposes
 
 ---
@@ -462,7 +463,7 @@ This project is developed as an academic capstone project for educational purpos
 ## 🙏 Acknowledgments
 
 - **Quezon City University** - For educational support and guidance
-- **Project Professor* - For mentorship throughout development
+- **Project Professor** - For mentorship throughout development
 - **Classmates** - For feedback and testing
 - **Nicole G. Diaz** - For supporting me since day one of development
 
