@@ -141,6 +141,8 @@
 
 ---
 
+### 3. Product Management 📦
+
 ![](screenshots/7.png)
 
 ---
@@ -152,8 +154,6 @@
 ![](screenshots/9.png)
 
 ---
-
-### 3. Product Management 📦
 
 ![](screenshots/10.png)
 
