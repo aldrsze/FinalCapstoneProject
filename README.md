@@ -229,37 +229,37 @@
 
 ---
 
-### 5. Transaction Records
-
 ![](screenshots/19.png)
 
-**Figure 5.1:** 
+**Figure 4.3:** 
 
 ---
 
 ![](screenshots/20.png)
 
-**Figure 5.2:** 
+**Figure 4.4:** 
 
 ---
 
 ![](screenshots/21.png)
 
-**Figure 5.3:** 
+**Figure 4.5:** 
 
 ---
 
-### 6. QR Code Features
+### 5. Stock Summary Panel
 
 ![](screenshots/22.png)
 
-**Figure 6.1:**
+**Figure 5.1:**
 
 ---
 
+### 6. Transaction Records Panel
+
 ![](screenshots/23.png)
 
-**Figure 6.2:** 
+**Figure 6.1:** 
 
 ---
 
