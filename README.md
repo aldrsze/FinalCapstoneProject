@@ -1,6 +1,6 @@
 # SmartStock Inventory Management System - Documentation
 
-**A Professional Inventory Solution for Filipino Sari-Sari Stores**
+**A Professional Inventory Solution for Small to Medium Business Enterprises Stores**
 
 ---
 
@@ -31,14 +31,14 @@
 ### Product Management
 - CRUD operations with validation
 - Smart pricing with automatic retail price calculation
-- 8 built-in categories (Beverages, Snacks, Canned Goods, etc.)
+- 8 built-in Units for Products
 - Bulk operations (Set markup, bulk delete, mass returns)
 - Advanced search and dynamic sorting
 - Stock alerts with visual indicators
 
 ### QR Code Integration
 - Smart generation with embedded JSON product data
-- Multiple modes: Add/Update, Stock-Out, Delete
+- Multiple modes: Add/Update, Sell, Delete
 - Webcam support for real-time scanning
 - Image file scanning capability
 - Auto-save QR codes as PNG files
@@ -46,7 +46,7 @@
 ### Sales & Transaction Management
 - Stock-Out operations (sales, removals, rejects)
 - Historical cost tracking for accurate profit calculation
-- Return processing (4 types: Customer Return, Damaged, Refund, Dispose)
+- Return processing (4 types: Customer Return, Damaged, Refund,)
 - Complete transaction log with date/time stamps
 - Date range filtering
 
@@ -96,7 +96,7 @@
 - **Java 21** - Main programming language
 - **Swing** - GUI framework
 - **JDBC** - Database connectivity
-- **MySQL 8.0** - Database management
+- **XAMPP MySQL 8.0** - Database management
 
 ### Libraries
 - **ZXing 3.5.0** - QR code generation/decoding
@@ -379,13 +379,10 @@ db.password=
 ```
 
 ### 5. Build & Run
-```bash
-# Build
-build.bat
+Open build.bat file
 
 # Run
-java -jar SmartStock.jar
-```
+Then open Jar file SmartStock.jar
 
 ---
 
@@ -393,32 +390,22 @@ java -jar SmartStock.jar
 
 - **Total Lines of Code:** 8,000+
 - **Java Classes:** 30+
-- **Database Tables:** 7
+- **Database Tables:** 8
 - **Features Implemented:** 50+
 - **Documentation:** 2,000+ lines
-- **Development Time:** 30 days
-- **Testing Hours:** 100+
+- **Development Time:** Almost 3 Months
 
 ---
 
 ## 🎓 Academic Highlights
 
 ### Why SmartStock?
-✅ **Filipino-Focused** - Built for small sari-sari stores with relevant products  
+✅ **Business-Focused** - Built for small Businesses with relevant products  
 ✅ **Student-Friendly** - Clean code with educational documentation  
 ✅ **Production-Ready** - Robust error handling and data validation  
 ✅ **Excel Integration** - One-click CSV exports for business reporting  
 ✅ **Modern Technology** - QR code integration for automatic operations  
-✅ **Accurate Accounting** - Historical cost tracking for true profit margins
-
-### Learning Outcomes
-- Full-stack Java desktop application development
-- Database design and SQL optimization
-- MVC architecture implementation
-- User interface/experience design
-- Software testing and quality assurance
-- Team collaboration and project management
-- Technical documentation writing
+✅ **Accurate Accounting** - Historical cost tracking for true profit margins
 
 ---
 
@@ -469,18 +456,7 @@ This project is developed as an academic capstone project for educational purpos
 **Project Type:** Academic Capstone Project  
 **Development Period:** September - December 2025 
 **Purpose:** Educational Purposes
-
-
-
-
-
-
-
-
-
-
-
-
+
 ---
 
 ## 🙏 Acknowledgments
