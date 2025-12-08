@@ -1,6 +1,6 @@
 # SmartStock Inventory Management System - Documentation
 
-**A Professional Inventory Solution for Small to Medium Business Enterprises Stores**
+**A Professional Inventory Solution for Small to Medium Business Enterprises**
 
 ---
 
@@ -342,7 +342,7 @@
 
 ---
 
-### Step by step guide on running the Program
+### **Step by step guide on running the Program**
 
 ### 1. Install Java Development Kit (JDK 21)
 ```bash
