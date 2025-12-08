@@ -111,26 +111,19 @@
 - Singleton (database connections)
 
 ---
-
 ## 📸 System Screenshots
 
 ### 1. Application Startup & Authentication 🔒
 
 ![](screenshots/1.png)
 
-**Figure 1.1:** Application Splash Screen
-
 ---
 
 ![](screenshots/2.png)
 
-**Figure 1.2:** Login Panel
-
 ---
 
 ![](screenshots/3.png)
-
-**Figure 1.3:** Sign-Up Panel
 
 ---
 
@@ -138,37 +131,25 @@
 
 ![](screenshots/4.png)
 
-**Figure 2.1:** Main Dashboard View
-
 ---
 
 ![](screenshots/5.png)
-
-**Figure 2.2:** Out-of-Stock Alert
 
 ---
 
 ![](screenshots/6.png)
 
-**Figure 2.3:** Detailed Metrics
-
 ---
 
 ![](screenshots/7.png)
-
-**Figure 2.4:** Profit Analysis Chart
 
 ---
 
 ![](screenshots/8.png)
 
-**Figure 2.5:** Income Analysis Chart
-
 ---
 
 ![](screenshots/9.png)
-
-**Figure 2.6:** Date Range Filter
 
 ---
 
@@ -176,31 +157,21 @@
 
 ![](screenshots/10.png)
 
-**Figure 3.1:** Products Panel Main View
-
 ---
 
 ![](screenshots/11.png)
-
-**Figure 3.2:** Add New Product Form
 
 ---
 
 ![](screenshots/12.png)
 
-**Figure 3.3:** Edit Product Interface
-
 ---
 
 ![](screenshots/13.png)
 
-**Figure 3.4:** Delete Product Confirmation
-
 ---
 
 ![](screenshots/14.png)
-
-**Figure 3.5:** Search and Filter Functionality
 
 ---
 
@@ -208,25 +179,17 @@
 
 ![](screenshots/15.png)
 
-**Figure 4.1:** Stock Panel Main View
-
 ---
 
 ![](screenshots/16.png)
-
-**Figure 4.2:** Adding Stock (Stock-In)
 
 ---
 
 ![](screenshots/17.png)
 
-**Figure 4.3:** Removing Stock (Stock-Out)
-
 ---
 
 ![](screenshots/18.png)
-
-**Figure 4.4:** Stock Records Search
 
 ---
 
@@ -234,25 +197,17 @@
 
 ![](screenshots/19.png)
 
-**Figure 5.1:** Records Panel Main View
-
 ---
 
 ![](screenshots/20.png)
-
-**Figure 5.2:** Date Range Filtering
 
 ---
 
 ![](screenshots/21.png)
 
-**Figure 5.3:** CSV Export Confirmation
-
 ---
 
 ![](screenshots/22.png)
-
-**Figure 5.4:** Transaction Details
 
 ---
 
@@ -260,13 +215,9 @@
 
 ![](screenshots/23.png)
 
-**Figure 6.1:** QR Code Generation Interface
-
 ---
 
 ![](screenshots/24.png)
-
-**Figure 6.2:** Generated QR Code Sample
 
 ---
 
@@ -274,31 +225,21 @@
 
 ![](screenshots/25.png)
 
-**Figure 7.1:** Store Settings
-
 ---
 
 ![](screenshots/26.png)
-
-**Figure 7.2:** Employee Manager
 
 ---
 
 ![](screenshots/27.png)
 
-**Figure 7.3:** Add Employee Form
-
 ---
 
 ![](screenshots/28.png)
 
-**Figure 7.4:** Edit Employee Interface
-
 ---
 
 ![](screenshots/29.png)
-
-**Figure 7.5:** Delete Employee Confirmation
 
 ---
 
@@ -306,13 +247,9 @@
 
 ![](screenshots/30.png)
 
-**Figure 7.6:** Help/User Guide Panel
-
 ---
 
 ![](screenshots/31.png)
-
-**Figure 7.7:** About/Credits Panel
 
 ---
 
@@ -320,29 +257,19 @@
 
 ![](screenshots/32.png)
 
-**Figure 8.1:** Success Confirmation Dialog
-
 ---
 
 ![](screenshots/33.png)
-
-**Figure 8.2:** Invalid Input Error Dialog
 
 ---
 
 ![](screenshots/34.png)
 
-**Figure 8.3:** Database Connection Failure Dialog
-
 ---
 
 ![](screenshots/35.png)
 
-**Figure 8.4:** Logging Out Confirmation
-
 ---
-
-## 🚀 Installation & Setup
 
 ### 1. Install Java Development Kit (JDK 21)
 ```bash
