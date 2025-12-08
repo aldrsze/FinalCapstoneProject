@@ -13,7 +13,7 @@
 - **Subject:** Introduction to Programming (Capstone Project 1)
 - **Institution:** Quezon City University
 - **Section:** BSIT-1B | Group #3
-- **Development Period:** October 3 - December 13, 2025 (30 days)
+- **Development Period:** October 3 - December 13, 2025
 
 ### Development Team
 | Name | Role |
