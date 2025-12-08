@@ -111,163 +111,234 @@
 - Singleton (database connections)
 
 ---
+
 ## 📸 System Screenshots
 
-### 1. Application Startup & Authentication 🔒
+### 1. Application Startup & Authentication
 
 ![](screenshots/1.png)
+
+**Figure 1.1:**
 
 ---
 
 ![](screenshots/2.png)
 
+**Figure 1.2:** 
+
 ---
 
 ![](screenshots/3.png)
 
+**Figure 1.3:**
+
 ---
 
-### 2. Dashboard & Analytics 📊
+### 2. Dashboard & Analytics
 
 ![](screenshots/4.png)
+
+**Figure 2.1:** 
 
 ---
 
 ![](screenshots/5.png)
 
+**Figure 2.2:** 
+
 ---
 
 ![](screenshots/6.png)
 
+**Figure 2.3:** 
+
 ---
 
-### 3. Product Management 📦
+
+### 3. Product Management
 
 ![](screenshots/7.png)
+
+**Figure 3.1:** 
 
 ---
 
 ![](screenshots/8.png)
 
+**Figure 3.2:** 
+
 ---
 
 ![](screenshots/9.png)
+
+**Figure 3.3:** 
 
 ---
 
 ![](screenshots/10.png)
 
+**Figure 3.4:** 
+
 ---
 
 ![](screenshots/11.png)
+
+**Figure 3.5:** 
 
 ---
 
 ![](screenshots/12.png)
 
----
+**Figure 3.6:** 
 
 ![](screenshots/13.png)
+
+**Figure 3.7:** 
 
 ---
 
 ![](screenshots/14.png)
 
+**Figure 3.8:** 
+
 ---
 
-### 4. Stock Control 🛒
-
 ![](screenshots/15.png)
+
+**Figure 3.9:** 
 
 ---
 
 ![](screenshots/16.png)
 
+**Figure 3.10:** 
+
 ---
 
+### 4. QR CODE
+
 ![](screenshots/17.png)
+
+**Figure 4.1:** 
 
 ---
 
 ![](screenshots/18.png)
 
+**Figure 4.2:** 
+
 ---
 
-### 5. Transaction Records 🧾
+### 5. Transaction Records
 
 ![](screenshots/19.png)
+
+**Figure 5.1:** 
 
 ---
 
 ![](screenshots/20.png)
 
+**Figure 5.2:** 
+
 ---
 
 ![](screenshots/21.png)
 
+**Figure 5.3:** 
+
 ---
+
+### 6. QR Code Features
 
 ![](screenshots/22.png)
 
----
+**Figure 6.1:**
 
-### 6. QR Code Features 🤳
+---
 
 ![](screenshots/23.png)
 
+**Figure 6.2:** 
+
 ---
+
+### 7. ABOUT US
 
 ![](screenshots/24.png)
 
+**Figure 7.1:**
+
 ---
 
-### 7. Settings & Administration ⚙️
+### 8. Settings & Administration
 
 ![](screenshots/25.png)
+
+**Figure 8.1:**
 
 ---
 
 ![](screenshots/26.png)
 
+**Figure 8.2:**
+
 ---
 
 ![](screenshots/27.png)
+
+**Figure 8.3:**
 
 ---
 
 ![](screenshots/28.png)
 
+**Figure 8.4:**
+
 ---
+
+### 9. Employee Customization
 
 ![](screenshots/29.png)
 
+**Figure 9.1:**
+
 ---
 
-### 8. Help and Information
-
 ![](screenshots/30.png)
+
+**Figure 9.2:**
 
 ---
 
 ![](screenshots/31.png)
 
+**Figure 9.3:**
+
 ---
 
-### 9. System Operations & Dialogs ✅
-
 ![](screenshots/32.png)
+
+**Figure 9.4:**
 
 ---
 
 ![](screenshots/33.png)
 
+**Figure 9.5:**
+
+### 10. Help and User Guide Dialog
+
 ---
 
 ![](screenshots/34.png)
 
----
+**Figure 10.1:**
+
+### 11. Logging out
 
 ![](screenshots/35.png)
+
 
 ---
 
