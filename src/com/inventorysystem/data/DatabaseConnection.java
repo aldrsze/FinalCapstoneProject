@@ -7,14 +7,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-// DatabaseConnection
+// DB connect
 public class DatabaseConnection {
 
     private static final String DB_URL;
     private static final String DB_USER;
     private static final String DB_PASSWORD;
 
-    // Load config
+    // Load DB config
     static {
         Properties properties = new Properties();
         try (InputStream input = DatabaseConnection.class.getResourceAsStream("/config.properties")) {
@@ -36,7 +36,7 @@ public class DatabaseConnection {
 
     private DatabaseConnection() {}
 
-    // Get connection
+    // Get DB connection
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
     }

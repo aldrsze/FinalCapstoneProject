@@ -24,7 +24,7 @@ import java.util.Map;
 import com.inventorysystem.data.ProductRepository;
 import com.inventorysystem.model.Category;
 
-// QRCodePanel
+// QR code panel
 public class QRCodePanel extends JPanel {
 
     // Input fields for product details

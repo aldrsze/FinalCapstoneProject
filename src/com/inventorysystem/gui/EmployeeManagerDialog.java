@@ -9,7 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 
-// EmployeeManagerDialog
+// Employee manager dialog
 public class EmployeeManagerDialog extends JDialog {
     
     private final userFrame mainFrame;

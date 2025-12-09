@@ -1,6 +1,6 @@
 package com.inventorysystem.model;
 
-// Category
+// Category model
 public record Category(
     int id,
     String name

@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-// Login screen - username/password authentication, Enter key support, hover effects
+// Login panel
 public class LoginPanel extends JPanel {
 
     private userFrame mainFrame;
@@ -24,7 +24,7 @@ public class LoginPanel extends JPanel {
         this.mainFrame = mainFrame;
         this.userRepository = new UserRepository();
         
-        // Load background image
+        // Load bg image
         try {
             backgroundImage = ImageIO.read(new File("src/resources/login_bg.png"));
         } catch (IOException e) {
@@ -35,7 +35,7 @@ public class LoginPanel extends JPanel {
 
         // Login form
         JPanel formPanel = new JPanel(new GridBagLayout());
-        formPanel.setBackground(new Color(255, 255, 255, 240)); // Semi-transparent white
+        formPanel.setBackground(new Color(255, 255, 255, 240)); // White
         formPanel.setBorder(new CompoundBorder(
             new LineBorder(new Color(189, 195, 199), 1, true),
             new EmptyBorder(50, 60, 50, 60)

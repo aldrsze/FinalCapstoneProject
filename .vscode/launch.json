@@ -9,6 +9,13 @@
       "name": "App",
       "request": "launch",
       "mainClass": "App",
+      "projectName": "FINAL_CAPSTONE_PROJECT_ad629914"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
       "projectName": "FINAL_CAPSTONE_PROJECT_14dc6910"
     },
     {

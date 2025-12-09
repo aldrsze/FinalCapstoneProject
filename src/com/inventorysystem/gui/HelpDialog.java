@@ -25,13 +25,13 @@ public class HelpDialog extends JDialog {
         
         add(headerPanel, BorderLayout.NORTH);
         
-        // Create single scrollable panel with all content
+        // Scroll panel
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.setBackground(new Color(248, 249, 250));
         mainPanel.setBorder(new EmptyBorder(25, 40, 25, 40));
         
-        // Add all sections
+        // Add sections
         addSection(mainPanel, "Getting Started", createGettingStartedContent());
         addSection(mainPanel, "Product Management", createProductsContent());
         addSection(mainPanel, "Sales & Transactions", createSalesContent());
@@ -43,7 +43,7 @@ public class HelpDialog extends JDialog {
         addSection(mainPanel, "System Information", createSystemInfoContent());
         addSection(mainPanel, "Troubleshooting", createTroubleshootingContent());
         
-        // Single scrollpane for entire content
+        // Scrollpane for content
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.setBorder(null);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);

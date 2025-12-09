@@ -1,6 +1,6 @@
 package com.inventorysystem.model;
 
-// Product
+// Product model
 public record Product(
     int id,
     String name,

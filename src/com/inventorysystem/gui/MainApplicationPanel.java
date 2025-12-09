@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-// MainApplicationPanel
+// Main app panel
 public class MainApplicationPanel extends JPanel {
     
     private final userFrame mainFrame;

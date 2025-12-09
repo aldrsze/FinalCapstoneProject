@@ -5,10 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-// DashboardRepository
+// Dashboard repo
 public class DashboardRepository {
 
-    // Get total products
+    // Get products
     public int getTotalProducts(int userId) throws SQLException {
         String sql = "SELECT COUNT(*) FROM products WHERE user_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -23,7 +23,7 @@ public class DashboardRepository {
         return 0;
     }
 
-    // Get total stock
+    // Get stock
     public int getTotalStock(int userId) throws SQLException {
         String sql = "SELECT COALESCE(SUM(quantity_in_stock), 0) FROM products WHERE user_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -38,7 +38,7 @@ public class DashboardRepository {
         return 0;
     }
 
-    // Get out of stock count
+    // Get out of stock
     public int getOutOfStockCount(int userId) throws SQLException {
         String sql = "SELECT COUNT(*) FROM products WHERE quantity_in_stock <= 0 AND user_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -53,7 +53,7 @@ public class DashboardRepository {
         return 0;
     }
 
-    // Get inventory cost
+    // Get cost
     public double getTotalInventoryCost(int userId) throws SQLException {
         String sql = "SELECT COALESCE(SUM(cost_price * quantity_in_stock), 0) FROM products WHERE user_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -68,7 +68,7 @@ public class DashboardRepository {
         return 0.0;
     }
 
-    // Get total income
+    // Get income
     public double getTotalIncome(int userId) throws SQLException {
         String sql = "SELECT COALESCE(SUM(total_amount), 0) FROM sales WHERE user_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -83,7 +83,7 @@ public class DashboardRepository {
         return 0.0;
     }
 
-    // Get income for date range
+    // Get income range
     public double getTotalIncome(int userId, java.sql.Date startDate, java.sql.Date endDate) throws SQLException {
         String sql = "SELECT COALESCE(SUM(total_amount), 0) FROM sales " +
                      "WHERE user_id = ? AND DATE(sale_date) BETWEEN DATE(?) AND DATE(?)";
@@ -101,7 +101,7 @@ public class DashboardRepository {
         return 0.0;
     }
 
-    // Get total profit
+    // Get profit
     public double getTotalProfit(int userId) throws SQLException {
         String sql = "SELECT COALESCE(SUM(si.quantity_sold * (si.unit_price - si.cost_price)), 0) AS total_profit " +
                      "FROM sales s " +
@@ -120,7 +120,7 @@ public class DashboardRepository {
         return 0.0;
     }
 
-    // Get profit for date range
+    // Get profit range
     public double getTotalProfit(int userId, java.sql.Date startDate, java.sql.Date endDate) throws SQLException {
         String sql = "SELECT COALESCE(SUM(si.quantity_sold * (si.unit_price - si.cost_price)), 0) AS total_profit " +
                      "FROM sales s " +
@@ -141,7 +141,7 @@ public class DashboardRepository {
         return 0.0;
     }
     
-    // Get best sellers
+    // Get best
 public java.util.List<Object[]> getBestSellers(int userId, java.sql.Date startDate, java.sql.Date endDate, int limit) throws SQLException {
         String sql = "SELECT p.name, " +
                      "COALESCE(SUM(si.quantity_sold * si.unit_price), 0) AS sales_amount, " +
@@ -180,7 +180,7 @@ public java.util.List<Object[]> getBestSellers(int userId, java.sql.Date startDa
         return results;
     }
     
-    // Get stock alerts
+    // Get alerts
     public java.util.List<Object[]> getStockAlerts(int userId) throws SQLException {
         String sql = "SELECT name, quantity_in_stock, " +
                      "CASE " +

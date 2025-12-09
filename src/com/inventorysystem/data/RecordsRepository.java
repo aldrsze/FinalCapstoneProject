@@ -9,14 +9,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-// RecordsRepository
+// Records repo
 public class RecordsRepository {
 
-    // Get transaction history - ONLY from stock_log table
+    // Get history
     public List<TransactionRecord> getTransactionHistory(int userId) throws SQLException {
         List<TransactionRecord> history = new ArrayList<>();
 
-        // Get user's default markup
+        // Get default markup
         UserRepository userRepo = new UserRepository();
         double markupPercent = userRepo.getDefaultMarkup(userId);
 
@@ -34,7 +34,7 @@ public class RecordsRepository {
             "FROM stock_log sl " +
             "LEFT JOIN products p ON sl.product_id = p.product_id AND sl.user_id = p.user_id " +
             "WHERE sl.user_id = ? " +
-            "AND sl.log_type IN ('STOCK-IN', 'STOCK-OUT', 'STOCK-REMOVAL', 'REJECT', 'REFUND', 'CUSTOMER-RETURN', 'DISPOSE', 'DELETE') " +
+            "AND sl.log_type IN ('SALE', 'STOCK-IN', 'STOCK-OUT', 'STOCK-REMOVAL', 'REJECT', 'REFUND', 'CUSTOMER-RETURN', 'DELETE') " +
             "ORDER BY transaction_date DESC";
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -69,7 +69,7 @@ public class RecordsRepository {
         return history;
     }
 
-    // Get transaction history with date range - ONLY from stock_log table
+    // Get history by date
     public List<TransactionRecord> getTransactionHistoryWithDateRange(int userId, java.sql.Date startDate, java.sql.Date endDate) throws SQLException {
         List<TransactionRecord> history = new ArrayList<>();
 
@@ -90,7 +90,7 @@ public class RecordsRepository {
             "FROM stock_log sl " +
             "LEFT JOIN products p ON sl.product_id = p.product_id AND sl.user_id = p.user_id " +
             "WHERE sl.user_id = ? AND sl.log_date BETWEEN ? AND ? " +
-            "AND sl.log_type IN ('STOCK-IN', 'STOCK-OUT', 'STOCK-REMOVAL', 'REJECT', 'REFUND', 'CUSTOMER-RETURN', 'DISPOSE', 'DELETE') " +
+            "AND sl.log_type IN ('SALE', 'STOCK-IN', 'STOCK-OUT', 'STOCK-REMOVAL', 'REJECT', 'REFUND', 'CUSTOMER-RETURN', 'DELETE') " +
             "ORDER BY transaction_date DESC";
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -105,7 +105,7 @@ public class RecordsRepository {
                     double retailPrice = rs.getDouble("retailPrice");
                     double costPrice = rs.getDouble("costPrice");
                     
-                    // Calculate retail price using markup if not set
+                    // Calc retail if missing
                     if (retailPrice <= 0.0 && costPrice > 0.0) {
                         retailPrice = costPrice * (1 + markupPercent / 100.0);
                         retailPrice = Math.round(retailPrice * 100.0) / 100.0;

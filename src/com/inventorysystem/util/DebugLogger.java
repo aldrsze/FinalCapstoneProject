@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-// DebugLogger
+// Debug logger
 public class DebugLogger {
     
     private static final boolean ENABLE_LOGGING = true;
@@ -33,7 +33,7 @@ public class DebugLogger {
         writeToFile(getStackTrace(e));
     }
     
-    // Log debug message (detailed info for troubleshooting)
+    // Log debug
     public static void debug(String message) {
         if (ENABLE_LOGGING) {
             String formatted = formatMessage("DEBUG", message);

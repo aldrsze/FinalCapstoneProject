@@ -13,7 +13,7 @@ public class SplashScreen extends JWindow {
         content.setBackground(Color.WHITE);
         content.setBorder(BorderFactory.createLineBorder(new Color(41, 128, 185), 2));
         
-        // Logo/Title area
+        // Logo/title
         JPanel headerPanel = new JPanel();
         headerPanel.setBackground(new Color(41, 128, 185));
         headerPanel.setPreferredSize(new Dimension(400, 120));
@@ -40,7 +40,7 @@ public class SplashScreen extends JWindow {
         
         headerPanel.add(headerContent);
         
-        // Progress area
+        // Progress
         JPanel progressPanel = new JPanel();
         progressPanel.setLayout(new BoxLayout(progressPanel, BoxLayout.Y_AXIS));
         progressPanel.setBackground(Color.WHITE);

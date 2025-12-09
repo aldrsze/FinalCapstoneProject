@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// ProductRepository
+// Product repo
 public class ProductRepository {
 
     private final int userId;
@@ -440,8 +440,8 @@ public class ProductRepository {
     }
 
     /**
-     * Sells a product by reducing stock and logging as STOCK-OUT.
-     * Does NOT create sales records or sale_items entries.
+     * Sells a product: Records financial sale AND reduces stock.
+     * Now inserts into 'sales' and 'sale_items' tables so Dashboard works.
      */
     public void sellProduct(String productId, int quantityToSell) throws SQLException, NumberFormatException {
         if (quantityToSell <= 0) {
@@ -450,69 +450,121 @@ public class ProductRepository {
 
         int prodId = Integer.parseInt(productId);
 
-        String findSql = "SELECT quantity_in_stock FROM products WHERE product_id = ? AND user_id = ? FOR UPDATE";
-        String updateSql = "UPDATE products SET quantity_in_stock = ? WHERE product_id = ? AND user_id = ?";
-        String logSql = "INSERT INTO stock_log (product_id, quantity_changed, log_type, notes, user_id) VALUES (?, ?, 'STOCK-OUT', ?, ?)";
+        // 1. Fetch product details to calculate price and profit
+        String productSql = "SELECT cost_price, retail_price, markup_percent, quantity_in_stock " +
+                            "FROM products WHERE product_id = ? AND user_id = ? FOR UPDATE";
+        
+        // 2. Fetch User's Default Markup (fallback if product has no specific price)
+        String userMarkupSql = "SELECT default_markup_percent FROM users WHERE user_id = ?";
+
+        // SQLs for inserting records
+        String insertSaleSql = "INSERT INTO sales (user_id, sale_date, total_amount) VALUES (?, NOW(), ?)";
+        String insertItemSql = "INSERT INTO sale_items (sale_id, product_id, quantity_sold, unit_price, cost_price, subtotal) VALUES (?, ?, ?, ?, ?, ?)";
+        String updateProductSql = "UPDATE products SET quantity_in_stock = ? WHERE product_id = ? AND user_id = ?";
+        String logSql = "INSERT INTO stock_log (product_id, quantity_changed, log_type, notes, user_id) VALUES (?, ?, 'SALE', ?, ?)";
 
         Connection conn = null;
         try {
             conn = DatabaseConnection.getConnection();
-            conn.setAutoCommit(false);
-            
-            int currentStock;
+            conn.setAutoCommit(false); // Start Transaction
 
-            // Get current stock
-            try (PreparedStatement stmt = conn.prepareStatement(findSql)) {
+            // --- Step A: Get Product Data ---
+            double costPrice = 0.0;
+            double retailPrice = 0.0;
+            Double markupPercent = null;
+            int currentStock = 0;
+            
+            try (PreparedStatement stmt = conn.prepareStatement(productSql)) {
                 stmt.setInt(1, prodId);
                 stmt.setInt(2, this.userId);
                 try (ResultSet rs = stmt.executeQuery()) {
-                    if (!rs.next()) {
-                        throw new SQLException("Product not found.");
-                    }
+                    if (!rs.next()) throw new SQLException("Product not found.");
+                    costPrice = rs.getDouble("cost_price");
+                    retailPrice = rs.getDouble("retail_price");
+                    markupPercent = (Double) rs.getObject("markup_percent");
                     currentStock = rs.getInt("quantity_in_stock");
                 }
             }
 
-            // Validate stock
             if (currentStock < quantityToSell) {
-                throw new SQLException("Insufficient stock. Available: " + currentStock + ", Requested: " + quantityToSell);
+                throw new SQLException("Insufficient stock. Available: " + currentStock);
             }
 
-            // Update stock
-            try (PreparedStatement stmt = conn.prepareStatement(updateSql)) {
+            // --- Step B: Calculate Final Selling Price ---
+            double finalUnitPrice = retailPrice;
+            
+            // If no fixed retail price, calculate using markup
+            if (finalUnitPrice <= 0.0) {
+                double effectiveMarkup = 0.0;
+                
+                if (markupPercent != null) {
+                    effectiveMarkup = markupPercent;
+                } else {
+                    // Fetch default markup
+                    try (PreparedStatement stmt = conn.prepareStatement(userMarkupSql)) {
+                        stmt.setInt(1, this.userId);
+                        try (ResultSet rs = stmt.executeQuery()) {
+                            if (rs.next()) effectiveMarkup = rs.getDouble("default_markup_percent");
+                        }
+                    }
+                }
+                finalUnitPrice = costPrice * (1 + effectiveMarkup / 100.0);
+            }
+            
+            // Round to 2 decimals
+            finalUnitPrice = Math.round(finalUnitPrice * 100.0) / 100.0;
+            double totalSaleAmount = finalUnitPrice * quantityToSell;
+
+            // --- Step C: Insert into SALES table ---
+            int saleId = 0;
+            try (PreparedStatement stmt = conn.prepareStatement(insertSaleSql, Statement.RETURN_GENERATED_KEYS)) {
+                stmt.setInt(1, this.userId);
+                stmt.setDouble(2, totalSaleAmount);
+                stmt.executeUpdate();
+                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        saleId = generatedKeys.getInt(1);
+                    } else {
+                        throw new SQLException("Creating sale failed, no ID obtained.");
+                    }
+                }
+            }
+
+            // --- Step D: Insert into SALE_ITEMS table ---
+            try (PreparedStatement stmt = conn.prepareStatement(insertItemSql)) {
+                stmt.setInt(1, saleId);
+                stmt.setInt(2, prodId);
+                stmt.setInt(3, quantityToSell);
+                stmt.setDouble(4, finalUnitPrice);
+                stmt.setDouble(5, costPrice);
+                stmt.setDouble(6, totalSaleAmount);
+                stmt.executeUpdate();
+            }
+
+            // --- Step E: Update Stock ---
+            try (PreparedStatement stmt = conn.prepareStatement(updateProductSql)) {
                 stmt.setInt(1, currentStock - quantityToSell);
                 stmt.setInt(2, prodId);
                 stmt.setInt(3, this.userId);
                 stmt.executeUpdate();
             }
 
-            // Log as STOCK-OUT
+            // --- Step F: Log as SALE (for Stock Panel) ---
             try (PreparedStatement stmt = conn.prepareStatement(logSql)) {
                 stmt.setInt(1, prodId);
-                stmt.setInt(2, -quantityToSell);
-                stmt.setString(3, "Product sold - " + quantityToSell + " unit(s)");
+                stmt.setInt(2, -quantityToSell); // Negative for removal
+                stmt.setString(3, "Sold " + quantityToSell + " @ " + String.format("₱%,.2f", finalUnitPrice));
                 stmt.setInt(4, this.userId);
                 stmt.executeUpdate();
             }
 
             conn.commit();
         } catch (SQLException e) {
-            if (conn != null) {
-                try { 
-                    conn.rollback(); 
-                } catch (SQLException ex) {
-                    com.inventorysystem.util.DebugLogger.error("Rollback failed", ex);
-                }
-            }
+            if (conn != null) try { conn.rollback(); } catch (SQLException ex) { com.inventorysystem.util.DebugLogger.error("Rollback failed", ex); }
             throw e;
         } finally {
             if (conn != null) {
-                try { 
-                    conn.setAutoCommit(true); 
-                    conn.close(); 
-                } catch (SQLException e) {
-                    // Ignored
-                }
+                try { conn.setAutoCommit(true); conn.close(); } catch (SQLException e) { /* Ignored */ }
             }
         }
     }
@@ -650,50 +702,104 @@ public class ProductRepository {
 
     // Process customer return
     public void customerReturn(int productId, int quantityToReturn, String reason) throws SQLException {
-        if (quantityToReturn <= 0) {
-            throw new IllegalArgumentException("Quantity to return must be positive.");
-        }
+        if (quantityToReturn <= 0) throw new IllegalArgumentException("Quantity to return must be positive.");
         
+        // 1. Fetch price details to calculate refund amount
+        String productSql = "SELECT cost_price, retail_price, markup_percent FROM products WHERE product_id = ? AND user_id = ?";
+        String userMarkupSql = "SELECT default_markup_percent FROM users WHERE user_id = ?";
+        
+        // 2. SQLs for updates
         String updateSql = "UPDATE products SET quantity_in_stock = quantity_in_stock + ? WHERE product_id = ? AND user_id = ?";
         String logSql = "INSERT INTO stock_log (product_id, quantity_changed, log_type, notes, user_id) VALUES (?, ?, 'CUSTOMER-RETURN', ?, ?)";
+        // FIX: Insert negative records to reverse the sale in Dashboard
+        String insertSaleSql = "INSERT INTO sales (user_id, sale_date, total_amount) VALUES (?, NOW(), ?)";
+        String insertItemSql = "INSERT INTO sale_items (sale_id, product_id, quantity_sold, unit_price, cost_price, subtotal) VALUES (?, ?, ?, ?, ?, ?)";
 
         Connection conn = null;
         try {
             conn = DatabaseConnection.getConnection();
             conn.setAutoCommit(false);
 
-            // Update stock
+            // --- Step A: Calculate Refund Price ---
+            double costPrice = 0.0;
+            double retailPrice = 0.0;
+            Double markupPercent = null;
+            
+            try (PreparedStatement stmt = conn.prepareStatement(productSql)) {
+                stmt.setInt(1, productId);
+                stmt.setInt(2, this.userId);
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (!rs.next()) throw new SQLException("Product ID " + productId + " not found.");
+                    costPrice = rs.getDouble("cost_price");
+                    retailPrice = rs.getDouble("retail_price");
+                    markupPercent = (Double) rs.getObject("markup_percent");
+                }
+            }
+
+            double finalRefundPrice = retailPrice;
+            if (finalRefundPrice <= 0.0) {
+                double effectiveMarkup = 0.0;
+                if (markupPercent != null) {
+                    effectiveMarkup = markupPercent;
+                } else {
+                    try (PreparedStatement stmt = conn.prepareStatement(userMarkupSql)) {
+                        stmt.setInt(1, this.userId);
+                        try (ResultSet rs = stmt.executeQuery()) {
+                            if (rs.next()) effectiveMarkup = rs.getDouble("default_markup_percent");
+                        }
+                    }
+                }
+                finalRefundPrice = costPrice * (1 + effectiveMarkup / 100.0);
+            }
+            finalRefundPrice = Math.round(finalRefundPrice * 100.0) / 100.0;
+            double totalRefundAmount = finalRefundPrice * quantityToReturn;
+
+            // --- Step B: Update Stock ---
             try (PreparedStatement updateStmt = conn.prepareStatement(updateSql)) {
                 updateStmt.setInt(1, quantityToReturn);
                 updateStmt.setInt(2, productId);
                 updateStmt.setInt(3, this.userId);
-                int rowsAffected = updateStmt.executeUpdate();
-                
-                if (rowsAffected == 0) {
-                    throw new SQLException("Product ID " + productId + " not found for this user.");
-                }
+                updateStmt.executeUpdate();
             }
 
-            // Log transaction
+            // --- Step C: Log Transaction ---
             try (PreparedStatement logStmt = conn.prepareStatement(logSql)) {
                 logStmt.setInt(1, productId);
                 logStmt.setInt(2, +quantityToReturn);
-                logStmt.setString(3, reason + " [Added back to sellable stock]");
+                logStmt.setString(3, reason + " [Added back to stock]");
                 logStmt.setInt(4, this.userId);
                 logStmt.executeUpdate();
+            }
+
+            // --- Step D: Record Financial Reversal (Negative Sale) ---
+            int saleId = 0;
+            try (PreparedStatement stmt = conn.prepareStatement(insertSaleSql, Statement.RETURN_GENERATED_KEYS)) {
+                stmt.setInt(1, this.userId);
+                stmt.setDouble(2, -totalRefundAmount); // Negative Amount
+                stmt.executeUpdate();
+                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                    if (generatedKeys.next()) saleId = generatedKeys.getInt(1);
+                }
+            }
+            
+            try (PreparedStatement stmt = conn.prepareStatement(insertItemSql)) {
+                stmt.setInt(1, saleId);
+                stmt.setInt(2, productId);
+                stmt.setInt(3, -quantityToReturn); // Negative Quantity
+                stmt.setDouble(4, finalRefundPrice);
+                stmt.setDouble(5, costPrice);
+                stmt.setDouble(6, -totalRefundAmount); // Negative Subtotal
+                stmt.executeUpdate();
             }
 
             conn.commit();
 
         } catch (SQLException e) {
-            if (conn != null) {
-                try (Connection c = conn) { c.rollback(); } catch (SQLException ex) { com.inventorysystem.util.DebugLogger.error("Rollback failed", ex); }
-            }
+            if (conn != null) try { conn.rollback(); } catch (SQLException ex) { }
             throw e;
         } finally {
             if (conn != null) {
-                try { conn.setAutoCommit(true); } catch (SQLException e) { /* Ignored */ }
-                try { conn.close(); } catch (SQLException e) { /* Ignored */ }
+                try { conn.setAutoCommit(true); conn.close(); } catch (SQLException e) { }
             }
         }
     }
@@ -894,7 +1000,7 @@ public class ProductRepository {
         }
     }
 
-    // Delete all products for user
+    // Delete all products
     public void deleteAllProductsForUser(Connection conn) throws SQLException {
         List<Integer> productIds = new ArrayList<>();
         String selectSql = "SELECT product_id FROM products WHERE user_id = ?";
@@ -934,9 +1040,14 @@ public class ProductRepository {
         }
     }
 
-    // Process product return (customer return, reject, refund, dispose)
+    // Process return
     public void processReturn(int productId, int quantity, String reason, String notes) throws SQLException {
         
+        if ("CUSTOMER-RETURN".equalsIgnoreCase(reason)) {
+            customerReturn(productId, quantity, notes);
+            return;
+        }
+
         Connection conn = null;
         try {
             conn = DatabaseConnection.getConnection();
@@ -947,10 +1058,7 @@ public class ProductRepository {
             boolean updateDamaged = false;
 
             switch (reason.toUpperCase()) {
-                case "CUSTOMER-RETURN":
-                    logType = "CUSTOMER-RETURN";
-                    stockChange = quantity;
-                    break;
+                // Customer return above
                 case "REJECT":
                     logType = "REJECT";
                     stockChange = -quantity;
@@ -960,33 +1068,25 @@ public class ProductRepository {
                     logType = "REFUND";
                     stockChange = -quantity;
                     break;
-                case "DISPOSE":
-                    logType = "DISPOSE";
-                    stockChange = 0;
-                    break;
                 default:
                     throw new IllegalArgumentException("Invalid return reason: " + reason);
             }
-
-            // Validate stock for operations that reduce it
+            
+            // Check stock for reduce
             if (stockChange < 0 || updateDamaged) {
                 String checkStockSql = "SELECT quantity_in_stock FROM products WHERE product_id = ? AND user_id = ? FOR UPDATE";
                 try (PreparedStatement checkStmt = conn.prepareStatement(checkStockSql)) {
                     checkStmt.setInt(1, productId);
                     checkStmt.setInt(2, this.userId);
                     try (ResultSet rs = checkStmt.executeQuery()) {
-                        if (!rs.next()) {
-                            throw new SQLException("Product ID " + productId + " not found for this user.");
-                        }
+                        if (!rs.next()) throw new SQLException("Product ID " + productId + " not found.");
                         int currentStock = rs.getInt("quantity_in_stock");
-                        if (currentStock < quantity) {
-                            throw new SQLException("Not enough stock available. Current: " + currentStock + ", Requested: " + quantity);
-                        }
+                        if (currentStock < quantity) throw new SQLException("Not enough stock available.");
                     }
                 }
             }
 
-            // Update sellable stock if needed
+            // Update stock
             if (stockChange != 0) {
                 String updateStockSql = "UPDATE products SET quantity_in_stock = quantity_in_stock + ? WHERE product_id = ? AND user_id = ?";
                 try (PreparedStatement pstmt = conn.prepareStatement(updateStockSql)) {
@@ -997,7 +1097,7 @@ public class ProductRepository {
                 }
             }
 
-            // Update damaged quantity if needed
+            // Update damaged
             if (updateDamaged) {
                 String updateDamagedSql = "UPDATE products SET quantity_damaged = quantity_damaged + ? WHERE product_id = ? AND user_id = ?";
                 try (PreparedStatement pstmt = conn.prepareStatement(updateDamagedSql)) {
@@ -1008,17 +1108,10 @@ public class ProductRepository {
                 }
             }
 
-            // Log transaction
+            // Log
             String finalNotes = notes;
-            if (logType.equals("CUSTOMER-RETURN")) {
-                finalNotes = (notes != null && !notes.trim().isEmpty() ? notes + " - " : "") + "[Added back to sellable stock]";
-            } else if (logType.equals("REJECT")) {
-                finalNotes = (notes != null && !notes.trim().isEmpty() ? notes + " - " : "") + "[Moved to damaged inventory - NOT FOR SALE]";
-            } else if (logType.equals("REFUND")) {
-                finalNotes = (notes != null && !notes.trim().isEmpty() ? notes + " - " : "") + "[Returned to supplier - removed from stock]";
-            } else if (logType.equals("DISPOSE")) {
-                finalNotes = (notes != null && !notes.trim().isEmpty() ? notes + " - " : "") + "[Disposed]";
-            }
+            if (logType.equals("REJECT")) finalNotes = (notes != null ? notes + " - " : "") + "[Moved to damaged]";
+            else if (logType.equals("REFUND")) finalNotes = (notes != null ? notes + " - " : "") + "[Returned to supplier]";
             
             String logSql = "INSERT INTO stock_log (product_id, user_id, quantity_changed, log_type, notes, log_date) VALUES (?, ?, ?, ?, ?, NOW())";
             try (PreparedStatement pstmt = conn.prepareStatement(logSql)) {
@@ -1026,28 +1119,22 @@ public class ProductRepository {
                 pstmt.setInt(2, this.userId);
                 pstmt.setInt(3, stockChange);
                 pstmt.setString(4, logType);
-                pstmt.setString(5, finalNotes != null && !finalNotes.trim().isEmpty() ? finalNotes : null);
+                pstmt.setString(5, finalNotes);
                 pstmt.executeUpdate();
             }
 
             conn.commit();
         } catch (SQLException e) {
-            if (conn != null) {
-                try { conn.rollback(); } catch (SQLException ex) { }
-            }
+            if (conn != null) try { conn.rollback(); } catch (SQLException ex) { }
             throw e;
         } finally {
             if (conn != null) {
-                try { conn.setAutoCommit(true); } catch (SQLException e) { }
-                try { conn.close(); } catch (SQLException e) { }
+                try { conn.setAutoCommit(true); conn.close(); } catch (SQLException e) { }
             }
         }
     }
 
-    /**
-     * Retrieves the category name for a specific ID.
-     * Returns "Unknown Category" if not found for this user.
-     */
+    // Get category name by ID
     public String getCategoryNameById(int categoryId) throws SQLException {
         String sql = "SELECT category_name FROM categories WHERE category_id = ? AND user_id = ?";
         
@@ -1066,10 +1153,7 @@ public class ProductRepository {
         return null; // Not found for this user
     }
 
-    /**
-     * Gets the category name for a specific product ID.
-     * Used to ensure the dialog shows the correct category after auto-creation.
-     */
+    // Get product category name
     public String getProductCategoryName(int productId) throws SQLException {
         String sql = "SELECT c.category_name FROM products p " +
                      "JOIN categories c ON p.category_id = c.category_id " +

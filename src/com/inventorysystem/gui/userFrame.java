@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-// userFrame
+// User frame
 public class userFrame extends JFrame {
 
     private CardLayout cardLayout = new CardLayout();
@@ -34,10 +34,10 @@ public class userFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
 
-        // Set application icon
+        // Set icon
         try {
             Image icon = ImageIO.read(new File("src/resources/SmartStock.png"));
-            // Scale to common icon sizes for crisp display
+            // Scale icon
             java.util.List<Image> icons = new java.util.ArrayList<>();
             icons.add(icon.getScaledInstance(16, 16, Image.SCALE_SMOOTH));
             icons.add(icon.getScaledInstance(32, 32, Image.SCALE_SMOOTH));
@@ -48,11 +48,11 @@ public class userFrame extends JFrame {
             com.inventorysystem.util.DebugLogger.debug("App icon not found, using default");
         }
 
-        // Optimized for 1366x768 resolution
+        // For 1366x768
         setSize(1366, 768);
         setPreferredSize(new Dimension(1366, 768));
         setMinimumSize(new Dimension(1200, 700));
-        setExtendedState(JFrame.MAXIMIZED_BOTH); // Start maximized
+        setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximized
 
         mainContainer = new JPanel(cardLayout);
 
@@ -64,13 +64,11 @@ public class userFrame extends JFrame {
 
         add(mainContainer);
         
-        // Center on screen for login
+        // Center for login
         setLocationRelativeTo(null);
     }
 
-    /**
-     * Handles post-login logic, fetching or creating store profile.
-     */
+    // Login method
     public void handleLoginSuccess(int userId, String username, String role) {
         this.loggedInUserId = userId;
         this.loggedInUsername = username;
@@ -80,7 +78,7 @@ public class userFrame extends JFrame {
             Store storeToUse;
             
             if (role.equalsIgnoreCase("Employee")) {
-                // Employee: Get Admin's store
+                // Get admin store
                 int adminId = userRepository.getAdminIdForEmployee(userId);
                 if (adminId == -1) {
                     JOptionPane.showMessageDialog(this, 
@@ -98,7 +96,7 @@ public class userFrame extends JFrame {
                     return;
                 }
             } else {
-                // Admin: Get or create their own store
+                // Get/create store
                 storeToUse = storeRepository.getStoreByUserId(userId);
                 if (storeToUse == null) {
                     storeToUse = promptAndCreateStore(userId);
@@ -118,9 +116,7 @@ public class userFrame extends JFrame {
         }
     }
 
-    /**
-     * Switches to the main application panel and resizes window.
-     */
+    // Main method
     public void showMainApplication(String storeName, String storeLocation, String storeContact) {
         MainApplicationPanel mainAppPanel = new MainApplicationPanel(
             this, loggedInUsername, loggedInUserRole, storeName, storeLocation, storeContact
@@ -128,32 +124,30 @@ public class userFrame extends JFrame {
         mainContainer.add(mainAppPanel, "mainApp");
         cardLayout.show(mainContainer, "mainApp");
 
-        // Ensure full screen for main application
+        // Full screen
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
-    /**
-     * Prompts user to create store profile on first login.
-     */
+    // UI method
     private Store promptAndCreateStore(int userId) throws SQLException {
         JTextField nameField = new JTextField(20);
         nameField.setFont(UIConstants.INPUT_FONT);
         nameField.setBorder(BorderFactory.createCompoundBorder(
-            new LineBorder(UIConstants.BORDER_COLOR, 1, false), // plain border
+            new LineBorder(UIConstants.BORDER_COLOR, 1, false), // Border
             new EmptyBorder(10, 12, 10, 12)
         ));
         
         JTextField locField = new JTextField(20);
         locField.setFont(UIConstants.INPUT_FONT);
         locField.setBorder(BorderFactory.createCompoundBorder(
-            new LineBorder(UIConstants.BORDER_COLOR, 1, false), // plain border
+            new LineBorder(UIConstants.BORDER_COLOR, 1, false), // Border
             new EmptyBorder(10, 12, 10, 12)
         ));
         
         JTextField contactField = new JTextField(20);
         contactField.setFont(UIConstants.INPUT_FONT);
         contactField.setBorder(BorderFactory.createCompoundBorder(
-            new LineBorder(UIConstants.BORDER_COLOR, 1, false), // plain border
+            new LineBorder(UIConstants.BORDER_COLOR, 1, false), // Border
             new EmptyBorder(10, 12, 10, 12)
         ));
 
@@ -167,7 +161,7 @@ public class userFrame extends JFrame {
         gbc.gridx = 0;
         gbc.anchor = GridBagConstraints.WEST;
         
-        // Store Name
+        // Store name
         gbc.gridy = 0;
         JLabel nameLabel = new JLabel("Store Name: *");
         nameLabel.setFont(UIConstants.LABEL_BOLD_FONT);
@@ -226,7 +220,7 @@ public class userFrame extends JFrame {
                         "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                // User cancelled
+                // Cancelled
                 JOptionPane.showMessageDialog(this, 
                     "Store setup is required to use the system.", 
                     "Setup Required", JOptionPane.INFORMATION_MESSAGE);
@@ -235,9 +229,7 @@ public class userFrame extends JFrame {
         }
     }
 
-    /**
-     * Returns to login panel and clears session state.
-     */
+    // Cancel method
     public void showLoginPanel() {
         for (Component comp : mainContainer.getComponents()) {
             if (comp instanceof MainApplicationPanel) {
@@ -250,13 +242,11 @@ public class userFrame extends JFrame {
         this.loggedInUserRole = null;
 
         cardLayout.show(mainContainer, "login");
-        setExtendedState(JFrame.MAXIMIZED_BOTH); // Keep maximized
+        setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximized
         setLocationRelativeTo(null);
     }
 
-    /**
-     * Switches to signup panel.
-     */
+    // End method
     public void showSignupPanel() {
         cardLayout.show(mainContainer, "signup");
     }

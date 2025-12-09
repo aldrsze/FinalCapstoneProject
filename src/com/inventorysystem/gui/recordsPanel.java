@@ -15,23 +15,23 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-// recordsPanel
+// Records panel
 public class recordsPanel extends JPanel {
 
     private final DefaultTableModel tableModel;
-    private JTable recordsTable; // Class-level reference for the search bar
+    private JTable recordsTable; // For search bar
     private final RecordsRepository recordsRepository;
     private final UserRepository userRepository;
     private final int userId;
     private DateRangePanel dateRangePanel;
-    private List<String> rowNotes; // Store notes for tooltip display
+    private List<String> rowNotes; // For tooltips
 
     public recordsPanel(userFrame mainFrame) {
         int originalUserId = mainFrame.loggedInUserId;
         String userRole = mainFrame.loggedInUserRole;
         this.userRepository = new UserRepository();
         
-        // For employees, use their admin's user_id
+        // Use admin user_id
         int effectiveUserId = originalUserId;
         if (userRole.equalsIgnoreCase("Employee")) {
             try {
@@ -54,7 +54,7 @@ public class recordsPanel extends JPanel {
             new LineBorder(UIConstants.BORDER_COLOR, 1),
             new EmptyBorder(20, 20, 20, 20)));
 
-        // --- 1. Initialize Model FIRST ---
+        // Init model first
         tableModel = new DefaultTableModel(new String[]{
             "#", "Date", "Product", "Unit", "Type", "Qty", "Cost/Unit", "Total Cost", "Retail/Unit", "Total Retail"
         }, 0) {
@@ -63,7 +63,7 @@ public class recordsPanel extends JPanel {
             }
         };
         
-        // --- 2. Initialize Table Panel SECOND (This creates recordsTable) ---
+        // Init table second
         JScrollPane tableScrollPane = createTablePanel();
         add(tableScrollPane, BorderLayout.CENTER);
 

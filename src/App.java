@@ -5,12 +5,12 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-// App
+// Main app
 public class App {
 
     public static void main(String[] args) {
         
-        // Show splash screen
+        // Splash screen
         Startup splash = new Startup();
         splash.showSplash();
 
@@ -19,13 +19,13 @@ public class App {
                 splash.updateProgress(20, "Loading UI components...");
                 Thread.sleep(250);
 
-                // Native OS appearance
+                // OS look
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
                 splash.updateProgress(50, "Initializing system...");
                 Thread.sleep(250);
 
-                // Smooth rendering
+                // Smooth UI
                 System.setProperty("awt.useSystemAAFontSettings", "on");
                 System.setProperty("swing.aatext", "true");
 
@@ -44,10 +44,10 @@ public class App {
                 com.inventorysystem.util.DebugLogger.error("Splash screen delay interrupted", e);
             }
 
-            // Close splash and show main window
+            // Show main window
             splash.closeSplash();
             userFrame frame = new userFrame();
-            frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // Start in full screen
+            frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // Full screen
             frame.setVisible(true);
         });
     }

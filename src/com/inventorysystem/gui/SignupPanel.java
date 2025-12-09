@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-// SignupPanel
+// Signup panel
 public class SignupPanel extends JPanel {
 
     private userFrame mainFrame;
@@ -21,7 +21,7 @@ public class SignupPanel extends JPanel {
         this.mainFrame = mainFrame;
         this.userRepository = new UserRepository();
         
-        // Load background image
+        // Load bg image
         try {
             backgroundImage = ImageIO.read(new File("src/resources/login_bg.png"));
         } catch (IOException e) {
@@ -32,7 +32,7 @@ public class SignupPanel extends JPanel {
 
         // Signup form
         JPanel formPanel = new JPanel(new GridBagLayout());
-        formPanel.setBackground(new Color(255, 255, 255, 240)); // Semi-transparent white
+        formPanel.setBackground(new Color(255, 255, 255, 240)); // White
         formPanel.setBorder(new CompoundBorder(
             new LineBorder(new Color(189, 195, 199), 1, true),
             new EmptyBorder(50, 60, 50, 60)
@@ -43,7 +43,7 @@ public class SignupPanel extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(8, 0, 8, 0);
 
-        // Big title at top
+        // Title
         JLabel titleLabel = new JLabel("Create Admin Account", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
         titleLabel.setForeground(new Color(41, 128, 185));
@@ -52,7 +52,7 @@ public class SignupPanel extends JPanel {
         gbc.insets = new Insets(0, 0, 30, 0);
         formPanel.add(titleLabel, gbc);
 
-        // Info message
+        // Info
         JLabel infoLabel = new JLabel("<html><center>Only Admin accounts can be created here.<br>" +
             "Admins can add Employee accounts later.</center></html>", SwingConstants.CENTER);
         infoLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
@@ -61,14 +61,14 @@ public class SignupPanel extends JPanel {
         gbc.insets = new Insets(0, 0, 25, 0);
         formPanel.add(infoLabel, gbc);
 
-        // Username label
+        // Username
         gbc.gridy = 2;
         gbc.insets = new Insets(12, 0, 5, 0);
         JLabel userLabel = new JLabel("Username");
         userLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
         formPanel.add(userLabel, gbc);
 
-        // Username input box
+        // Username input
         gbc.gridy = 3;
         gbc.insets = new Insets(0, 0, 18, 0);
         JTextField userField = new JTextField(20);
@@ -80,14 +80,14 @@ public class SignupPanel extends JPanel {
         
         formPanel.add(userField, gbc);
 
-        // Password label
+        // Password
         gbc.gridy = 4;
         gbc.insets = new Insets(12, 0, 5, 0);
         JLabel passLabel = new JLabel("Password");
         passLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
         formPanel.add(passLabel, gbc);
 
-        // Password input box (hidden characters)
+        // Password input
         gbc.gridy = 5;
         gbc.insets = new Insets(0, 0, 25, 0);
         JPasswordField passField = new JPasswordField(20);
@@ -133,7 +133,7 @@ public class SignupPanel extends JPanel {
         
         formPanel.add(passPanel, gbc);
 
-        // Back and Create Admin buttons
+        // Back/Admin btns
         gbc.gridy = 6;
         gbc.insets = new Insets(15, 0, 0, 0);
         JPanel buttonPanel = createButtonPanel(userField, passField);
@@ -147,18 +147,18 @@ public class SignupPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (backgroundImage != null) {
-            // Draw background image scaled to fit panel
+            // Draw bg image
             Graphics2D g2d = (Graphics2D) g;
             g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
             g2d.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         } else {
-            // Fallback to solid color
+            // Fallback color
             g.setColor(new Color(236, 240, 241));
             g.fillRect(0, 0, getWidth(), getHeight());
         }
     }
 
-    // Panel with Back and Create Admin buttons
+    // Back/Admin panel
     private JPanel createButtonPanel(JTextField userField, JPasswordField passField) {
         JPanel panel = new JPanel(new GridLayout(1, 2, 15, 0));
         panel.setBackground(Color.WHITE);
@@ -175,7 +175,7 @@ public class SignupPanel extends JPanel {
         return panel;
     }
 
-    // Make button with color and hover effect
+    // Button style
     private JButton createStyledButton(String text, Color bgColor, Color hoverColor) {
         JButton button = new JButton(text);
         button.setFont(new Font("Segoe UI", Font.BOLD, 15));
@@ -198,7 +198,7 @@ public class SignupPanel extends JPanel {
         return button;
     }
 
-    // Try to create the admin account
+    // Create admin
     private void handleSignup(JTextField userField, JPasswordField passField) {
         String username = userField.getText().trim();
         String password = new String(passField.getPassword());
@@ -208,7 +208,7 @@ public class SignupPanel extends JPanel {
             return;
         }
 
-        // Username validation
+        // Username check
         if (username.length() < 3) {
             showStyledMessage("Username must be at least 3 characters long.", "Invalid Username", JOptionPane.WARNING_MESSAGE);
             return;
@@ -224,7 +224,7 @@ public class SignupPanel extends JPanel {
             return;
         }
 
-        // Password validation
+        // Password check
         if (password.length() < 4) {
             showStyledMessage("Password must be at least 4 characters long.", "Weak Password", JOptionPane.WARNING_MESSAGE);
             return;
@@ -241,7 +241,7 @@ public class SignupPanel extends JPanel {
         }
 
         try {
-            // Create as Admin (not Employee)
+            // Create admin
             boolean success = userRepository.signup(username, password, "Admin");
             if (success) {
                 showStyledMessage("Admin account created successfully!\nYou can now log in and add employees.", 

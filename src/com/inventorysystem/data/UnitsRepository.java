@@ -15,9 +15,7 @@ public class UnitsRepository {
         this.userId = userId;
     }
     
-    /**
-     * Get all units for the current user
-     */
+    // Get units
     public List<String> getAllUnits() throws SQLException {
         List<String> units = new ArrayList<>();
         String sql = "SELECT unit_name FROM units WHERE user_id = ? ORDER BY unit_name ASC";
@@ -37,9 +35,7 @@ public class UnitsRepository {
         return units;
     }
     
-    /**
-     * Add a new unit of measurement
-     */
+    // Add unit
     public boolean addUnit(String unitName) throws SQLException {
         if (unitName == null || unitName.trim().isEmpty()) {
             throw new IllegalArgumentException("Unit name cannot be empty");
@@ -65,9 +61,7 @@ public class UnitsRepository {
         }
     }
     
-    /**
-     * Delete a unit (only if not used by any products)
-     */
+    // Delete unit
     public boolean deleteUnit(String unitName) throws SQLException {
         // Check if unit is in use
         String checkSql = "SELECT COUNT(*) FROM products WHERE unit_of_measurement = ? AND user_id = ?";

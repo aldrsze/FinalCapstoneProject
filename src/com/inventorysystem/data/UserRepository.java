@@ -5,10 +5,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// UserRepository
+// User repo
 public class UserRepository {
 
-    // Login
+    // Login user
     public User login(String username, String password) throws SQLException {
         if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
             return null;
@@ -35,7 +35,7 @@ public class UserRepository {
         return null;
     }
 
-    // Signup
+    // Signup user
     public boolean signup(String username, String password, String role) throws SQLException {
         if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
             throw new IllegalArgumentException("Username and password cannot be empty.");
@@ -78,7 +78,7 @@ public class UserRepository {
         }
     }
     
-    // Add default units for newly registered users
+    // Add units for new user
     private void addDefaultUnitsForNewUser(int userId) {
         String[] defaultUnits = {"piece", "milliliter", "liter", "gram", "kilogram", "per pack", "slice", "scoop"};
         String sql = "INSERT INTO units (unit_name, user_id) VALUES (?, ?)";
@@ -99,7 +99,7 @@ public class UserRepository {
         }
     }
 
-    // Get default markup
+    // Get markup
     public double getDefaultMarkup(int userId) throws SQLException {
         String sql = "SELECT default_markup_percent FROM users WHERE user_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -115,7 +115,7 @@ public class UserRepository {
         return 0.0;
     }
 
-    // Update default markup
+    // Update markup
     public void updateDefaultMarkup(int userId, double newMarkupPercent) throws SQLException {
         String sql = "UPDATE users SET default_markup_percent = ? WHERE user_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -126,7 +126,7 @@ public class UserRepository {
         }
     }
 
-    // Get admin ID for employee
+    // Get admin ID
     public int getAdminIdForEmployee(int employeeId) throws SQLException {
         String sql = "SELECT admin_id FROM users WHERE user_id = ? AND user_role = 'Employee'";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -172,7 +172,7 @@ public class UserRepository {
         }
     }
 
-    // Get employees by admin
+    // Get employees
     public List<String> getEmployeesByAdmin(int adminId) throws SQLException {
         List<String> employees = new ArrayList<>();
         String sql = "SELECT username FROM users WHERE admin_id = ? AND user_role = 'Employee' ORDER BY username";
@@ -201,7 +201,7 @@ public class UserRepository {
         }
     }
 
-    // Get employee password (for editing purposes)
+    // Get employee password
     public String getEmployeePassword(String username) throws SQLException {
         String sql = "SELECT password FROM users WHERE username = ? AND user_role = 'Employee'";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -217,7 +217,7 @@ public class UserRepository {
         return null;
     }
 
-    // Verify current password
+    // Check password
     public boolean verifyPassword(int userId, String password) throws SQLException {
         String sql = "SELECT COUNT(*) FROM users WHERE user_id = ? AND BINARY password = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -234,7 +234,7 @@ public class UserRepository {
         return false;
     }
 
-    // Update username
+    // Change username
     public void updateUsername(int userId, String newUsername) throws SQLException {
         // Check if username already exists
         String checkSql = "SELECT COUNT(*) FROM users WHERE BINARY username = ? AND user_id != ?";
@@ -259,7 +259,7 @@ public class UserRepository {
         }
     }
 
-    // Update password
+    // Change password
     public void updatePassword(int userId, String newPassword) throws SQLException {
         String sql = "UPDATE users SET password = ? WHERE user_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -270,7 +270,7 @@ public class UserRepository {
         }
     }
 
-    // Update employee username only
+    // Change employee username
     public boolean updateEmployeeUsername(String oldUsername, String newUsername) throws SQLException {
         // Check if new username already exists
         String checkSql = "SELECT COUNT(*) FROM users WHERE BINARY username = ? AND username != ?";
@@ -295,7 +295,7 @@ public class UserRepository {
         }
     }
 
-    // Update employee username and password
+    // Change employee credentials
     public boolean updateEmployeeCredentials(String oldUsername, String newUsername, String newPassword) throws SQLException {
         // Check if new username already exists
         String checkSql = "SELECT COUNT(*) FROM users WHERE BINARY username = ? AND username != ?";
@@ -321,7 +321,7 @@ public class UserRepository {
         }
     }
 
-    // Delete user account and all associated data
+    // Delete user
     public boolean deleteUser(int userId) throws SQLException {
         String sql = "DELETE FROM users WHERE user_id = ?";
         

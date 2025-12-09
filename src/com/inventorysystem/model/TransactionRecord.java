@@ -2,7 +2,7 @@ package com.inventorysystem.model;
 
 import java.sql.Timestamp;
 
-// TransactionRecord
+// Transaction record
 public record TransactionRecord(
     Timestamp transactionDate,
     String productName,

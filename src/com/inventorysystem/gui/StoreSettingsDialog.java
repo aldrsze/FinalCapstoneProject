@@ -11,7 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 
-// StoreSettingsDialog
+// Store settings dialog
 public class StoreSettingsDialog extends JDialog {
     
     private final userFrame mainFrame;
@@ -20,13 +20,13 @@ public class StoreSettingsDialog extends JDialog {
     private final JLabel storeLocationLabel;
     private final JLabel storeContactLabel;
     
-    // Store Profile fields
+    // Store profile
     private JTextField nameField;
     private JTextField locationField;
     private JTextField contactField;
     private JTextField markupField;
     
-    // Account Settings fields
+    // Account settings
     private JTextField currentUsernameField;
     private JPasswordField verifyPasswordField;
     private JTextField newUsernameField;
@@ -47,17 +47,17 @@ public class StoreSettingsDialog extends JDialog {
         loadStoreData();
     }
 
-    // Setup the dialog layout with tabs
+    // Setup tabs
     private void setupDialog() {
         setLayout(new BorderLayout());
         
-        // Set window size
+        // Window size
         setSize(800, 800);
         setLocationRelativeTo(mainFrame);
         setResizable(true);
         getContentPane().setBackground(UIConstants.BACKGROUND_COLOR);
         
-        // Header Panel
+        // Header
         JPanel headerPanel = new JPanel(new BorderLayout());
         headerPanel.setBackground(UIConstants.PRIMARY_COLOR);
         headerPanel.setBorder(new EmptyBorder(20, 30, 20, 30));
@@ -69,7 +69,7 @@ public class StoreSettingsDialog extends JDialog {
         
         add(headerPanel, BorderLayout.NORTH);
 
-        // Three tabs: Store Profile (with markup), Change Username, Change Password
+        // Tabs: profile, username, password
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.setFont(new Font("Segoe UI", Font.BOLD, 14));
         tabbedPane.setBackground(UIConstants.BACKGROUND_COLOR);
@@ -84,7 +84,7 @@ public class StoreSettingsDialog extends JDialog {
         add(createButtonPanel(), BorderLayout.SOUTH);
     }
 
-    // Get store data from database and fill the fields
+    // Get store data
     private void loadStoreData() {
         try {
             Store currentStore = storeRepo.getStoreByUserId(mainFrame.loggedInUserId);
@@ -95,17 +95,17 @@ public class StoreSettingsDialog extends JDialog {
                 return;
             }
 
-            // Fill in store info
+            // Store info
             nameField.setText(currentStore.name());
             locationField.setText(currentStore.location());
             contactField.setText(currentStore.contact());
 
-            // Fill in markup
+            // Markup
             UserRepository userRepo = new UserRepository();
             double markup = userRepo.getDefaultMarkup(mainFrame.loggedInUserId);
             markupField.setText(String.valueOf(markup));
             
-            // Fill in current username
+            // Username
             currentUsernameField.setText(mainFrame.loggedInUsername);
 
         } catch (SQLException e) {
@@ -115,7 +115,7 @@ public class StoreSettingsDialog extends JDialog {
         }
     }
 
-    // Tab 1: Store profile fields (name, location, contact)
+    // Tab 1: profile
     private JPanel createStoreProfilePanel() {
         JPanel outerPanel = new JPanel(new BorderLayout());
         outerPanel.setBackground(UIConstants.BACKGROUND_COLOR);
@@ -132,7 +132,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy = 0;
         gbc.weightx = 1.0;
         
-        // Section Title
+        // Section
         JLabel sectionTitle = new JLabel("Store Information");
         sectionTitle.setFont(new Font("Segoe UI", Font.BOLD, 18));
         sectionTitle.setForeground(UIConstants.TEXT_PRIMARY);
@@ -141,7 +141,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy++;
         gbc.insets = new Insets(12, 5, 12, 5);
 
-        // Store name
+        // Name
         addLabel(panel, gbc, "Store Name:");
         nameField = addTextField(panel, gbc);
 
@@ -149,18 +149,18 @@ public class StoreSettingsDialog extends JDialog {
         addLabel(panel, gbc, "Location:");
         locationField = addTextField(panel, gbc);
 
-        // Contact number
+        // Contact
         addLabel(panel, gbc, "Contact Number:");
         contactField = addTextField(panel, gbc);
         
-        // Add separator
+        // Separator
         gbc.gridy++;
         gbc.insets = new Insets(20, 5, 20, 5);
         JSeparator separator = new JSeparator();
         separator.setForeground(new Color(220, 220, 220));
         panel.add(separator, gbc);
         
-        // Pricing section
+        // Pricing
         gbc.gridy++;
         gbc.insets = new Insets(0, 5, 15, 5);
         JLabel pricingTitle = new JLabel("Pricing Settings");
@@ -196,7 +196,7 @@ public class StoreSettingsDialog extends JDialog {
         return outerPanel;
     }
     
-    // Tab 2: Change Username (separate tab, Facebook-style)
+    // Tab 2: username
     private JPanel createUsernameChangePanel() {
         JPanel outerPanel = new JPanel(new BorderLayout());
         outerPanel.setBackground(UIConstants.BACKGROUND_COLOR);
@@ -213,7 +213,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy = 0;
         gbc.weightx = 1.0;
         
-        // Section Title
+        // Section
         JLabel sectionTitle = new JLabel("Change Username");
         sectionTitle.setFont(new Font("Segoe UI", Font.BOLD, 20));
         sectionTitle.setForeground(UIConstants.TEXT_PRIMARY);
@@ -313,7 +313,7 @@ public class StoreSettingsDialog extends JDialog {
         return outerPanel;
     }
     
-    // Tab 4: Change Password (separate tab, Facebook-style)
+    // Tab 4: password
     private JPanel createPasswordChangePanel() {
         JPanel outerPanel = new JPanel(new BorderLayout());
         outerPanel.setBackground(UIConstants.BACKGROUND_COLOR);
@@ -330,7 +330,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy = 0;
         gbc.weightx = 1.0;
         
-        // Section Title
+        // Section
         JLabel sectionTitle = new JLabel("Change Password");
         sectionTitle.setFont(new Font("Segoe UI", Font.BOLD, 20));
         sectionTitle.setForeground(UIConstants.TEXT_PRIMARY);
@@ -454,7 +454,7 @@ public class StoreSettingsDialog extends JDialog {
         return outerPanel;
     }
 
-    // Helper: Create password visibility toggle button
+    // Password toggle
     private JLabel createPasswordToggleButton(JPasswordField passwordField) {
         JLabel toggleBtn = new JLabel("\uD83D\uDC41");
         toggleBtn.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
@@ -487,7 +487,7 @@ public class StoreSettingsDialog extends JDialog {
         return toggleBtn;
     }
     
-    // Helper: Add a label to the panel
+    // Add label
     private void addLabel(JPanel panel, GridBagConstraints gbc, String text) {
         gbc.gridy++;
         gbc.insets = new Insets(8, 5, 4, 5);
@@ -497,7 +497,7 @@ public class StoreSettingsDialog extends JDialog {
         panel.add(label, gbc);
     }
 
-    // Helper: Add a text input field to the panel
+    // Add text field
     private JTextField addTextField(JPanel panel, GridBagConstraints gbc) {
         gbc.gridy++;
         gbc.insets = new Insets(0, 5, 12, 5);
@@ -511,7 +511,7 @@ public class StoreSettingsDialog extends JDialog {
         return field;
     }
 
-    // Bottom buttons: Save and Cancel
+    // Save/Cancel
     private JPanel createButtonPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 12, 15));
         panel.setBackground(Color.WHITE);
@@ -531,7 +531,7 @@ public class StoreSettingsDialog extends JDialog {
         return panel;
     }
 
-    // Create a styled button with hover effect
+    // Styled button
     private JButton createButton(String text, Color bgColor, Color hoverColor) {
         JButton button = new JButton(text);
         button.setFont(new Font("Segoe UI", Font.BOLD, 13));
@@ -551,12 +551,12 @@ public class StoreSettingsDialog extends JDialog {
         return button;
     }
     
-    // Change Username
+    // Change username
     private void changeUsername() {
         String newUsername = newUsernameField.getText().trim();
         String verifyPassword = new String(verifyPasswordField.getPassword()).trim();
         
-        // Validation
+        // Validate
         if (newUsername.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter a new username.",
                 "Input Required", JOptionPane.WARNING_MESSAGE);
@@ -578,7 +578,7 @@ public class StoreSettingsDialog extends JDialog {
         try {
             UserRepository userRepo = new UserRepository();
             
-            // Verify current password
+            // Check password
             if (!userRepo.verifyPassword(mainFrame.loggedInUserId, verifyPassword)) {
                 JOptionPane.showMessageDialog(this, "Current password is incorrect.",
                     "Verification Failed", JOptionPane.ERROR_MESSAGE);
@@ -607,13 +607,13 @@ public class StoreSettingsDialog extends JDialog {
         }
     }
     
-    // Change Password
+    // Change password
     private void changePassword() {
         String currentPassword = new String(currentPasswordField.getPassword()).trim();
         String newPassword = new String(newPasswordField.getPassword()).trim();
         String confirmPassword = new String(confirmPasswordField.getPassword()).trim();
         
-        // Validation
+        // Validate
         if (currentPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in all password fields.",
                 "Input Required", JOptionPane.WARNING_MESSAGE);
@@ -642,7 +642,7 @@ public class StoreSettingsDialog extends JDialog {
         try {
             UserRepository userRepo = new UserRepository();
             
-            // Verify current password
+            // Check password
             if (!userRepo.verifyPassword(mainFrame.loggedInUserId, currentPassword)) {
                 JOptionPane.showMessageDialog(this, "Current password is incorrect.",
                     "Verification Failed", JOptionPane.ERROR_MESSAGE);
@@ -665,7 +665,7 @@ public class StoreSettingsDialog extends JDialog {
         }
     }
 
-    // Tab 4: Delete Account Panel
+    // Tab 4: delete
     private JPanel createDeleteAccountPanel() {
         JPanel outerPanel = new JPanel(new BorderLayout());
         outerPanel.setBackground(UIConstants.BACKGROUND_COLOR);
@@ -682,7 +682,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy = 0;
         gbc.weightx = 1.0;
         
-        // Section Title
+        // Section
         JLabel sectionTitle = new JLabel("Delete Account");
         sectionTitle.setFont(new Font("Segoe UI", Font.BOLD, 20));
         sectionTitle.setForeground(UIConstants.TEXT_PRIMARY);
@@ -793,7 +793,7 @@ public class StoreSettingsDialog extends JDialog {
         return outerPanel;
     }
 
-    // Handle account deletion with password verification
+    // Delete account
     private void handleDeleteAccount(JPasswordField passwordField) {
         String password = new String(passwordField.getPassword());
         
@@ -803,7 +803,7 @@ public class StoreSettingsDialog extends JDialog {
             return;
         }
 
-        // Final confirmation dialog
+        // Confirm
         int confirm = JOptionPane.showConfirmDialog(this,
             "Are you absolutely sure?\n\nThis will permanently delete your account and all associated data.\n\n" +
             "This action CANNOT be undone!",
@@ -819,7 +819,7 @@ public class StoreSettingsDialog extends JDialog {
         try {
             UserRepository userRepo = new UserRepository();
             
-            // Verify password
+            // Check password
             if (!userRepo.verifyPassword(mainFrame.loggedInUserId, password)) {
                 JOptionPane.showMessageDialog(this, "Incorrect password. Account deletion cancelled.",
                     "Authentication Failed", JOptionPane.ERROR_MESSAGE);
@@ -827,7 +827,7 @@ public class StoreSettingsDialog extends JDialog {
                 return;
             }
 
-            // Delete the account
+            // Delete account
             boolean deleted = userRepo.deleteUser(mainFrame.loggedInUserId);
             
             if (deleted) {
@@ -853,13 +853,13 @@ public class StoreSettingsDialog extends JDialog {
         }
     }
 
-    // Save all changes to database
+    // Save changes
     private void saveChanges() {
         String newName = nameField.getText().trim();
         String newLocation = locationField.getText().trim();
         String newContact = contactField.getText().trim();
 
-        // Name is required
+        // Name required
         if (newName.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Store Name cannot be empty.",
                 "Input Error", JOptionPane.WARNING_MESSAGE);
@@ -867,15 +867,15 @@ public class StoreSettingsDialog extends JDialog {
         }
 
         try {
-            // Save store details
+            // Save store
             storeRepo.updateStore(mainFrame.loggedInUserId, newName, newLocation, newContact);
             
-            // Update the labels in navigation sidebar
+            // Update labels
             storeNameLabel.setText(newName);
             storeLocationLabel.setText(newLocation.isEmpty() ? "No location" : newLocation);
             storeContactLabel.setText(newContact.isEmpty() ? "No contact" : newContact);
 
-            // Save markup percentage
+            // Save markup
             double newMarkup = Double.parseDouble(markupField.getText().trim());
             if (newMarkup < 0) {
                 JOptionPane.showMessageDialog(this, "Markup cannot be negative.",
@@ -899,7 +899,7 @@ public class StoreSettingsDialog extends JDialog {
         }
     }
     
-    // Main method for testing
+    // Main test
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             userFrame mockFrame = new userFrame();

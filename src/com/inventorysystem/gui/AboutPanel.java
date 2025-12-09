@@ -19,13 +19,13 @@ public class AboutPanel extends JPanel {
         mainContent.setBackground(Color.WHITE);
         mainContent.setBorder(new EmptyBorder(30, 20, 30, 20));
 
-        // About Us Section
+        // About section
         mainContent.add(createAboutSection());
         mainContent.add(Box.createRigidArea(new Dimension(0, 30)));
         mainContent.add(createDivider());
         mainContent.add(Box.createRigidArea(new Dimension(0, 40)));
         
-        // Team Section
+        // Team section
         mainContent.add(createTeamSection());
         mainContent.add(Box.createRigidArea(new Dimension(0, 40)));
         mainContent.add(createFooter());

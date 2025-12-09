@@ -8,13 +8,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-// StockRepository
+// Stock repo
 public class StockRepository {
 
-    // Get stock summary
+    // Stock summary
     public List<StockRecord> getStockSummaryWithDateRange(int userId, java.sql.Date startDate, java.sql.Date endDate) throws SQLException {
         List<StockRecord> records = new ArrayList<>();
 
+        // Stock out = sales
         String sql =
             "SELECT " +
             "    p.product_id, " +
@@ -23,7 +24,7 @@ public class StockRepository {
             "    p.unit_of_measurement, " +
             "    COALESCE(SUM(CASE WHEN sl.log_type IN ('STOCK-IN', 'CUSTOMER-RETURN') " +
             "                      AND sl.log_date BETWEEN ? AND ? THEN ABS(sl.quantity_changed) ELSE 0 END), 0) AS stock_in, " +
-            "    COALESCE(SUM(CASE WHEN sl.log_type IN ('STOCK-OUT', 'STOCK-REMOVAL', 'REJECT', 'REFUND', 'DISPOSE') " +
+            "    COALESCE(SUM(CASE WHEN sl.log_type IN ('SALE', 'STOCK-OUT') " +
             "                      AND sl.log_date BETWEEN ? AND ? THEN ABS(sl.quantity_changed) ELSE 0 END), 0) AS stock_out, " +
             "    p.quantity_in_stock AS current_stock " +
             "FROM products p " +

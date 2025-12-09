@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.sql.SQLException;
 
-// dashboardPanel
+// Dashboard panel
 public class dashboardPanel extends JPanel {
 
     private JLabel productsValue;

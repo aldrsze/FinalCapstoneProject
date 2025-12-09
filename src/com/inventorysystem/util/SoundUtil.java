@@ -5,10 +5,10 @@ import java.io.InputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-// SoundUtil
+// Sound util
 public class SoundUtil {
     public static void play(String soundFileName) {
-        new Thread(() -> { // Run in thread to prevent UI freezing
+        new Thread(() -> { // Run in thread
             try {
                 String resourcePath = "/resources/" + soundFileName;
                 InputStream audioSrc = SoundUtil.class.getResourceAsStream(resourcePath);

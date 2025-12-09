@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 import com.toedter.calendar.JDateChooser;
 
-// DateRangePanel
+// Date range panel
 public class DateRangePanel extends JPanel {
     
     private JDateChooser startDateChooser;

@@ -13,7 +13,7 @@ import java.awt.*;
 import java.sql.SQLException;
 import java.util.List;
 
-// stockPanel
+// Stock panel
 public class stockPanel extends JPanel {
 
     private DefaultTableModel model;
@@ -28,7 +28,7 @@ public class stockPanel extends JPanel {
         String userRole = mainFrame.loggedInUserRole;
         this.userRepository = new UserRepository();
         
-        // Employee sees admin's data
+        // Show admin data
         int effectiveUserId = originalUserId;
         if (userRole.equalsIgnoreCase("Employee")) {
             try {
@@ -48,16 +48,16 @@ public class stockPanel extends JPanel {
         setBorder(new EmptyBorder(20, 20, 20, 20));
         setBackground(Color.WHITE);
 
-        //Initialize Table FIRST so stockTable exists for the search bar
+        // Init table first
         JScrollPane tableScrollPane = createTablePanel();
 
-        //Then create Top Panel (Search Bar depends on table)
+        // Create top panel
         JPanel topPanel = createTopPanel();
 
         add(topPanel, BorderLayout.NORTH);
         add(tableScrollPane, BorderLayout.CENTER);
 
-        // Reload data when this panel is shown
+        // Reload data
         addComponentListener(new java.awt.event.ComponentAdapter() {
             @Override
             public void componentShown(java.awt.event.ComponentEvent e) {
@@ -68,28 +68,28 @@ public class stockPanel extends JPanel {
         loadStockSummary();
     }
 
-    // Title and date filter
-    // createTopPanel with Search Bar
+    // Title/date filter
+    // Top panel/search
     private JPanel createTopPanel() {
         JPanel topPanel = new JPanel(new BorderLayout(15, 0));
         topPanel.setBackground(Color.WHITE);
         topPanel.setBorder(new EmptyBorder(0, 0, 15, 0));
 
-        // Left: Title
+        // Left: title
         JLabel titleLabel = new JLabel("STOCKS SUMMARY");
         titleLabel.setFont(UIConstants.TITLE_FONT);
         topPanel.add(titleLabel, BorderLayout.WEST);
         
-        // Right: Date Range + Search
+        // Right: date/search
         JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 15, 0));
         rightPanel.setBackground(Color.WHITE);
 
-        // Date Filter
+        // Date filter
         dateRangePanel = new DateRangePanel();
         dateRangePanel.addDateRangeChangeListener(() -> loadStockSummary());
         rightPanel.add(dateRangePanel);
         
-        // Export CSV button
+        // Export CSV
         JButton exportButton = new JButton("\u2193 Export CSV"); // ↓ symbol
         exportButton.setFont(UIConstants.BUTTON_FONT);
         exportButton.setFocusPainted(false);
@@ -102,13 +102,13 @@ public class stockPanel extends JPanel {
         exportButton.addActionListener(e -> CSVExporter.exportTableToCSV(stockTable, "stock_logs", this));
         rightPanel.add(exportButton);
         
-        // Search Field
+        // Search field
         JTextField searchField = new JTextField(15);
         searchField.putClientProperty("JTextField.placeholderText", "Search stocks...");
         searchField.setFont(UIConstants.INPUT_FONT);
         searchField.setPreferredSize(new Dimension(180, 35));
         
-        // Filter Logic
+        // Filter logic
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
         stockTable.setRowSorter(sorter);
         
@@ -133,7 +133,7 @@ public class stockPanel extends JPanel {
         return topPanel;
     }
 
-    // Table showing stock movements
+    // Table: stock moves
     private JScrollPane createTablePanel() {
         String[] columnNames = {"#", "ID", "Product Name", "Category", "Unit", "Stock In", "Stock Out", "Available", "Status"};
         model = new DefaultTableModel(new Object[][]{}, columnNames) {
@@ -170,7 +170,7 @@ public class stockPanel extends JPanel {
         stockTable.setSelectionForeground(Color.WHITE);
         stockTable.setAutoCreateRowSorter(true);
         
-        // Header styling
+        // Header
         javax.swing.table.JTableHeader header = stockTable.getTableHeader();
         header.setFont(UIConstants.TABLE_HEADER_FONT);
         header.setBackground(UIConstants.PRIMARY_COLOR);
@@ -192,10 +192,10 @@ public class stockPanel extends JPanel {
             }
         });
         
-        // Custom cell renderer with striping and status colors
+        // Custom renderer
         stockTable.setDefaultRenderer(Object.class, new CustomTableRenderer());
         
-        // Custom renderer for row number column (#)
+        // Renderer: # col
         stockTable.getColumnModel().getColumn(0).setCellRenderer(new javax.swing.table.DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
@@ -217,7 +217,7 @@ public class stockPanel extends JPanel {
             }
         });
         
-        // Set column widths
+        // Col widths
         stockTable.getColumnModel().getColumn(0).setPreferredWidth(50);  // #
         stockTable.getColumnModel().getColumn(0).setMaxWidth(50);
         stockTable.getColumnModel().getColumn(1).setPreferredWidth(60);  // ID
@@ -233,7 +233,7 @@ public class stockPanel extends JPanel {
         scrollPane.setBorder(BorderFactory.createLineBorder(UIConstants.BORDER_COLOR, 1));
         scrollPane.getViewport().setBackground(Color.WHITE);
         
-        // Enable fast mouse wheel scrolling on entire panel
+        // Fast scroll
         scrollPane.addMouseWheelListener(e -> {
             JScrollBar scrollBar = scrollPane.getVerticalScrollBar();
             int scrollAmount = e.getUnitsToScroll() * 5000;
@@ -243,7 +243,7 @@ public class stockPanel extends JPanel {
         return scrollPane;
     }
 
-    // Get data from database and put in table
+    // Get data
     private void loadStockSummary() {
         model.setRowCount(0);
         try {
@@ -255,7 +255,7 @@ public class stockPanel extends JPanel {
                 int available = record.endingStock();
                 String status;
                 
-                // Determine status based on realistic stock thresholds
+                // Status logic
                 if (available == 0) {
                     status = "Out of Stock";
                 } else if (available <= 30) {

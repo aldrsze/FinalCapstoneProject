@@ -8,10 +8,10 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-// CSVExporter
+// CSV exporter
 public class CSVExporter {
     
-    // Export JTable data to CSV file
+    // Export to CSV
     public static void exportTableToCSV(JTable table, String defaultFileName, JComponent parent) {
         if (table == null || table.getModel().getRowCount() == 0) {
             JOptionPane.showMessageDialog(parent, 
@@ -24,26 +24,26 @@ public class CSVExporter {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Export to CSV");
         
-        // Center the file chooser on screen
+        // Center file chooser
         fileChooser.setPreferredSize(new java.awt.Dimension(800, 600));
         
-        // Default filename with timestamp
+        // Filename with time
         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
         String fileName = defaultFileName + "_" + timestamp + ".csv";
         fileChooser.setSelectedFile(new File(fileName));
         
-        // Set file filter
+        // File filter
         FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV Files (*.csv)", "csv");
         fileChooser.setFileFilter(filter);
         
-        // Get parent window for centering
+        // Get parent window
         java.awt.Window parentWindow = parent != null ? SwingUtilities.getWindowAncestor(parent) : null;
         int userSelection = fileChooser.showSaveDialog(parentWindow);
         
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fileToSave = fileChooser.getSelectedFile();
             
-            // Add .csv extension if not present
+            // Add .csv if missing
             if (!fileToSave.getName().toLowerCase().endsWith(".csv")) {
                 fileToSave = new File(fileToSave.getAbsolutePath() + ".csv");
             }
@@ -65,26 +65,26 @@ public class CSVExporter {
         }
     }
     
-    // Write table data to CSV file with Excel-friendly formatting
+    // Write table to CSV
     private static void writeTableToCSV(JTable table, File file, String reportType) throws IOException {
         TableModel model = table.getModel();
         
-        // Use UTF-8 with BOM for Excel compatibility
+        // Use UTF-8 BOM
         try (OutputStreamWriter writer = new OutputStreamWriter(
                 new FileOutputStream(file), StandardCharsets.UTF_8)) {
             
-            // Write UTF-8 BOM for Excel to recognize encoding
+            // Write BOM
             writer.write('\ufeff');
             
-            // Write metadata header
+            // Write header
             String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yyyy hh:mm:ss a"));
             writer.write("SmartStock Inventory System\n");
             writer.write("Report Type:," + formatReportName(reportType) + "\n");
             writer.write("Generated:," + timestamp + "\n");
             writer.write("Total Records:," + model.getRowCount() + "\n");
-            writer.write("\n"); // Blank line separator
+            writer.write("\n"); // Blank line
             
-            // Determine which columns to skip (# column)
+            // Skip # col
             int skipColumn = -1;
             for (int col = 0; col < model.getColumnCount(); col++) {
                 if (model.getColumnName(col).equals("#")) {
@@ -93,9 +93,9 @@ public class CSVExporter {
                 }
             }
             
-            // Write column headers (skip # column)
+            // Write headers
             for (int col = 0; col < model.getColumnCount(); col++) {
-                if (col == skipColumn) continue; // Skip row number column
+                if (col == skipColumn) continue; // Skip #
                 
                 writer.write(escapeCSV(model.getColumnName(col)));
                 if (col < model.getColumnCount() - 1 && !(col + 1 == skipColumn && col + 1 == model.getColumnCount() - 1)) {
@@ -104,11 +104,11 @@ public class CSVExporter {
             }
             writer.write("\n");
             
-            // Write data rows
+            // Write rows
             for (int row = 0; row < model.getRowCount(); row++) {
                 boolean firstColumn = true;
                 for (int col = 0; col < model.getColumnCount(); col++) {
-                    if (col == skipColumn) continue; // Skip row number column
+                    if (col == skipColumn) continue; // Skip #
                     
                     if (!firstColumn) {
                         writer.write(",");
@@ -123,14 +123,14 @@ public class CSVExporter {
                 writer.write("\n");
             }
             
-            // Write footer summary
+            // Write footer
             writer.write("\n");
             writer.write("End of Report\n");
             writer.write("Exported by SmartStock v1.0\n");
         }
     }
     
-    // Format report name for display
+    // Format report name
     private static String formatReportName(String reportType) {
         switch (reportType.toLowerCase()) {
             case "products": return "Product Inventory Report";
@@ -140,20 +140,20 @@ public class CSVExporter {
         }
     }
     
-    // Format cell value for clean display with column-aware formatting
+    // Format cell value
     private static String formatCellValue(Object value, String columnName) {
         if (value == null || value.toString().trim().isEmpty()) {
-            return "-"; // Show dash for empty values
+            return "-"; // Dash for empty
         }
         
         String strValue = value.toString().trim();
         
-        // Handle date/time columns
+        // Date/time cols
         if (columnName.equalsIgnoreCase("Date") || columnName.toLowerCase().contains("date")) {
             strValue = formatDateValue(strValue);
         }
         
-        // Handle currency columns (Cost, Price, Total, Retail)
+        // Currency cols
         else if (columnName.toLowerCase().contains("price") || 
                  columnName.toLowerCase().contains("cost") || 
                  columnName.toLowerCase().contains("total") ||
@@ -161,12 +161,12 @@ public class CSVExporter {
             strValue = formatCurrencyValue(strValue);
         }
         
-        // Handle percentage columns
+        // Percent cols
         else if (columnName.toLowerCase().contains("markup") || columnName.contains("%")) {
             strValue = formatPercentageValue(strValue);
         }
         
-        // Handle quantity/number columns
+        // Number cols
         else if (columnName.equalsIgnoreCase("Qty") || 
                  columnName.equalsIgnoreCase("Stock") || 
                  columnName.equalsIgnoreCase("Available") ||
@@ -178,16 +178,16 @@ public class CSVExporter {
         return strValue;
     }
     
-    // Format date values
+    // Format date
     private static String formatDateValue(String value) {
-        // Already well-formatted dates pass through
+        // Well-formatted dates
         if (value.contains("-") && value.contains(":") && value.length() > 15) {
-            return value; // Likely already formatted like "01-Nov-2024 08:15 AM"
+            return value; // Already formatted
         }
         
-        // Try to parse and format common date patterns
+        // Parse date
         try {
-            // Handle full datetime formats like "2024-11-01 08:15:00" or "2024-11-01T08:15:00"
+            // Full datetime
             if (value.matches("\\d{4}-\\d{2}-\\d{2}.*\\d{2}:\\d{2}.*")) {
                 String dateTime = value.replace("T", " ");
                 String[] parts = dateTime.split(" ");
@@ -215,7 +215,7 @@ public class CSVExporter {
                 }
             }
             
-            // Handle time-only formats like "08:15:00" or "14:30"
+            // Time only
             else if (value.matches("\\d{2}:\\d{2}(:\\d{2})?")) {
                 String[] timeParts = value.split(":");
                 int hour = Integer.parseInt(timeParts[0]);
@@ -225,7 +225,7 @@ public class CSVExporter {
                 int displayHour = hour % 12;
                 if (displayHour == 0) displayHour = 12;
                 
-                // Get current date for time-only values
+                // Get current date
                 LocalDateTime now = LocalDateTime.now();
                 String[] months = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
                                   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
@@ -235,7 +235,7 @@ public class CSVExporter {
                     displayHour, minute, ampm);
             }
             
-            // Handle date-only formats like "2024-11-01"
+            // Date only
             else if (value.matches("\\d{4}-\\d{2}-\\d{2}")) {
                 String[] dateParts = value.split("-");
                 String[] months = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
@@ -247,30 +247,30 @@ public class CSVExporter {
                 return String.format("%02d-%s-%d", day, months[month], year);
             }
         } catch (Exception e) {
-            // If parsing fails, return original value
+            // If fail, return original
         }
         
         return value;
     }
     
-    // Format currency values - with PHP prefix and commas for readability
+    // Format currency
     private static String formatCurrencyValue(String value) {
-        // Remove existing currency symbols and commas
+        // Remove symbols
         value = value.replace("₱", "").replace("PHP", "").replace(",", "").trim();
         
-        // Try to parse as number and format
+        // Parse number
         try {
             double amount = Double.parseDouble(value);
-            // Format with PHP prefix and thousand separators
+            // Format PHP, commas
             return String.format("PHP %,.2f", amount);
         } catch (NumberFormatException e) {
             return value;
         }
     }
     
-    // Format percentage values
+    // Format percent
     private static String formatPercentageValue(String value) {
-        // Remove % symbol if present
+        // Remove %
         value = value.replace("%", "").trim();
         
         try {
@@ -281,19 +281,19 @@ public class CSVExporter {
         }
     }
     
-    // Format number values (quantities)
+    // Format number
     private static String formatNumberValue(String value) {
         try {
-            // Check if it's a whole number
+            // Whole number
             if (value.contains(".")) {
                 double num = Double.parseDouble(value);
-                // If no decimal part, show as integer
+                // No decimal, show int
                 if (num == Math.floor(num)) {
                     return String.valueOf((int) num);
                 }
                 return String.format("%.2f", num);
             } else {
-                // Already a whole number
+                // Already int
                 return value;
             }
         } catch (NumberFormatException e) {
@@ -301,15 +301,15 @@ public class CSVExporter {
         }
     }
     
-    // Escape special characters in CSV
+    // Escape CSV
     private static String escapeCSV(String value) {
         if (value == null) {
             return "";
         }
         
-        // If contains comma, quote, or newline, wrap in quotes
+        // If comma/quote/newline, quote
         if (value.contains(",") || value.contains("\"") || value.contains("\n")) {
-            // Escape quotes by doubling them
+            // Double quotes
             value = value.replace("\"", "\"\"");
             return "\"" + value + "\"";
         }

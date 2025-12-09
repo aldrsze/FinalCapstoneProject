@@ -1,6 +1,6 @@
 package com.inventorysystem.model;
 
-// Store
+// Store model
 public class Store {
     private final int storeId;
     private final int userId;

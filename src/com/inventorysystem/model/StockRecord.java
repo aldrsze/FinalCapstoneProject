@@ -1,6 +1,6 @@
 package com.inventorysystem.model;
 
-// StockRecord
+// Stock record
 public record StockRecord(
     int productId,
     String productName,

@@ -68,9 +68,9 @@ public class productsPanel extends JPanel {
     private final String userRole;
     private final userFrame mainFrame;
     private JDialog currentDetailsDialog = null;
-    private List<Product> cachedProducts = new ArrayList<>(); // Cache for edit dialog
+    private List<Product> cachedProducts = new ArrayList<>(); // For edit dialog
 
-    //Creates the products management panel.
+    // Products panel
     public productsPanel(userFrame mainFrame) {
         this.mainFrame = mainFrame;
         this.userId = mainFrame.loggedInUserId;
