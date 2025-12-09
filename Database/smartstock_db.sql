@@ -129,6 +129,8 @@ CREATE TABLE `stock_log` (
 -- Insert sample user (username: admin, password: admin123)
 INSERT INTO `users` (`user_id`, `username`, `password`, `user_role`, `admin_id`, `default_markup_percent`, `created_at`) VALUES
 (1, 'admin', 'admin123', 'Admin', NULL, 30.00, '2025-12-01 08:00:00');
+-- Add sample employee account
+(2, 'employee1', 'employee123', 'Employee', 1, 30.00, '2025-12-01 09:00:00');
 
 -- Insert sample store
 INSERT INTO `stores` (`store_id`, `user_id`, `store_name`, `location`, `contact`, `created_at`) VALUES
