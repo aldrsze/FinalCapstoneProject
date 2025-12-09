@@ -428,7 +428,7 @@ Then open Jar file SmartStock.jar
 | Username | Password | Role | Access Level |
 |----------|----------|------|--------------|
 | admin | admin123 | Admin | Full Access |
-| employee1 | emp123 | Employee | View Only |
+| employee1 | employee123 | Employee | View Only |
 
 ---
 
