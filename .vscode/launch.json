@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "productsPanel",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.gui.productsPanel",
+      "projectName": "FINAL_CAPSTONE_PROJECT_ad629914"
+    },
+    {
+      "type": "java",
       "name": "App",
       "request": "launch",
       "mainClass": "App",
