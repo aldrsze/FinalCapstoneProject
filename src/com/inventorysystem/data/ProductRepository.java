@@ -481,7 +481,12 @@ public class ProductRepository {
                     if (!rs.next()) throw new SQLException("Product not found.");
                     costPrice = rs.getDouble("cost_price");
                     retailPrice = rs.getDouble("retail_price");
-                    markupPercent = (Double) rs.getObject("markup_percent");
+                    Object markupObj = rs.getObject("markup_percent");
+                    if (markupObj instanceof Number) {
+                        markupPercent = ((Number) markupObj).doubleValue();
+                    } else {
+                        markupPercent = null;
+                    }
                     currentStock = rs.getInt("quantity_in_stock");
                 }
             }
@@ -711,7 +716,7 @@ public class ProductRepository {
         // 2. SQLs for updates
         String updateSql = "UPDATE products SET quantity_in_stock = quantity_in_stock + ? WHERE product_id = ? AND user_id = ?";
         String logSql = "INSERT INTO stock_log (product_id, quantity_changed, log_type, notes, user_id) VALUES (?, ?, 'CUSTOMER-RETURN', ?, ?)";
-        // FIX: Insert negative records to reverse the sale in Dashboard
+        // Insert negative records to reverse the sale in Dashboard
         String insertSaleSql = "INSERT INTO sales (user_id, sale_date, total_amount) VALUES (?, NOW(), ?)";
         String insertItemSql = "INSERT INTO sale_items (sale_id, product_id, quantity_sold, unit_price, cost_price, subtotal) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -997,6 +1002,12 @@ public class ProductRepository {
             pstmt.setString(1, categoryName.trim());
             pstmt.setInt(2, this.userId);
             pstmt.executeUpdate();
+        } catch (SQLException e) {
+            // Check for duplicate entry
+            if (e.getMessage() != null && e.getMessage().contains("Duplicate entry")) {
+                throw new SQLException("Category '" + categoryName + "' already exists");
+            }
+            throw e;
         }
     }
 

@@ -49,7 +49,6 @@ CREATE TABLE `stores` (
   KEY `fk_stores_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Categories table
 CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(100) NOT NULL,
@@ -57,6 +56,16 @@ CREATE TABLE `categories` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`category_id`),
   UNIQUE KEY `uq_category_user` (`user_id`,`category_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Units table
+CREATE TABLE `units` (
+  `unit_id` int(11) NOT NULL AUTO_INCREMENT,
+  `unit_name` varchar(50) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`unit_id`),
+  UNIQUE KEY `uq_unit_user` (`user_id`,`unit_name`),
+  KEY `fk_units_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Products table
@@ -127,7 +136,7 @@ ALTER TABLE `categories`
   ADD CONSTRAINT `fk_categories_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `products`
-  ADD CONSTRAINT `fk_products_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_products_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_products_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `sales`
@@ -138,6 +147,9 @@ ALTER TABLE `sale_items`
 
 ALTER TABLE `stock_log`
   ADD CONSTRAINT `fk_stock_log_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `units`
+  ADD CONSTRAINT `fk_units_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ============================================================================
 -- DATABASE SCHEMA READY

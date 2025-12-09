@@ -64,7 +64,7 @@ public class LoginPanel extends JPanel {
         formPanel.add(subtitleLabel, gbc);
 
         // Welcome
-        JLabel welcomeLabel = new JLabel("Welcome Back!", SwingConstants.CENTER);
+        JLabel welcomeLabel = new JLabel("Welcome to SmartStock!", SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
         welcomeLabel.setForeground(new Color(44, 62, 80));
         gbc.gridy = 2;

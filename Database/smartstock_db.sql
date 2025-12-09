@@ -128,8 +128,7 @@ CREATE TABLE `stock_log` (
 
 -- Insert sample user (username: admin, password: admin123)
 INSERT INTO `users` (`user_id`, `username`, `password`, `user_role`, `admin_id`, `default_markup_percent`, `created_at`) VALUES
-(1, 'admin', 'admin123', 'Admin', NULL, 30.00, '2025-12-01 08:00:00');
--- Add sample employee account
+(1, 'admin', 'admin123', 'Admin', NULL, 30.00, '2025-12-01 08:00:00'),
 (2, 'employee1', 'employee123', 'Employee', 1, 30.00, '2025-12-01 09:00:00');
 
 -- Insert sample store
@@ -187,10 +186,10 @@ INSERT INTO `products` (`product_id`, `user_id`, `category_id`, `name`, `unit_of
 INSERT INTO `stock_log` (`log_id`, `product_id`, `quantity_changed`, `log_type`, `notes`, `user_id`, `log_date`) VALUES
 -- Day 1: Dec 1 - Initial inventory setup via manual entry (actual system format)
 (1, 1, 150, 'STOCK-IN', 'Manual product added', 1, '2025-12-01 08:15:23'),
-(2, 2, 80, 'STOCK-IN', 'Manual product added', 1, '2025-12-01 08:16:45'),
-(3, 3, 120, 'STOCK-IN', 'Manual product added', 1, '2025-12-01 08:17:12'),
-(4, 4, 100, 'STOCK-IN', 'Manual product added', 1, '2025-12-01 08:18:34'),
-(5, 5, 60, 'STOCK-IN', 'Manual product added', 1, '2025-12-01 08:19:56'),
+(2, 2, 80, 'STOCK-IN', 'From QR Scan', 1, '2025-12-01 08:16:45'),
+(3, 3, 120, 'STOCK-IN', 'From QR Scan', 1, '2025-12-01 08:17:12'),
+(4, 4, 100, 'STOCK-IN', 'From QR Scan', 1, '2025-12-01 08:18:34'),
+(5, 5, 60, 'STOCK-IN', 'From QR Scan', 1, '2025-12-01 08:19:56'),
 (6, 6, 50, 'STOCK-IN', 'Manual product added', 1, '2025-12-01 08:21:08'),
 (7, 7, 55, 'STOCK-IN', 'Manual product added', 1, '2025-12-01 08:22:33'),
 (8, 8, 110, 'STOCK-IN', 'Manual product added', 1, '2025-12-01 08:23:47'),
@@ -228,7 +227,24 @@ INSERT INTO `stock_log` (`log_id`, `product_id`, `quantity_changed`, `log_type`,
 (35, 2, 40, 'STOCK-IN', 'From QR Scan', 1, '2025-12-06 08:31:45'),
 (36, 15, 60, 'STOCK-IN', 'From QR Scan', 1, '2025-12-06 08:33:28'),
 -- Day 7: Dec 7 - Manual stock adjustments
-(37, 22, -5, 'STOCK-REMOVAL', 'Damaged during shelf stocking', 1, '2025-12-07 08:15:44');
+(37, 22, -5, 'STOCK-REMOVAL', 'Damaged during shelf stocking', 1, '2025-12-07 08:15:44'),
+ (38, 3, -2, 'SALE', 'Sold 2 units at POS', 1, '2025-12-07 09:00:00'),
+ (40, 12, 0, 'DELETE', 'Product deleted from system', 1, '2025-12-07 11:00:00'),
+ (41, 6, -2, 'SALE', 'Sold 2 units at POS', 1, '2025-12-07 12:00:00'),
+ (42, 7, -1, 'SALE', 'Sold 1 unit at POS', 1, '2025-12-07 12:00:00'),
+ (43, 8, -3, 'SALE', 'Sold 3 units at POS', 1, '2025-12-07 12:00:00'),
+ (44, 9, -2, 'SALE', 'Sold 2 units at POS', 1, '2025-12-07 13:00:00'),
+ (45, 10, -1, 'SALE', 'Sold 1 unit at POS', 1, '2025-12-07 13:00:00'),
+ (46, 11, -2, 'SALE', 'Sold 2 units at POS', 1, '2025-12-07 13:00:00'),
+ (47, 12, -2, 'SALE', 'Sold 2 units at POS', 1, '2025-12-07 14:00:00'),
+ (48, 13, -1, 'SALE', 'Sold 1 unit at POS', 1, '2025-12-07 14:00:00'),
+ (49, 14, -2, 'SALE', 'Sold 2 units at POS', 1, '2025-12-07 14:00:00'),
+ (50, 15, -3, 'SALE', 'Sold 3 units at POS', 1, '2025-12-07 15:00:00'),
+ (51, 16, -2, 'SALE', 'Sold 2 units at POS', 1, '2025-12-07 15:00:00'),
+ (52, 17, -1, 'SALE', 'Sold 1 unit at POS', 1, '2025-12-07 15:00:00'),
+ (53, 18, -2, 'SALE', 'Sold 2 units at POS', 1, '2025-12-07 16:00:00'),
+ (54, 19, -1, 'SALE', 'Sold 1 unit at POS', 1, '2025-12-07 16:00:00'),
+ (55, 20, -2, 'SALE', 'Sold 2 units at POS', 1, '2025-12-07 16:00:00');
 
 -- Insert sample sales transactions (realistic retail sales for presentation)
 INSERT INTO `sales` (`sale_id`, `sale_date`, `total_amount`, `payment_received`, `change_amount`, `user_id`) VALUES
@@ -329,7 +345,7 @@ ALTER TABLE `units`
   ADD CONSTRAINT `fk_units_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `products`
-  ADD CONSTRAINT `fk_products_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_products_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_products_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `sales`
@@ -347,12 +363,12 @@ ALTER TABLE `stock_log`
 
 COMMIT;
 
-SELECT 
-    'SmartStock Database Created Successfully!' AS Status,
-    '8 tables with realistic transaction data' AS Tables,
-    '25 products + 15 sales + complete workflow' AS Data,
-    'Ready for presentation' AS ReadyStatus,
-    'Login: admin / admin123' AS Credentials;
+-- SELECT 
+--     'SmartStock Database Created Successfully!' AS Status,
+--     '8 tables with realistic transaction data' AS Tables,
+--     '25 products + 15 sales + complete workflow' AS Data,
+--     'Ready for presentation' AS ReadyStatus,
+--     'Login: admin / admin123' AS Credentials;
 
 -- ============================================================================
 -- FEATURES IN THIS DATABASE:
@@ -388,12 +404,4 @@ SELECT
 --   - All system features demonstrated (Add, Sell, Remove, Reject, Return, Refund)
 --   - Ready for demonstration and presentation
 -- 
--- TRANSACTION TIMELINE (Dec 1-7, 2025):
---   Day 1 (Mon): Initial inventory setup - 25 products added manually
---   Day 2 (Tue): Sales begin + Expired items removed
---   Day 3 (Wed): Sales continue + Damaged items rejected  
---   Day 4 (Thu): Sales + Customer returns processed
---   Day 5 (Fri): Sales + Supplier refunds issued
---   Day 6 (Sat): High sales volume + QR restock delivery
---   Day 7 (Sun): Ongoing sales + Shelf damage removal
 -- ============================================================================

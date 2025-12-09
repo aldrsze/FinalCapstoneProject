@@ -498,15 +498,7 @@ public class productsPanel extends JPanel {
         generateQRDialogButton.addActionListener(e -> showGenerateQRDialog());
 
         // Wrap controls in a scrollable panel for low resolution support
-        JScrollPane scrollPane = new JScrollPane(controlsContainer);
-        scrollPane.setBorder(null);
-        scrollPane.setBackground(UIConstants.FORM_COLOR);
-        scrollPane.getViewport().setBackground(UIConstants.FORM_COLOR);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
-
-        contentPanel.add(scrollPane, BorderLayout.CENTER);
+        contentPanel.add(controlsContainer, BorderLayout.CENTER);
         mainSidePanel.add(contentPanel, BorderLayout.CENTER);
 
         // Attach Button Actions
