@@ -379,7 +379,8 @@ db.password=
 ```
 
 ### 5. Build & Run
-Open build.bat file
+Open build.bat file
+
 
 # Run
 Then open Jar file SmartStock.jar
@@ -393,7 +394,8 @@ Then open Jar file SmartStock.jar
 - **Database Tables:** 8
 - **Features Implemented:** 50+
 - **Documentation:** 2,000+ lines
-- **Development Time:** Almost 3 Months
+- **Development Time:** Almost 3 Months
+
 
 ---
 
@@ -405,7 +407,8 @@ Then open Jar file SmartStock.jar
 ✅ **Production-Ready** - Robust error handling and data validation  
 ✅ **Excel Integration** - One-click CSV exports for business reporting  
 ✅ **Modern Technology** - QR code integration for automatic operations  
-✅ **Accurate Accounting** - Historical cost tracking for true profit margins
+✅ **Accurate Accounting** - Historical cost tracking for true profit margins
+
 
 ---
 
@@ -457,7 +460,8 @@ This project is developed as an academic capstone project for educational purpos
 **Development Period:** September - December 2025 
 
 **Purpose:** Educational Purposes
-
+
+
 ---
 
 ## 🙏 Acknowledgments
@@ -474,6 +478,7 @@ This project is developed as an academic capstone project for educational purpos
 *SmartStock - Empowering Filipino Retailers with Smart Inventory Management*
 
 ---
+
 
 
 
