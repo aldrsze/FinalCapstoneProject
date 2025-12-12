@@ -90,6 +90,7 @@ public class recordsPanel extends JPanel {
         JLabel titleLabel = new JLabel("TRANSACTION HISTORY");
         titleLabel.setFont(UIConstants.TITLE_FONT.deriveFont(Font.BOLD, 20f));
         titleLabel.setBorder(new EmptyBorder(5, 10, 5, 20));
+        titleLabel.setForeground(UIConstants.PRIMARY_COLOR);
         panel.add(titleLabel, BorderLayout.WEST);
         
         // Right: Date Range + Search
@@ -105,7 +106,7 @@ public class recordsPanel extends JPanel {
         JButton exportButton = new JButton("\u2193 Export CSV"); // ↓ symbol
         exportButton.setFont(UIConstants.BUTTON_FONT);
         exportButton.setFocusPainted(false);
-        exportButton.setBackground(new Color(40, 167, 69)); // Clean green
+        exportButton.setBackground(UIConstants.EXPORT_BTN_COLOR);
         exportButton.setForeground(Color.WHITE);
         exportButton.setPreferredSize(new Dimension(130, 35));
         exportButton.setBorderPainted(false);
@@ -191,7 +192,7 @@ public class recordsPanel extends JPanel {
         
         recordsTable.setAutoCreateRowSorter(true);
         recordsTable.setFont(UIConstants.TABLE_FONT);
-        recordsTable.setRowHeight(35);
+        recordsTable.setRowHeight(UIConstants.TABLE_ROW_HEIGHT);
         recordsTable.setShowVerticalLines(false);
         recordsTable.setGridColor(UIConstants.BORDER_COLOR);
         recordsTable.setIntercellSpacing(new Dimension(0, 0));
@@ -204,7 +205,7 @@ public class recordsPanel extends JPanel {
         header.setBackground(UIConstants.PRIMARY_COLOR);
         header.setForeground(Color.WHITE);
         header.setReorderingAllowed(false);
-        header.setPreferredSize(new Dimension(header.getWidth(), 40));
+        header.setPreferredSize(new Dimension(header.getWidth(), UIConstants.TABLE_HEADER_HEIGHT));
         header.setOpaque(true);
         
         // Force header colors with custom renderer
@@ -234,7 +235,6 @@ public class recordsPanel extends JPanel {
                 super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 setText(String.valueOf(row + 1));
                 setHorizontalAlignment(SwingConstants.CENTER);
-                
                 if (isSelected) {
                     setBackground(UIConstants.PRIMARY_LIGHT);
                     setForeground(Color.WHITE);
@@ -242,7 +242,7 @@ public class recordsPanel extends JPanel {
                     setBackground(row % 2 == 0 ? Color.WHITE : new Color(248, 249, 250));
                     setForeground(UIConstants.TEXT_PRIMARY);
                 }
-                setFont(new Font("Segoe UI", Font.PLAIN, 10));
+                setFont(UIConstants.TABLE_SMALL_FONT);
                 setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
                 return this;
             }
@@ -258,34 +258,33 @@ public class recordsPanel extends JPanel {
                     boolean isSelected, boolean hasFocus, int row, int column) {
                 super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 setHorizontalAlignment(SwingConstants.CENTER);
-                
-                // Apply transaction type colors
+                // Apply transaction type colors using UIConstants
                 if (value != null && !isSelected) {
                     String type = value.toString();
                     if (type.equals("STOCK-OUT") || type.equals("SALE")) {
-                        setForeground(new Color(220, 53, 69));     // Red - Outgoing
-                        setFont(new Font("Segoe UI", Font.BOLD, 12));
+                        setForeground(UIConstants.DANGER_COLOR);     // Red - Outgoing
+                        setFont(UIConstants.TABLE_FONT.deriveFont(Font.BOLD, 12f));
                     } else if (type.equals("STOCK-IN")) {
-                        setForeground(new Color(76, 175, 80));     // Green - Incoming
-                        setFont(new Font("Segoe UI", Font.BOLD, 12));
+                        setForeground(UIConstants.SUCCESS_GREEN);     // Green - Incoming
+                        setFont(UIConstants.TABLE_FONT.deriveFont(Font.BOLD, 12f));
                     } else if (type.equals("CUSTOMER-RETURN")) {
-                        setForeground(new Color(33, 150, 243));    // Blue - Return
-                        setFont(new Font("Segoe UI", Font.BOLD, 12));
+                        setForeground(UIConstants.INFO_BLUE);    // Blue - Return
+                        setFont(UIConstants.TABLE_FONT.deriveFont(Font.BOLD, 12f));
                     } else if (type.equals("STOCK-REMOVAL")) {
-                        setForeground(new Color(255, 87, 34));     // Deep Orange - Removal
-                        setFont(new Font("Segoe UI", Font.BOLD, 12));
+                        setForeground(UIConstants.WARNING_DEEP);     // Deep Orange - Removal
+                        setFont(UIConstants.TABLE_FONT.deriveFont(Font.BOLD, 12f));
                     } else if (type.equals("REJECT")) {
-                        setForeground(new Color(255, 152, 0));     // Orange - Damaged
-                        setFont(new Font("Segoe UI", Font.BOLD, 12));
+                        setForeground(UIConstants.WARNING_COLOR);     // Orange - Damaged
+                        setFont(UIConstants.TABLE_FONT.deriveFont(Font.BOLD, 12f));
                     } else if (type.equals("REFUND")) {
-                        setForeground(new Color(156, 39, 176));    // Purple - Refund
-                        setFont(new Font("Segoe UI", Font.BOLD, 12));
+                        setForeground(UIConstants.PURPLE_COLOR);    // Purple - Refund
+                        setFont(UIConstants.TABLE_FONT.deriveFont(Font.BOLD, 12f));
                     } else if (type.equals("DISPOSE")) {
-                        setForeground(new Color(121, 85, 72));     // Brown - Disposal
-                        setFont(new Font("Segoe UI", Font.BOLD, 12));
+                        setForeground(UIConstants.BROWN_COLOR);     // Brown - Disposal
+                        setFont(UIConstants.TABLE_FONT.deriveFont(Font.BOLD, 12f));
                     } else if (type.equals("DELETE")) {
-                        setForeground(new Color(244, 67, 54));     // Bright Red - Critical
-                        setFont(new Font("Segoe UI", Font.BOLD, 12));
+                        setForeground(UIConstants.DANGER_CRITICAL);     // Bright Red - Critical
+                        setFont(UIConstants.TABLE_FONT.deriveFont(Font.BOLD, 12f));
                     } else {
                         setForeground(UIConstants.TEXT_PRIMARY);
                         setFont(UIConstants.TABLE_FONT);
@@ -293,17 +292,15 @@ public class recordsPanel extends JPanel {
                 } else if (isSelected) {
                     setBackground(UIConstants.PRIMARY_LIGHT);
                     setForeground(Color.WHITE);
-                    setFont(new Font("Segoe UI", Font.BOLD, 12));
+                    setFont(UIConstants.TABLE_FONT.deriveFont(Font.BOLD, 12f));
                 } else {
                     setForeground(UIConstants.TEXT_PRIMARY);
                     setFont(UIConstants.TABLE_FONT);
                 }
-                
                 // Row striping
                 if (!isSelected) {
                     setBackground(row % 2 == 0 ? Color.WHITE : new Color(248, 249, 250));
                 }
-                
                 setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
                 return this;
             }

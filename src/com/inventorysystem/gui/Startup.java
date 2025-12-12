@@ -10,26 +10,26 @@ public class Startup extends JWindow {
     
     public Startup() {
         JPanel content = new JPanel(new BorderLayout());
-        content.setBackground(Color.WHITE);
-        content.setBorder(BorderFactory.createLineBorder(new Color(41, 128, 185), 2));
+        content.setBackground(UIConstants.FORM_COLOR);
+        content.setBorder(BorderFactory.createLineBorder(UIConstants.PRIMARY_COLOR, 2));
         
         // Logo/title
         JPanel headerPanel = new JPanel();
-        headerPanel.setBackground(new Color(41, 128, 185));
+        headerPanel.setBackground(UIConstants.PRIMARY_COLOR);
         headerPanel.setPreferredSize(new Dimension(400, 120));
         
         JLabel titleLabel = new JLabel("SmartStock");
-        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 36));
-        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setFont(UIConstants.FONT_BRAND);
+        titleLabel.setForeground(UIConstants.WHITE);
         headerPanel.add(titleLabel);
         
         JLabel subtitleLabel = new JLabel("Inventory Management System");
-        subtitleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        subtitleLabel.setForeground(new Color(236, 240, 241));
+        subtitleLabel.setFont(UIConstants.LABEL_FONT);
+        subtitleLabel.setForeground(UIConstants.TEXT_LIGHT);
         
         JPanel headerContent = new JPanel();
         headerContent.setLayout(new BoxLayout(headerContent, BoxLayout.Y_AXIS));
-        headerContent.setBackground(new Color(41, 128, 185));
+        headerContent.setBackground(UIConstants.PRIMARY_COLOR);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         subtitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         headerContent.add(Box.createVerticalGlue());
@@ -43,18 +43,18 @@ public class Startup extends JWindow {
         // Progress
         JPanel progressPanel = new JPanel();
         progressPanel.setLayout(new BoxLayout(progressPanel, BoxLayout.Y_AXIS));
-        progressPanel.setBackground(Color.WHITE);
+        progressPanel.setBackground(UIConstants.FORM_COLOR);
         progressPanel.setBorder(BorderFactory.createEmptyBorder(30, 40, 30, 40));
         
         statusLabel = new JLabel("Loading...");
-        statusLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        statusLabel.setFont(UIConstants.LABEL_FONT_PLAIN_12);
         statusLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         progressBar = new JProgressBar(0, 100);
         progressBar.setPreferredSize(new Dimension(320, 20));
         progressBar.setStringPainted(false);
-        progressBar.setForeground(new Color(41, 128, 185));
-        progressBar.setBackground(new Color(236, 240, 241));
+        progressBar.setForeground(UIConstants.PRIMARY_COLOR);
+        progressBar.setBackground(UIConstants.TEXT_LIGHT);
         
         progressPanel.add(statusLabel);
         progressPanel.add(Box.createRigidArea(new Dimension(0, 15)));

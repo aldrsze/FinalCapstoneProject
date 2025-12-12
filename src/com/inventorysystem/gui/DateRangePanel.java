@@ -23,34 +23,41 @@ public class DateRangePanel extends JPanel {
     }
     
     public DateRangePanel() {
-        setLayout(new FlowLayout(FlowLayout.LEFT, 12, 5));
+        setLayout(new FlowLayout(FlowLayout.LEFT, UIConstants.COMPONENT_SPACING, 5));
         setBackground(UIConstants.FORM_COLOR);
         setBorder(new CompoundBorder(
             new LineBorder(UIConstants.BORDER_COLOR, 1),
-            new EmptyBorder(8, 12, 8, 12)
+            new EmptyBorder(UIConstants.COMPONENT_SPACING / 2, UIConstants.COMPONENT_SPACING, UIConstants.COMPONENT_SPACING / 2, UIConstants.COMPONENT_SPACING)
         ));
-        
+
         // "From" date picker
-        add(new JLabel("From:"));
+        JLabel fromLabel = new JLabel("From:");
+        fromLabel.setFont(UIConstants.LABEL_FONT);
+        add(fromLabel);
         startDateChooser = new JDateChooser();
-        startDateChooser.setPreferredSize(new Dimension(140, 30));
+        startDateChooser.setPreferredSize(new Dimension(140, UIConstants.INPUT_HEIGHT));
         startDateChooser.setDate(java.sql.Date.valueOf(LocalDate.now().minusMonths(1)));
         add(startDateChooser);
-        
+
         // "To" date picker
-        add(new JLabel("To:"));
+        JLabel toLabel = new JLabel("To:");
+        toLabel.setFont(UIConstants.LABEL_FONT);
+        add(toLabel);
         endDateChooser = new JDateChooser();
-        endDateChooser.setPreferredSize(new Dimension(140, 30));
+        endDateChooser.setPreferredSize(new Dimension(140, UIConstants.INPUT_HEIGHT));
         endDateChooser.setDate(new Date());
         add(endDateChooser);
-        
+
         // Quick presets dropdown (Today, Last 7 Days, etc.)
-        add(new JLabel("Quick:"));
+        JLabel quickLabel = new JLabel("Quick:");
+        quickLabel.setFont(UIConstants.LABEL_FONT);
+        add(quickLabel);
         presetComboBox = new JComboBox<>(new String[]{
             "Custom", "Today", "Yesterday", "Last 7 Days", 
             "Last 30 Days", "This Month", "Last Month", "All Time"
         });
-        presetComboBox.setPreferredSize(new Dimension(140, 30));
+        presetComboBox.setPreferredSize(new Dimension(140, UIConstants.INPUT_HEIGHT));
+        presetComboBox.setFont(UIConstants.LABEL_FONT);
         presetComboBox.addActionListener(e -> {
             applyPreset();
             notifyListeners();

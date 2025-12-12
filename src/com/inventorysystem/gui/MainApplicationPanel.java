@@ -69,7 +69,7 @@ public class MainApplicationPanel extends JPanel {
      */
     private JPanel createTopBarWithToggle() {
         JPanel topBar = new JPanel(new BorderLayout());
-        topBar.setBackground(Color.WHITE);
+        topBar.setBackground(UIConstants.WHITE);
         topBar.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, UIConstants.BORDER_COLOR));
         topBar.setPreferredSize(new Dimension(0, 50));
         
@@ -103,7 +103,7 @@ public class MainApplicationPanel extends JPanel {
         };
         
         toggleNavButton.setPreferredSize(new Dimension(50, 50));
-        toggleNavButton.setBackground(Color.WHITE);
+        toggleNavButton.setBackground(UIConstants.WHITE);
         toggleNavButton.setForeground(UIConstants.TEXT_PRIMARY);
         toggleNavButton.setFocusPainted(false);
         toggleNavButton.setBorderPainted(false);
@@ -171,28 +171,28 @@ public class MainApplicationPanel extends JPanel {
         panel.setBorder(new EmptyBorder(30, 20, 30, 20));
 
         JLabel titleLabel = new JLabel("CURRENT STORE");
-        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 11));
-        titleLabel.setForeground(new Color(149, 165, 166));
+        titleLabel.setFont(UIConstants.LABEL_BOLD_FONT.deriveFont(11f));
+        titleLabel.setForeground(UIConstants.GREY_COLOR);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(titleLabel);
         panel.add(Box.createRigidArea(new Dimension(0, 12)));
 
         storeNameLabel = new JLabel(storeName);
-        storeNameLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        storeNameLabel.setForeground(Color.WHITE);
+        storeNameLabel.setFont(UIConstants.TITLE_FONT.deriveFont(20f));
+        storeNameLabel.setForeground(UIConstants.WHITE);
         storeNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(storeNameLabel);
         panel.add(Box.createRigidArea(new Dimension(0, 8)));
 
         storeLocationLabel = new JLabel(storeLocation.isEmpty() ? "No location" : storeLocation);
-        storeLocationLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        storeLocationLabel.setForeground(new Color(189, 195, 199));
+        storeLocationLabel.setFont(UIConstants.LABEL_FONT_PLAIN_12);
+        storeLocationLabel.setForeground(UIConstants.BORDER_DARK);
         storeLocationLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(storeLocationLabel);
 
         storeContactLabel = new JLabel(storeContact.isEmpty() ? "No contact" : storeContact);
-        storeContactLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        storeContactLabel.setForeground(new Color(189, 195, 199));
+        storeContactLabel.setFont(UIConstants.LABEL_FONT_PLAIN_12);
+        storeContactLabel.setForeground(UIConstants.BORDER_DARK);
         storeContactLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(storeContactLabel);
 
@@ -206,8 +206,8 @@ public class MainApplicationPanel extends JPanel {
         panel.add(Box.createRigidArea(new Dimension(0, 25)));
 
         JLabel userLabel = new JLabel(username);
-        userLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        userLabel.setForeground(Color.WHITE);
+        userLabel.setFont(UIConstants.LABEL_BOLD_FONT.deriveFont(16f));
+        userLabel.setForeground(UIConstants.WHITE);
         userLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(userLabel);
 
@@ -226,8 +226,8 @@ public class MainApplicationPanel extends JPanel {
         badge.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel roleLabel = new JLabel(role.toUpperCase());
-        roleLabel.setFont(new Font("Segoe UI", Font.BOLD, 13));
-        roleLabel.setForeground(Color.WHITE);
+        roleLabel.setFont(UIConstants.LABEL_BOLD_FONT.deriveFont(13f));
+        roleLabel.setForeground(UIConstants.WHITE);
         badge.add(roleLabel);
 
         return badge;
@@ -269,7 +269,7 @@ public class MainApplicationPanel extends JPanel {
     private JButton createNavButton(String text, String panelName) {
         String icon = getNavIcon(text);
         JButton button = createBaseButton(icon + "  " + text, UIConstants.NAV_BACKGROUND, new Color(206, 214, 224), UIConstants.NAV_HOVER, false);
-        button.setFont(new Font("Segoe UI Emoji", Font.BOLD, 14));
+        button.setFont(UIConstants.FONT_EMOJI_LARGE.deriveFont(Font.BOLD, 14f));
 
         button.addActionListener(e -> {
             cardLayout.show(mainContentPanel, panelName);
@@ -352,7 +352,7 @@ public class MainApplicationPanel extends JPanel {
     // Helper method to consolidate button creation logic
     private JButton createBaseButton(String text, Color bgColor, Color fgColor, Color hoverColor, boolean isOpaque) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Segoe UI", Font.BOLD, (bgColor == UIConstants.NAV_BACKGROUND) ? 14 : 12)); // Slight font difference handled
+        button.setFont(UIConstants.BUTTON_FONT.deriveFont((bgColor == UIConstants.NAV_BACKGROUND) ? 14f : 12f));
         button.setForeground(fgColor);
         button.setBackground(bgColor);
         button.setFocusPainted(false);

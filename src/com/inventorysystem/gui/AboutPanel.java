@@ -12,11 +12,11 @@ public class AboutPanel extends JPanel {
 
     public AboutPanel(userFrame mockFrame) {
         setLayout(new BorderLayout());
-        setBackground(Color.WHITE);
+        setBackground(UIConstants.WHITE);
 
         JPanel mainContent = new JPanel();
         mainContent.setLayout(new BoxLayout(mainContent, BoxLayout.Y_AXIS));
-        mainContent.setBackground(Color.WHITE);
+        mainContent.setBackground(UIConstants.WHITE);
         mainContent.setBorder(new EmptyBorder(30, 20, 30, 20));
 
         // About section
@@ -41,11 +41,11 @@ public class AboutPanel extends JPanel {
     private JPanel createAboutSection() {
         JPanel aboutSection = new JPanel();
         aboutSection.setLayout(new BoxLayout(aboutSection, BoxLayout.Y_AXIS));
-        aboutSection.setBackground(Color.WHITE);
+        aboutSection.setBackground(UIConstants.WHITE);
         aboutSection.setBorder(new EmptyBorder(30, 60, 30, 60));
         
         JLabel titleLabel = new JLabel("About Us", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 32));
+        titleLabel.setFont(UIConstants.TITLE_FONT);
         titleLabel.setForeground(UIConstants.PRIMARY_COLOR);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         aboutSection.add(titleLabel);
@@ -65,7 +65,7 @@ public class AboutPanel extends JPanel {
         aboutSection.add(Box.createRigidArea(new Dimension(0, 30)));
 
         JLabel copyrightLabel = new JLabel("© 2025 SmartStock Inventory System. All rights reserved", SwingConstants.CENTER);
-        copyrightLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        copyrightLabel.setFont(UIConstants.LABEL_FONT);
         copyrightLabel.setForeground(UIConstants.TEXT_SECONDARY);
         copyrightLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         aboutSection.add(copyrightLabel);
@@ -83,28 +83,28 @@ public class AboutPanel extends JPanel {
     private JPanel createTeamSection() {
         JPanel teamSection = new JPanel();
         teamSection.setLayout(new BoxLayout(teamSection, BoxLayout.Y_AXIS));
-        teamSection.setBackground(Color.WHITE);
+        teamSection.setBackground(UIConstants.WHITE);
 
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        headerPanel.setBackground(Color.WHITE);
+        headerPanel.setBackground(UIConstants.WHITE);
         JLabel teamTitle = new JLabel("Development Team");
-        teamTitle.setFont(new Font("Segoe UI", Font.BOLD, 32));
+        teamTitle.setFont(UIConstants.TITLE_FONT);
         teamTitle.setForeground(UIConstants.PRIMARY_COLOR);
         headerPanel.add(teamTitle);
         teamSection.add(headerPanel);
         teamSection.add(Box.createRigidArea(new Dimension(0, 10)));
         
         JPanel subHeaderPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        subHeaderPanel.setBackground(Color.WHITE);
+        subHeaderPanel.setBackground(UIConstants.WHITE);
         JLabel subTitleLabel = new JLabel("BSIT-1B | Group #3");
-        subTitleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        subTitleLabel.setFont(UIConstants.LABEL_FONT_PLAIN_15);
         subTitleLabel.setForeground(UIConstants.TEXT_SECONDARY);
         subHeaderPanel.add(subTitleLabel);
         teamSection.add(subHeaderPanel);
         teamSection.add(Box.createRigidArea(new Dimension(0, 30)));
 
         JPanel membersContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
-        membersContainer.setBackground(Color.WHITE);
+        membersContainer.setBackground(UIConstants.WHITE);
         membersContainer.add(createMemberCard("George Harold A. Alcantara", "Project Manager / Documentation Writer", "GHA", UIConstants.PRIMARY_DARK));
         membersContainer.add(createMemberCard("Aldrin Miguel A. Jariel", "System Analyst / Dev / QA / Documentation Writer", "AMA", UIConstants.ACCENT_COLOR));
         membersContainer.add(createMemberCard("John Christoper A. Perez", "UI/UX Designer / Documentation Writer", "JCA", UIConstants.SUCCESS_COLOR));
@@ -117,9 +117,9 @@ public class AboutPanel extends JPanel {
 
     private JPanel createFooter() {
         JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        footerPanel.setBackground(Color.WHITE);
+        footerPanel.setBackground(UIConstants.WHITE);
         JLabel footerLabel = new JLabel("© 2025 SmartStock Development Team. All Rights Reserved.");
-        footerLabel.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        footerLabel.setFont(UIConstants.LABEL_FONT_PLAIN_13);
         footerLabel.setForeground(UIConstants.TEXT_SECONDARY);
         footerPanel.add(footerLabel);
         return footerPanel;
@@ -127,13 +127,13 @@ public class AboutPanel extends JPanel {
 
     private JTextArea createParagraph(String text) {
         JTextArea textArea = new JTextArea(text);
-        textArea.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        textArea.setFont(UIConstants.LABEL_FONT_PLAIN_15);
         textArea.setForeground(UIConstants.TEXT_PRIMARY);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setEditable(false);
         textArea.setFocusable(false);
-        textArea.setBackground(Color.WHITE);
+        textArea.setBackground(UIConstants.WHITE);
         textArea.setBorder(null);
         textArea.setAlignmentX(Component.CENTER_ALIGNMENT);
         textArea.setMaximumSize(new Dimension(850, Integer.MAX_VALUE));
@@ -144,7 +144,7 @@ public class AboutPanel extends JPanel {
         JPanel card = new JPanel();
         card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
         card.setPreferredSize(new Dimension(240, 300));
-        card.setBackground(Color.WHITE);
+        card.setBackground(UIConstants.WHITE);
         card.setBorder(BorderFactory.createCompoundBorder(
             new LineBorder(UIConstants.BORDER_COLOR, 1, true),
             new EmptyBorder(25, 15, 25, 15)
@@ -156,13 +156,13 @@ public class AboutPanel extends JPanel {
         avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         JLabel nameLabel = new JLabel("<html><center>" + name + "</center></html>");
-        nameLabel.setFont(new Font("Segoe UI", Font.BOLD, 15));
+        nameLabel.setFont(UIConstants.LABEL_FONT_BOLD_16);
         nameLabel.setForeground(UIConstants.TEXT_PRIMARY);
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         
         JLabel roleLabel = new JLabel("<html><center>" + role + "</center></html>");
-        roleLabel.setFont(new Font("Segoe UI", Font.ITALIC, 13));
+        roleLabel.setFont(UIConstants.LABEL_FONT_PLAIN_13.deriveFont(Font.ITALIC));
         roleLabel.setForeground(UIConstants.TEXT_SECONDARY);
         roleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         roleLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -177,11 +177,11 @@ public class AboutPanel extends JPanel {
         
         card.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                card.setBackground(new Color(250, 252, 255));
+                card.setBackground(UIConstants.BACKGROUND_COLOR);
                 card.setBorder(new LineBorder(UIConstants.PRIMARY_COLOR, 1));
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                card.setBackground(Color.WHITE);
+                card.setBackground(UIConstants.WHITE);
                 card.setBorder(new LineBorder(UIConstants.BORDER_COLOR, 1));
             }
         });
@@ -199,8 +199,8 @@ public class AboutPanel extends JPanel {
             avatarLabel.setIcon(new ImageIcon(createCircularImage(avatarImage, 130)));
         } else {
             avatarLabel.setText(initials);
-            avatarLabel.setFont(new Font("Segoe UI", Font.BOLD, 36));
-            avatarLabel.setForeground(Color.WHITE);
+            avatarLabel.setFont(UIConstants.TITLE_FONT.deriveFont(36f));
+            avatarLabel.setForeground(UIConstants.WHITE);
             avatarLabel.setOpaque(true);
             avatarLabel.setBackground(avatarColor);
             avatarLabel.setBorder(new LineBorder(avatarColor, 5, true));

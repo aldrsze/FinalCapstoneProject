@@ -11,64 +11,64 @@ public class CustomTableRenderer extends DefaultTableCellRenderer {
     public Component getTableCellRendererComponent(JTable table, Object value,
             boolean isSelected, boolean hasFocus, int row, int column) {
         Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-        
+
         // Alignment
         setHorizontalAlignment(JLabel.CENTER);
-        
-        // Fonts
+
+        // Fonts and Colors
         if (column == 0) { // Row numbers
-            setFont(new Font("Segoe UI", Font.PLAIN, 10));
-            if (!isSelected) setForeground(Color.GRAY);
+            setFont(UIConstants.TABLE_SMALL_FONT);
+            if (!isSelected) setForeground(UIConstants.TEXT_SECONDARY);
         } else {
             setFont(UIConstants.TABLE_FONT);
-            setForeground(isSelected ? Color.WHITE : UIConstants.TEXT_PRIMARY);
+            setForeground(isSelected ? UIConstants.WHITE : UIConstants.TEXT_PRIMARY);
         }
 
-        // Colors
+        // Row background
         if (isSelected) {
             c.setBackground(UIConstants.PRIMARY_LIGHT);
         } else {
-            c.setBackground(row % 2 == 0 ? Color.WHITE : UIConstants.BACKGROUND_COLOR);
+            c.setBackground(row % 2 == 0 ? UIConstants.WHITE : UIConstants.BACKGROUND_COLOR);
         }
-        
+
         // Padding
         ((JLabel) c).setBorder(new EmptyBorder(0, 10, 0, 10));
-        
-        // Stock Status Color Coding (realistic retail thresholds)
+
+        // Stock Status & Transaction Type Color Coding
         if (value != null) {
             String s = value.toString();
             if (s.equals("Out of Stock")) {
-                c.setForeground(new Color(220, 53, 69));    // Red - Critical
+                c.setForeground(UIConstants.DANGER_COLOR); // Red - Critical
                 setFont(new Font("Segoe UI", Font.BOLD, 12));
             } else if (s.equals("Critical")) {
-                c.setForeground(new Color(255, 87, 34));     // Deep Orange - Urgent
+                c.setForeground(UIConstants.WARNING_DEEP); // Deep Orange - Urgent
                 setFont(new Font("Segoe UI", Font.BOLD, 12));
             } else if (s.equals("Low Stock")) {
-                c.setForeground(new Color(255, 152, 0));     // Orange - Warning
+                c.setForeground(UIConstants.WARNING_COLOR); // Orange - Warning
                 setFont(new Font("Segoe UI", Font.BOLD, 12));
             } else if (s.equals("Good")) {
-                c.setForeground(new Color(76, 175, 80));     // Green - Healthy
+                c.setForeground(UIConstants.SUCCESS_GREEN); // Green - Healthy
             } else if (s.equals("Overstocked")) {
-                c.setForeground(new Color(33, 150, 243));    // Blue - Info
+                c.setForeground(UIConstants.INFO_BLUE); // Blue - Info
             }
             // Transaction Type Color Coding (for records panel)
             else if (s.equals("STOCK-OUT") || s.equals("SALE")) {
-                c.setForeground(new Color(220, 53, 69));     // Red - Outgoing
+                c.setForeground(UIConstants.DANGER_COLOR); // Red - Outgoing
                 setFont(new Font("Segoe UI", Font.BOLD, 12));
             } else if (s.equals("STOCK-IN")) {
-                c.setForeground(new Color(76, 175, 80));     // Green - Incoming
+                c.setForeground(UIConstants.SUCCESS_GREEN); // Green - Incoming
                 setFont(new Font("Segoe UI", Font.BOLD, 12));
             } else if (s.equals("CUSTOMER-RETURN")) {
-                c.setForeground(new Color(33, 150, 243));    // Blue - Return
+                c.setForeground(UIConstants.INFO_BLUE); // Blue - Return
                 setFont(new Font("Segoe UI", Font.BOLD, 12));
             } else if (s.equals("STOCK-REMOVAL") || s.equals("REJECT")) {
-                c.setForeground(new Color(255, 87, 34));     // Deep Orange - Removal
+                c.setForeground(UIConstants.WARNING_DEEP); // Deep Orange - Removal
                 setFont(new Font("Segoe UI", Font.BOLD, 12));
             } else if (s.equals("REFUND") || s.equals("DISPOSE")) {
-                c.setForeground(new Color(156, 39, 176));    // Purple - Special
+                c.setForeground(UIConstants.PURPLE_COLOR); // Purple - Special
                 setFont(new Font("Segoe UI", Font.BOLD, 12));
             } else if (s.equals("DELETE")) {
-                c.setForeground(new Color(244, 67, 54));     // Bright Red - Critical
+                c.setForeground(UIConstants.DANGER_CRITICAL); // Bright Red - Critical
                 setFont(new Font("Segoe UI", Font.BOLD, 12));
             }
         }

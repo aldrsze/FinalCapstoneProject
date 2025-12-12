@@ -118,7 +118,7 @@ public class dashboardPanel extends JPanel {
 
     private JLabel createCompactValueLabel(String initialText) {
         JLabel label = new JLabel(initialText, SwingConstants.CENTER);
-        label.setFont(new Font("Segoe UI", Font.BOLD, 24));
+        label.setFont(UIConstants.TITLE_FONT.deriveFont(24f));
         label.setForeground(UIConstants.TEXT_PRIMARY);
         return label;
     }
@@ -129,29 +129,29 @@ public class dashboardPanel extends JPanel {
             BorderFactory.createLineBorder(UIConstants.BORDER_COLOR, 1),
             new EmptyBorder(15, 10, 15, 10)
         ));
-        panel.setBackground(Color.WHITE);
-        
+        panel.setBackground(UIConstants.WHITE);
+
         JLabel titleLabel = new JLabel(title, SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        titleLabel.setFont(UIConstants.LABEL_FONT_PLAIN_12);
         titleLabel.setForeground(UIConstants.TEXT_SECONDARY);
-        
+
         panel.add(titleLabel, BorderLayout.NORTH);
         panel.add(valueLabel, BorderLayout.CENTER);
-        
+
         return panel;
     }
     
     private JPanel createBestSellersSection() {
         JPanel section = new JPanel(new BorderLayout());
-        section.setBackground(Color.WHITE);
+        section.setBackground(UIConstants.WHITE);
         section.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(UIConstants.BORDER_COLOR, 1),
             new EmptyBorder(15, 15, 15, 15)
         ));
         
         JLabel titleLabel = new JLabel("Best Sellers");
-        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        titleLabel.setForeground(new Color(22, 160, 133));
+        titleLabel.setFont(UIConstants.TABLE_HEADER_FONT);
+        titleLabel.setForeground(UIConstants.TEAL_COLOR);
         section.add(titleLabel, BorderLayout.NORTH);
         
         String[] columns = {"#", "Product", "Sales Amount", "COGS", "Margin", "Qty Sold"};
@@ -194,7 +194,7 @@ public class dashboardPanel extends JPanel {
         javax.swing.table.JTableHeader header = table.getTableHeader();
         header.setFont(UIConstants.TABLE_HEADER_FONT);
         header.setBackground(UIConstants.PRIMARY_COLOR);
-        header.setForeground(Color.WHITE);
+        header.setForeground(UIConstants.WHITE);
         header.setReorderingAllowed(false);
         header.setPreferredSize(new Dimension(header.getWidth(), 40));
         
@@ -205,7 +205,7 @@ public class dashboardPanel extends JPanel {
                     boolean isSelected, boolean hasFocus, int row, int column) {
                 JLabel c = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 c.setBackground(UIConstants.PRIMARY_COLOR);
-                c.setForeground(Color.WHITE);
+                c.setForeground(UIConstants.WHITE);
                 c.setFont(UIConstants.TABLE_HEADER_FONT);
                 c.setHorizontalAlignment(JLabel.CENTER);
                 c.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
@@ -222,7 +222,7 @@ public class dashboardPanel extends JPanel {
                 
                 // Smaller font for # column
                 if (column == 0) {
-                    setFont(new Font("Segoe UI", Font.PLAIN, 10));
+                    setFont(UIConstants.TABLE_SMALL_FONT);
                 } else {
                     setFont(UIConstants.TABLE_FONT);
                 }
@@ -276,10 +276,10 @@ public class dashboardPanel extends JPanel {
                     setBackground(UIConstants.PRIMARY_LIGHT);
                     setForeground(Color.WHITE);
                 } else {
-                    setBackground(row % 2 == 0 ? Color.WHITE : UIConstants.BACKGROUND_COLOR);
+                    setBackground(row % 2 == 0 ? UIConstants.WHITE : UIConstants.BACKGROUND_COLOR);
                     setForeground(UIConstants.TEXT_PRIMARY);
                 }
-                setFont(new Font("Segoe UI", Font.PLAIN, 10));
+                setFont(UIConstants.TABLE_SMALL_FONT);
                 setBorder(BorderFactory.createEmptyBorder(8, 10, 8, 10));
                 return this;
             }
@@ -295,7 +295,7 @@ public class dashboardPanel extends JPanel {
         table.getColumnModel().getColumn(5).setPreferredWidth(80);  // Qty Sold
         
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.getViewport().setBackground(Color.WHITE);
+        scrollPane.getViewport().setBackground(UIConstants.WHITE);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         scrollPane.setBorder(null);
@@ -315,15 +315,15 @@ public class dashboardPanel extends JPanel {
     
     private JPanel createStockAlertSection() {
         JPanel section = new JPanel(new BorderLayout());
-        section.setBackground(Color.WHITE);
+        section.setBackground(UIConstants.WHITE);
         section.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(UIConstants.BORDER_COLOR, 1),
             new EmptyBorder(15, 15, 15, 15)
         ));
         
         JLabel titleLabel = new JLabel("Stock Alert");
-        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        titleLabel.setForeground(new Color(22, 160, 133));
+        titleLabel.setFont(UIConstants.TABLE_HEADER_FONT);
+        titleLabel.setForeground(UIConstants.TEAL_COLOR);
         section.add(titleLabel, BorderLayout.NORTH);
         
         String[] columns = {"#", "Description", "Quantity", "Status"};
@@ -366,7 +366,7 @@ public class dashboardPanel extends JPanel {
         javax.swing.table.JTableHeader header = table.getTableHeader();
         header.setFont(UIConstants.TABLE_HEADER_FONT);
         header.setBackground(UIConstants.PRIMARY_COLOR);
-        header.setForeground(Color.WHITE);
+        header.setForeground(UIConstants.WHITE);
         header.setReorderingAllowed(false);
         header.setPreferredSize(new Dimension(header.getWidth(), 40));
         
@@ -377,7 +377,7 @@ public class dashboardPanel extends JPanel {
                     boolean isSelected, boolean hasFocus, int row, int column) {
                 JLabel c = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 c.setBackground(UIConstants.PRIMARY_COLOR);
-                c.setForeground(Color.WHITE);
+                c.setForeground(UIConstants.WHITE);
                 c.setFont(UIConstants.TABLE_HEADER_FONT);
                 c.setHorizontalAlignment(JLabel.CENTER);
                 c.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
@@ -394,9 +394,9 @@ public class dashboardPanel extends JPanel {
                 
                 // Font & Alignment Logic
                 if (column == 0) {
-                    setFont(new Font("Segoe UI", Font.PLAIN, 10));
+                    setFont(UIConstants.TABLE_SMALL_FONT);
                 } else if (column == 3) { // Status Column - Bold
-                    setFont(new Font("Segoe UI", Font.BOLD, 12));
+                    setFont(UIConstants.TABLE_FONT.deriveFont(Font.BOLD, 12f));
                 } else {
                     setFont(UIConstants.TABLE_FONT);
                 }
@@ -424,18 +424,18 @@ public class dashboardPanel extends JPanel {
                     if (column == 3) {
                         String status = value != null ? value.toString() : "";
                         if (status.equals("Out of Stock")) {
-                            c.setForeground(new Color(220, 53, 69)); // Red - Critical
-                            setFont(new Font("Segoe UI", Font.BOLD, 12));
+                            c.setForeground(UIConstants.DANGER_COLOR); // Red - Critical
+                            setFont(UIConstants.TABLE_FONT.deriveFont(Font.BOLD, 12f));
                         } else if (status.equals("Critical")) {
-                            c.setForeground(new Color(255, 87, 34)); // Deep Orange - Urgent
-                            setFont(new Font("Segoe UI", Font.BOLD, 12));
+                            c.setForeground(UIConstants.WARNING_DEEP); // Deep Orange - Urgent
+                            setFont(UIConstants.TABLE_FONT.deriveFont(Font.BOLD, 12f));
                         } else if (status.equals("Low Stock")) {
-                            c.setForeground(new Color(255, 152, 0)); // Orange - Warning
-                            setFont(new Font("Segoe UI", Font.BOLD, 12));
+                            c.setForeground(UIConstants.WARNING_COLOR); // Orange - Warning
+                            setFont(UIConstants.TABLE_FONT.deriveFont(Font.BOLD, 12f));
                         } else if (status.equals("Good")) {
-                            c.setForeground(new Color(76, 175, 80)); // Green - Healthy
+                            c.setForeground(UIConstants.SUCCESS_GREEN); // Green - Healthy
                         } else if (status.equals("Overstocked")) {
-                            c.setForeground(new Color(33, 150, 243)); // Blue - Info
+                            c.setForeground(UIConstants.INFO_BLUE); // Blue - Info
                         } else {
                             c.setForeground(UIConstants.TEXT_PRIMARY);
                         }
@@ -474,7 +474,7 @@ public class dashboardPanel extends JPanel {
                     setBackground(row % 2 == 0 ? Color.WHITE : UIConstants.BACKGROUND_COLOR);
                     setForeground(UIConstants.TEXT_PRIMARY);
                 }
-                setFont(new Font("Segoe UI", Font.PLAIN, 10));
+                setFont(UIConstants.TABLE_SMALL_FONT);
                 setBorder(BorderFactory.createEmptyBorder(8, 10, 8, 10));
                 return this;
             }
@@ -488,7 +488,7 @@ public class dashboardPanel extends JPanel {
         table.getColumnModel().getColumn(3).setPreferredWidth(120); // Status
         
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.getViewport().setBackground(Color.WHITE);
+        scrollPane.getViewport().setBackground(UIConstants.WHITE);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setBorder(null);

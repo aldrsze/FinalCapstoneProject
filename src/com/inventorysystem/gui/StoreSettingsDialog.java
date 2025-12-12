@@ -63,15 +63,15 @@ public class StoreSettingsDialog extends JDialog {
         headerPanel.setBorder(new EmptyBorder(20, 30, 20, 30));
         
         JLabel titleLabel = new JLabel("Settings");
-        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 26));
-        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setFont(UIConstants.TITLE_FONT.deriveFont(Font.BOLD, 26f));
+        titleLabel.setForeground(UIConstants.WHITE);
         headerPanel.add(titleLabel, BorderLayout.WEST);
         
         add(headerPanel, BorderLayout.NORTH);
 
         // Tabs: profile, username, password
         JTabbedPane tabbedPane = new JTabbedPane();
-        tabbedPane.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        tabbedPane.setFont(UIConstants.BUTTON_FONT.deriveFont(Font.BOLD, 14f));
         tabbedPane.setBackground(UIConstants.BACKGROUND_COLOR);
         tabbedPane.setBorder(new EmptyBorder(15, 15, 15, 15));
 
@@ -122,7 +122,7 @@ public class StoreSettingsDialog extends JDialog {
         outerPanel.setBorder(null);
         
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(UIConstants.FORM_COLOR);
         panel.setBorder(new EmptyBorder(35, 40, 35, 40));
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -134,7 +134,7 @@ public class StoreSettingsDialog extends JDialog {
         
         // Section
         JLabel sectionTitle = new JLabel("Store Information");
-        sectionTitle.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        sectionTitle.setFont(UIConstants.SUBTITLE_FONT.deriveFont(Font.BOLD, 18f));
         sectionTitle.setForeground(UIConstants.TEXT_PRIMARY);
         gbc.insets = new Insets(0, 5, 25, 5);
         panel.add(sectionTitle, gbc);
@@ -164,31 +164,31 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy++;
         gbc.insets = new Insets(0, 5, 15, 5);
         JLabel pricingTitle = new JLabel("Pricing Settings");
-        pricingTitle.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        pricingTitle.setFont(UIConstants.LABEL_FONT_BOLD_16);
         pricingTitle.setForeground(UIConstants.TEXT_PRIMARY);
         panel.add(pricingTitle, gbc);
         
         gbc.gridy++;
         gbc.insets = new Insets(8, 5, 4, 5);
         JLabel markupLabel = new JLabel("Default Markup Percentage (%)");
-        markupLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        markupLabel.setFont(UIConstants.LABEL_BOLD_FONT);
         markupLabel.setForeground(UIConstants.TEXT_PRIMARY);
         panel.add(markupLabel, gbc);
         
         gbc.gridy++;
         gbc.insets = new Insets(0, 5, 6, 5);
         markupField = new JTextField();
-        markupField.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        markupField.setFont(UIConstants.INPUT_FONT);
         markupField.setPreferredSize(new Dimension(550, 40));
         markupField.setBorder(new CompoundBorder(
-            new LineBorder(new Color(200, 200, 200), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(10, 12, 10, 12)));
         panel.add(markupField, gbc);
         
         gbc.gridy++;
         gbc.insets = new Insets(2, 5, 12, 5);
         JLabel markupHelp = new JLabel("<html><i>Used when adding products without specific markup</i></html>");
-        markupHelp.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+        markupHelp.setFont(UIConstants.LABEL_FONT_PLAIN_12);
         markupHelp.setForeground(UIConstants.TEXT_SECONDARY);
         panel.add(markupHelp, gbc);
         
@@ -203,7 +203,7 @@ public class StoreSettingsDialog extends JDialog {
         outerPanel.setBorder(null);
         
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(UIConstants.FORM_COLOR);
         panel.setBorder(new EmptyBorder(40, 45, 40, 45));
         
         GridBagConstraints gbc = new GridBagConstraints();
@@ -215,32 +215,32 @@ public class StoreSettingsDialog extends JDialog {
         
         // Section
         JLabel sectionTitle = new JLabel("Change Username");
-        sectionTitle.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        sectionTitle.setFont(UIConstants.SUBTITLE_FONT.deriveFont(Font.BOLD, 20f));
         sectionTitle.setForeground(UIConstants.TEXT_PRIMARY);
         panel.add(sectionTitle, gbc);
         
         gbc.gridy++;
         gbc.insets = new Insets(5, 5, 15, 5);
         JLabel description = new JLabel("<html>Update your username. You'll need to verify with your password.</html>");
-        description.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        description.setFont(UIConstants.LABEL_FONT_PLAIN_13);
         description.setForeground(UIConstants.TEXT_SECONDARY);
         panel.add(description, gbc);
         
         gbc.gridy++;
         gbc.insets = new Insets(15, 5, 6, 5);
         JLabel currentLabel = new JLabel("Current Username");
-        currentLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        currentLabel.setFont(UIConstants.LABEL_BOLD_FONT);
         currentLabel.setForeground(UIConstants.TEXT_PRIMARY);
         panel.add(currentLabel, gbc);
         
         gbc.gridy++;
         gbc.insets = new Insets(0, 5, 15, 5);
         currentUsernameField = new JTextField();
-        currentUsernameField.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        currentUsernameField.setFont(UIConstants.INPUT_FONT.deriveFont(15f));
         currentUsernameField.setEditable(false);
-        currentUsernameField.setBackground(new Color(245, 245, 245));
+        currentUsernameField.setBackground(UIConstants.BACKGROUND_COLOR);
         currentUsernameField.setBorder(new CompoundBorder(
-            new LineBorder(new Color(200, 200, 200), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(12, 15, 12, 15)));
         currentUsernameField.setPreferredSize(new Dimension(550, 45));
         panel.add(currentUsernameField, gbc);
@@ -248,16 +248,16 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy++;
         gbc.insets = new Insets(10, 5, 6, 5);
         JLabel newUsernameLabel = new JLabel("New Username");
-        newUsernameLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        newUsernameLabel.setFont(UIConstants.LABEL_BOLD_FONT);
         newUsernameLabel.setForeground(UIConstants.TEXT_PRIMARY);
         panel.add(newUsernameLabel, gbc);
         
         gbc.gridy++;
         gbc.insets = new Insets(0, 5, 15, 5);
         newUsernameField = new JTextField();
-        newUsernameField.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        newUsernameField.setFont(UIConstants.INPUT_FONT.deriveFont(15f));
         newUsernameField.setBorder(new CompoundBorder(
-            new LineBorder(new Color(200, 200, 200), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(12, 15, 12, 15)));
         newUsernameField.setPreferredSize(new Dimension(550, 45));
         panel.add(newUsernameField, gbc);
@@ -265,7 +265,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy++;
         gbc.insets = new Insets(10, 5, 6, 5);
         JLabel verifyLabel = new JLabel("Current Password");
-        verifyLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        verifyLabel.setFont(UIConstants.LABEL_BOLD_FONT);
         verifyLabel.setForeground(UIConstants.TEXT_PRIMARY);
         panel.add(verifyLabel, gbc);
         
@@ -273,7 +273,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.insets = new Insets(0, 5, 20, 5);
         
         verifyPasswordField = new JPasswordField();
-        verifyPasswordField.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        verifyPasswordField.setFont(UIConstants.INPUT_FONT.deriveFont(15f));
         verifyPasswordField.setPreferredSize(new Dimension(490, 45));
         verifyPasswordField.setMaximumSize(new Dimension(490, 45));
         verifyPasswordField.setBorder(new EmptyBorder(12, 15, 12, 45));
@@ -286,7 +286,7 @@ public class StoreSettingsDialog extends JDialog {
         verifyPasswordPanel.setPreferredSize(new Dimension(490, 45));
         verifyPasswordPanel.setMaximumSize(new Dimension(490, 45));
         verifyPasswordPanel.setBorder(new CompoundBorder(
-            new LineBorder(new Color(200, 200, 200), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(0, 0, 0, 0)));
         verifyPasswordPanel.add(verifyPasswordField, BorderLayout.CENTER);
         verifyPasswordPanel.add(toggleVerifyBtn, BorderLayout.EAST);
@@ -295,7 +295,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy++;
         gbc.insets = new Insets(15, 5, 10, 5);
         JButton changeUsernameBtn = new JButton("Save Changes");
-        changeUsernameBtn.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        changeUsernameBtn.setFont(UIConstants.BUTTON_FONT.deriveFont(Font.BOLD, 14f));
         changeUsernameBtn.setPreferredSize(new Dimension(200, 42));
         changeUsernameBtn.setBackground(UIConstants.PRIMARY_COLOR);
         changeUsernameBtn.setForeground(Color.WHITE);
@@ -320,7 +320,7 @@ public class StoreSettingsDialog extends JDialog {
         outerPanel.setBorder(null);
         
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(UIConstants.FORM_COLOR);
         panel.setBorder(new EmptyBorder(40, 45, 40, 45));
         
         GridBagConstraints gbc = new GridBagConstraints();
@@ -332,21 +332,21 @@ public class StoreSettingsDialog extends JDialog {
         
         // Section
         JLabel sectionTitle = new JLabel("Change Password");
-        sectionTitle.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        sectionTitle.setFont(UIConstants.SUBTITLE_FONT.deriveFont(Font.BOLD, 20f));
         sectionTitle.setForeground(UIConstants.TEXT_PRIMARY);
         panel.add(sectionTitle, gbc);
         
         gbc.gridy++;
         gbc.insets = new Insets(5, 5, 15, 5);
         JLabel description = new JLabel("<html>Your password must be at least 4 characters long.</html>");
-        description.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        description.setFont(UIConstants.LABEL_FONT_PLAIN_13);
         description.setForeground(UIConstants.TEXT_SECONDARY);
         panel.add(description, gbc);
         
         gbc.gridy++;
         gbc.insets = new Insets(15, 5, 6, 5);
         JLabel currentPwLabel = new JLabel("Current Password");
-        currentPwLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        currentPwLabel.setFont(UIConstants.LABEL_BOLD_FONT);
         currentPwLabel.setForeground(UIConstants.TEXT_PRIMARY);
         panel.add(currentPwLabel, gbc);
         
@@ -354,7 +354,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.insets = new Insets(0, 5, 15, 5);
         
         currentPasswordField = new JPasswordField();
-        currentPasswordField.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        currentPasswordField.setFont(UIConstants.INPUT_FONT.deriveFont(15f));
         currentPasswordField.setPreferredSize(new Dimension(490, 45));
         currentPasswordField.setMaximumSize(new Dimension(490, 45));
         currentPasswordField.setBorder(new EmptyBorder(12, 15, 12, 45));
@@ -367,7 +367,7 @@ public class StoreSettingsDialog extends JDialog {
         currentPasswordPanel.setPreferredSize(new Dimension(490, 45));
         currentPasswordPanel.setMaximumSize(new Dimension(490, 45));
         currentPasswordPanel.setBorder(new CompoundBorder(
-            new LineBorder(new Color(200, 200, 200), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(0, 0, 0, 0)));
         currentPasswordPanel.add(currentPasswordField, BorderLayout.CENTER);
         currentPasswordPanel.add(toggleCurrentBtn, BorderLayout.EAST);
@@ -376,7 +376,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy++;
         gbc.insets = new Insets(10, 5, 6, 5);
         JLabel newPwLabel = new JLabel("New Password");
-        newPwLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        newPwLabel.setFont(UIConstants.LABEL_BOLD_FONT);
         newPwLabel.setForeground(UIConstants.TEXT_PRIMARY);
         panel.add(newPwLabel, gbc);
         
@@ -384,7 +384,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.insets = new Insets(0, 5, 15, 5);
         
         newPasswordField = new JPasswordField();
-        newPasswordField.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        newPasswordField.setFont(UIConstants.INPUT_FONT.deriveFont(15f));
         newPasswordField.setPreferredSize(new Dimension(490, 45));
         newPasswordField.setMaximumSize(new Dimension(490, 45));
         newPasswordField.setBorder(new EmptyBorder(12, 15, 12, 45));
@@ -397,7 +397,7 @@ public class StoreSettingsDialog extends JDialog {
         newPasswordPanel.setPreferredSize(new Dimension(490, 45));
         newPasswordPanel.setMaximumSize(new Dimension(490, 45));
         newPasswordPanel.setBorder(new CompoundBorder(
-            new LineBorder(new Color(200, 200, 200), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(0, 0, 0, 0)));
         newPasswordPanel.add(newPasswordField, BorderLayout.CENTER);
         newPasswordPanel.add(toggleNewBtn, BorderLayout.EAST);
@@ -406,7 +406,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy++;
         gbc.insets = new Insets(10, 5, 6, 5);
         JLabel confirmPwLabel = new JLabel("Confirm New Password");
-        confirmPwLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        confirmPwLabel.setFont(UIConstants.LABEL_BOLD_FONT);
         confirmPwLabel.setForeground(UIConstants.TEXT_PRIMARY);
         panel.add(confirmPwLabel, gbc);
         
@@ -414,7 +414,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.insets = new Insets(0, 5, 20, 5);
         
         confirmPasswordField = new JPasswordField();
-        confirmPasswordField.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        confirmPasswordField.setFont(UIConstants.INPUT_FONT.deriveFont(15f));
         confirmPasswordField.setPreferredSize(new Dimension(490, 45));
         confirmPasswordField.setMaximumSize(new Dimension(490, 45));
         confirmPasswordField.setBorder(new EmptyBorder(12, 15, 12, 45));
@@ -427,7 +427,7 @@ public class StoreSettingsDialog extends JDialog {
         confirmPasswordPanel.setPreferredSize(new Dimension(490, 45));
         confirmPasswordPanel.setMaximumSize(new Dimension(490, 45));
         confirmPasswordPanel.setBorder(new CompoundBorder(
-            new LineBorder(new Color(200, 200, 200), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(0, 0, 0, 0)));
         confirmPasswordPanel.add(confirmPasswordField, BorderLayout.CENTER);
         confirmPasswordPanel.add(toggleConfirmBtn, BorderLayout.EAST);
@@ -436,7 +436,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy++;
         gbc.insets = new Insets(15, 5, 10, 5);
         JButton changePasswordBtn = new JButton("Save Changes");
-        changePasswordBtn.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        changePasswordBtn.setFont(UIConstants.BUTTON_FONT.deriveFont(Font.BOLD, 14f));
         changePasswordBtn.setPreferredSize(new Dimension(200, 42));
         changePasswordBtn.setBackground(UIConstants.PRIMARY_COLOR);
         changePasswordBtn.setForeground(Color.WHITE);
@@ -512,14 +512,16 @@ public class StoreSettingsDialog extends JDialog {
     }
 
     // Save/Cancel
+    // Buttons at bottom
     private JPanel createButtonPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 12, 15));
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(UIConstants.FORM_COLOR);
         panel.setBorder(new CompoundBorder(
             new MatteBorder(2, 0, 0, 0, UIConstants.PRIMARY_LIGHT),
             new EmptyBorder(8, 15, 8, 15)));
-
-        JButton cancelBtn = createButton("Cancel", new Color(149, 165, 166), new Color(127, 140, 141));
+            
+        JButton cancelBtn = createButton("Cancel", UIConstants.GREY_COLOR, UIConstants.TEXT_SUBTITLE);
+        cancelBtn.setForeground(UIConstants.TEXT_PRIMARY); // Make text visible
         cancelBtn.addActionListener(e -> dispose());
 
         JButton saveBtn = createButton("Save Changes", UIConstants.SUCCESS_COLOR, UIConstants.SUCCESS_DARK);
@@ -534,7 +536,7 @@ public class StoreSettingsDialog extends JDialog {
     // Styled button
     private JButton createButton(String text, Color bgColor, Color hoverColor) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Segoe UI", Font.BOLD, 13));
+        button.setFont(UIConstants.BUTTON_FONT);
         button.setPreferredSize(new Dimension(150, 40));
         button.setBackground(bgColor);
         button.setForeground(Color.WHITE);
@@ -672,7 +674,7 @@ public class StoreSettingsDialog extends JDialog {
         outerPanel.setBorder(null);
         
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(UIConstants.FORM_COLOR);
         panel.setBorder(new EmptyBorder(40, 45, 40, 45));
         
         GridBagConstraints gbc = new GridBagConstraints();
@@ -684,7 +686,7 @@ public class StoreSettingsDialog extends JDialog {
         
         // Section
         JLabel sectionTitle = new JLabel("Delete Account");
-        sectionTitle.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        sectionTitle.setFont(UIConstants.SUBTITLE_FONT.deriveFont(Font.BOLD, 20f));
         sectionTitle.setForeground(UIConstants.TEXT_PRIMARY);
         panel.add(sectionTitle, gbc);
         
@@ -694,12 +696,12 @@ public class StoreSettingsDialog extends JDialog {
         descPanel.setBackground(Color.WHITE);
         
         JLabel warningEmoji = new JLabel("\u26A0 ");
-        warningEmoji.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
+        warningEmoji.setFont(UIConstants.FONT_EMOJI_SMALL);
         warningEmoji.setForeground(new Color(220, 53, 69));
         descPanel.add(warningEmoji);
         
         JLabel description = new JLabel("<html><b>Warning:</b> This action cannot be undone. All your data will be permanently deleted.</html>");
-        description.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        description.setFont(UIConstants.LABEL_FONT_PLAIN_13);
         description.setForeground(new Color(220, 53, 69));
         descPanel.add(description);
         
@@ -711,12 +713,12 @@ public class StoreSettingsDialog extends JDialog {
         warningPanel.setLayout(new BoxLayout(warningPanel, BoxLayout.Y_AXIS));
         warningPanel.setBackground(new Color(255, 243, 243));
         warningPanel.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(220, 53, 69, 50), 1),
+            BorderFactory.createLineBorder(UIConstants.DANGER_COLOR, 1),
             new EmptyBorder(15, 20, 15, 20)
         ));
         
         JLabel warningText = new JLabel("Deleting your account will permanently remove:");
-        warningText.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        warningText.setFont(UIConstants.LABEL_FONT_PLAIN_13);
         warningText.setForeground(UIConstants.TEXT_SECONDARY);
         warningText.setAlignmentX(Component.LEFT_ALIGNMENT);
         warningPanel.add(warningText);
@@ -731,7 +733,7 @@ public class StoreSettingsDialog extends JDialog {
         
         for (String warn : warnings) {
             JLabel item = new JLabel(warn);
-            item.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+            item.setFont(UIConstants.LABEL_FONT_PLAIN_13);
             item.setForeground(UIConstants.TEXT_SECONDARY);
             item.setAlignmentX(Component.LEFT_ALIGNMENT);
             warningPanel.add(item);
@@ -745,7 +747,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy++;
         gbc.insets = new Insets(20, 5, 6, 5);
         JLabel passwordLabel = new JLabel("Confirm Your Password");
-        passwordLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        passwordLabel.setFont(UIConstants.LABEL_BOLD_FONT);
         passwordLabel.setForeground(UIConstants.TEXT_PRIMARY);
         panel.add(passwordLabel, gbc);
         
@@ -753,7 +755,7 @@ public class StoreSettingsDialog extends JDialog {
         gbc.insets = new Insets(0, 5, 20, 5);
         
         JPasswordField deletePasswordField = new JPasswordField();
-        deletePasswordField.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        deletePasswordField.setFont(UIConstants.INPUT_FONT.deriveFont(15f));
         deletePasswordField.setPreferredSize(new Dimension(490, 45));
         deletePasswordField.setMaximumSize(new Dimension(490, 45));
         deletePasswordField.setBorder(new EmptyBorder(12, 15, 12, 45));
@@ -766,7 +768,7 @@ public class StoreSettingsDialog extends JDialog {
         passwordPanel.setPreferredSize(new Dimension(490, 45));
         passwordPanel.setMaximumSize(new Dimension(490, 45));
         passwordPanel.setBorder(new CompoundBorder(
-            new LineBorder(new Color(200, 200, 200), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(0, 0, 0, 0)));
         passwordPanel.add(deletePasswordField, BorderLayout.CENTER);
         passwordPanel.add(toggleBtn, BorderLayout.EAST);
@@ -775,17 +777,17 @@ public class StoreSettingsDialog extends JDialog {
         gbc.gridy++;
         gbc.insets = new Insets(15, 5, 10, 5);
         JButton deleteButton = new JButton("Delete My Account");
-        deleteButton.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        deleteButton.setFont(UIConstants.BUTTON_FONT.deriveFont(Font.BOLD, 14f));
         deleteButton.setPreferredSize(new Dimension(200, 42));
-        deleteButton.setBackground(new Color(220, 53, 69));
+        deleteButton.setBackground(UIConstants.DANGER_COLOR);
         deleteButton.setForeground(Color.WHITE);
         deleteButton.setFocusPainted(false);
         deleteButton.setBorderPainted(false);
         deleteButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         deleteButton.addActionListener(e -> handleDeleteAccount(deletePasswordField));
         deleteButton.addMouseListener(new MouseAdapter() {
-            public void mouseEntered(MouseEvent e) { deleteButton.setBackground(new Color(200, 35, 51)); }
-            public void mouseExited(MouseEvent e) { deleteButton.setBackground(new Color(220, 53, 69)); }
+            public void mouseEntered(MouseEvent e) { deleteButton.setBackground(UIConstants.DANGER_DARK); }
+            public void mouseExited(MouseEvent e) { deleteButton.setBackground(UIConstants.DANGER_COLOR); }
         });
         panel.add(deleteButton, gbc);
         

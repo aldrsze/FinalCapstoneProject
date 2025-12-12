@@ -55,6 +55,7 @@ public class userFrame extends JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximized
 
         mainContainer = new JPanel(cardLayout);
+        mainContainer.setBackground(UIConstants.BACKGROUND_COLOR);
 
         LoginPanel loginPanel = new LoginPanel(this);
         SignupPanel signupPanel = new SignupPanel(this);
@@ -152,7 +153,7 @@ public class userFrame extends JFrame {
         ));
 
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(UIConstants.FORM_COLOR);
         panel.setBorder(new EmptyBorder(20, 20, 20, 20));
         
         GridBagConstraints gbc = new GridBagConstraints();

@@ -14,13 +14,13 @@ public class HelpDialog extends JDialog {
         setLocationRelativeTo(parent);
         
         JPanel headerPanel = new JPanel();
-        headerPanel.setBackground(new Color(41, 128, 185));
+        headerPanel.setBackground(UIConstants.PRIMARY_COLOR);
         headerPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
         headerPanel.setLayout(new BorderLayout());
-        
+
         JLabel titleLabel = new JLabel("SmartStock Help & User Guide", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setFont(UIConstants.TITLE_FONT.deriveFont(24f));
+        titleLabel.setForeground(UIConstants.WHITE);
         headerPanel.add(titleLabel, BorderLayout.CENTER);
         
         add(headerPanel, BorderLayout.NORTH);
@@ -28,7 +28,7 @@ public class HelpDialog extends JDialog {
         // Scroll panel
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        mainPanel.setBackground(new Color(248, 249, 250));
+        mainPanel.setBackground(UIConstants.BACKGROUND_COLOR);
         mainPanel.setBorder(new EmptyBorder(25, 40, 25, 40));
         
         // Add sections
@@ -52,12 +52,12 @@ public class HelpDialog extends JDialog {
         
         JPanel footerPanel = new JPanel();
         footerPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
-        footerPanel.setBackground(new Color(245, 245, 245));
+        footerPanel.setBackground(UIConstants.BACKGROUND_COLOR);
         
         JButton closeBtn = new JButton("Close");
-        closeBtn.setFont(new Font("Arial", Font.BOLD, 13));
-        closeBtn.setForeground(Color.WHITE);
-        closeBtn.setBackground(new Color(149, 165, 166));
+        closeBtn.setFont(UIConstants.BUTTON_FONT);
+        closeBtn.setForeground(UIConstants.WHITE);
+        closeBtn.setBackground(UIConstants.GREY_COLOR);
         closeBtn.setFocusPainted(false);
         closeBtn.setBorderPainted(false);
         closeBtn.setOpaque(true);
@@ -76,11 +76,11 @@ public class HelpDialog extends JDialog {
         // Section wrapper with clean card design
         JPanel sectionWrapper = new JPanel();
         sectionWrapper.setLayout(new BoxLayout(sectionWrapper, BoxLayout.Y_AXIS));
-        sectionWrapper.setBackground(Color.WHITE);
+        sectionWrapper.setBackground(UIConstants.WHITE);
         sectionWrapper.setBorder(BorderFactory.createCompoundBorder(
             new EmptyBorder(10, 15, 10, 15),
             BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(230, 230, 230), 1),
+                BorderFactory.createLineBorder(UIConstants.BORDER_COLOR, 1),
                 new EmptyBorder(20, 25, 20, 25)
             )
         ));
@@ -88,15 +88,15 @@ public class HelpDialog extends JDialog {
         
         // Section header
         JLabel headerLabel = new JLabel(title, SwingConstants.CENTER);
-        headerLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        headerLabel.setForeground(new Color(41, 128, 185));
+        headerLabel.setFont(UIConstants.TITLE_FONT.deriveFont(20f));
+        headerLabel.setForeground(UIConstants.PRIMARY_COLOR);
         headerLabel.setBorder(new EmptyBorder(0, 0, 15, 0));
         headerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         sectionWrapper.add(headerLabel);
         
         // Section content
-        content.setBackground(Color.WHITE);
+        content.setBackground(UIConstants.WHITE);
         content.setBorder(null);
         content.setAlignmentX(Component.CENTER_ALIGNMENT);
         sectionWrapper.add(content);
@@ -280,8 +280,8 @@ public class HelpDialog extends JDialog {
     
     private void addSubtitle(JPanel panel, String text) {
         JLabel label = new JLabel(text, SwingConstants.CENTER);
-        label.setFont(new Font("Arial", Font.BOLD, 16));
-        label.setForeground(new Color(33, 37, 41));
+        label.setFont(UIConstants.LABEL_FONT_BOLD_16);
+        label.setForeground(UIConstants.TEXT_DARK);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         label.setBorder(new EmptyBorder(20, 0, 10, 0));
         label.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
@@ -291,9 +291,9 @@ public class HelpDialog extends JDialog {
     private void addText(JPanel panel, String text) {
         JTextPane textPane = new JTextPane();
         textPane.setText(text);
-        textPane.setFont(new Font("Arial", Font.PLAIN, 15));
-        textPane.setForeground(new Color(73, 80, 87));
-        textPane.setBackground(Color.WHITE);
+        textPane.setFont(UIConstants.LABEL_FONT_PLAIN_15);
+        textPane.setForeground(UIConstants.TEXT_PRIMARY);
+        textPane.setBackground(UIConstants.WHITE);
         textPane.setEditable(false);
         textPane.setBorder(new EmptyBorder(0, 30, 20, 30));
         

@@ -45,8 +45,8 @@ public class stockPanel extends JPanel {
         this.stockRepository = new StockRepository();
 
         setLayout(new BorderLayout(10, 10));
-        setBorder(new EmptyBorder(20, 20, 20, 20));
-        setBackground(Color.WHITE);
+        setBorder(new EmptyBorder(UIConstants.PANEL_PADDING, UIConstants.PANEL_PADDING, UIConstants.PANEL_PADDING, UIConstants.PANEL_PADDING));
+        setBackground(UIConstants.BACKGROUND_COLOR);
 
         // Init table first
         JScrollPane tableScrollPane = createTablePanel();
@@ -72,17 +72,18 @@ public class stockPanel extends JPanel {
     // Top panel/search
     private JPanel createTopPanel() {
         JPanel topPanel = new JPanel(new BorderLayout(15, 0));
-        topPanel.setBackground(Color.WHITE);
+        topPanel.setBackground(UIConstants.BACKGROUND_COLOR);
         topPanel.setBorder(new EmptyBorder(0, 0, 15, 0));
 
         // Left: title
         JLabel titleLabel = new JLabel("STOCKS SUMMARY");
         titleLabel.setFont(UIConstants.TITLE_FONT);
+        titleLabel.setForeground(UIConstants.PRIMARY_COLOR);
         topPanel.add(titleLabel, BorderLayout.WEST);
         
         // Right: date/search
         JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 15, 0));
-        rightPanel.setBackground(Color.WHITE);
+        rightPanel.setBackground(UIConstants.BACKGROUND_COLOR);
 
         // Date filter
         dateRangePanel = new DateRangePanel();
@@ -93,7 +94,7 @@ public class stockPanel extends JPanel {
         JButton exportButton = new JButton("\u2193 Export CSV"); // ↓ symbol
         exportButton.setFont(UIConstants.BUTTON_FONT);
         exportButton.setFocusPainted(false);
-        exportButton.setBackground(new Color(40, 167, 69)); // Clean green
+        exportButton.setBackground(UIConstants.EXPORT_BTN_COLOR);
         exportButton.setForeground(Color.WHITE);
         exportButton.setPreferredSize(new Dimension(130, 35));
         exportButton.setBorderPainted(false);
@@ -162,7 +163,7 @@ public class stockPanel extends JPanel {
         };
         stockTable.setFillsViewportHeight(true);
         stockTable.setFont(UIConstants.TABLE_FONT);
-        stockTable.setRowHeight(35);
+        stockTable.setRowHeight(UIConstants.TABLE_ROW_HEIGHT);
         stockTable.setShowVerticalLines(false);
         stockTable.setGridColor(UIConstants.BORDER_COLOR);
         stockTable.setIntercellSpacing(new Dimension(0, 0));
@@ -176,7 +177,7 @@ public class stockPanel extends JPanel {
         header.setBackground(UIConstants.PRIMARY_COLOR);
         header.setForeground(Color.WHITE);
         header.setReorderingAllowed(false);
-        header.setPreferredSize(new Dimension(header.getWidth(), 40));
+        header.setPreferredSize(new Dimension(header.getWidth(), UIConstants.TABLE_HEADER_HEIGHT));
         
         header.setDefaultRenderer(new javax.swing.table.DefaultTableCellRenderer() {
             @Override
@@ -203,7 +204,6 @@ public class stockPanel extends JPanel {
                 super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 setText(String.valueOf(row + 1));
                 setHorizontalAlignment(SwingConstants.CENTER);
-                
                 if (isSelected) {
                     setBackground(UIConstants.PRIMARY_LIGHT);
                     setForeground(Color.WHITE);
@@ -211,7 +211,7 @@ public class stockPanel extends JPanel {
                     setBackground(row % 2 == 0 ? Color.WHITE : new Color(248, 249, 250));
                     setForeground(UIConstants.TEXT_PRIMARY);
                 }
-                setFont(new Font("Segoe UI", Font.PLAIN, 10));
+                setFont(UIConstants.TABLE_SMALL_FONT);
                 setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
                 return this;
             }
@@ -231,7 +231,7 @@ public class stockPanel extends JPanel {
 
         JScrollPane scrollPane = new JScrollPane(stockTable);
         scrollPane.setBorder(BorderFactory.createLineBorder(UIConstants.BORDER_COLOR, 1));
-        scrollPane.getViewport().setBackground(Color.WHITE);
+        scrollPane.getViewport().setBackground(UIConstants.FORM_COLOR);
         
         // Fast scroll
         scrollPane.addMouseWheelListener(e -> {

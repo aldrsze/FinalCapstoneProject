@@ -21,7 +21,7 @@ public class EmployeeManagerDialog extends JDialog {
         this.mainFrame = mainFrame;
         
         setLayout(new BorderLayout());
-        setSize(800, 600);
+        setSize(1000, 600);
         setLocationRelativeTo(mainFrame);
         getContentPane().setBackground(UIConstants.BACKGROUND_COLOR);
         
@@ -31,8 +31,8 @@ public class EmployeeManagerDialog extends JDialog {
         headerPanel.setBorder(new EmptyBorder(20, 30, 20, 30));
         
         JLabel titleLabel = new JLabel("Manage Employees");
-        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 26));
-        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setFont(UIConstants.TITLE_FONT.deriveFont(26f));
+        titleLabel.setForeground(UIConstants.WHITE);
         headerPanel.add(titleLabel, BorderLayout.WEST);
         
         add(headerPanel, BorderLayout.NORTH);
@@ -40,7 +40,7 @@ public class EmployeeManagerDialog extends JDialog {
         // Employee list
         listModel = new DefaultListModel<>();
         employeeList = new JList<>(listModel);
-        employeeList.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        employeeList.setFont(UIConstants.LABEL_FONT_PLAIN_15);
         employeeList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         employeeList.setFixedCellHeight(45);
         employeeList.setBorder(new EmptyBorder(10, 15, 10, 15));
@@ -60,27 +60,27 @@ public class EmployeeManagerDialog extends JDialog {
         });
         
         JPanel listPanel = new JPanel(new BorderLayout());
-        listPanel.setBackground(Color.WHITE);
+        listPanel.setBackground(UIConstants.WHITE);
         listPanel.setBorder(new EmptyBorder(30, 40, 30, 40));
 
         // Top panel with title and selection buttons
         JPanel topPanel = new JPanel(new BorderLayout());
-        topPanel.setBackground(Color.WHITE);
+        topPanel.setBackground(UIConstants.WHITE);
         topPanel.setBorder(new EmptyBorder(0, 0, 15, 0));
         
         JLabel subTitleLabel = new JLabel("Employees Under Your Account");
-        subTitleLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        subTitleLabel.setFont(UIConstants.LABEL_FONT_BOLD_16);
         subTitleLabel.setForeground(UIConstants.TEXT_PRIMARY);
         topPanel.add(subTitleLabel, BorderLayout.WEST);
         
         // Selection buttons
         JPanel selectionPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 0));
-        selectionPanel.setBackground(Color.WHITE);
+        selectionPanel.setBackground(UIConstants.WHITE);
         
         JButton selectAllBtn = new JButton("Select All");
-        selectAllBtn.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        selectAllBtn.setFont(UIConstants.LABEL_FONT_PLAIN_12);
         selectAllBtn.setPreferredSize(new Dimension(90, 28));
-        selectAllBtn.setBackground(new Color(240, 240, 240));
+        selectAllBtn.setBackground(UIConstants.GREY_COLOR);
         selectAllBtn.setForeground(UIConstants.TEXT_PRIMARY);
         selectAllBtn.setFocusPainted(false);
         selectAllBtn.setBorderPainted(false);
@@ -88,9 +88,9 @@ public class EmployeeManagerDialog extends JDialog {
         selectAllBtn.addActionListener(e -> employeeList.setSelectionInterval(0, listModel.getSize() - 1));
         
         JButton unselectBtn = new JButton("Unselect");
-        unselectBtn.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        unselectBtn.setFont(UIConstants.LABEL_FONT_PLAIN_12);
         unselectBtn.setPreferredSize(new Dimension(80, 28));
-        unselectBtn.setBackground(new Color(240, 240, 240));
+        unselectBtn.setBackground(UIConstants.GREY_COLOR);
         unselectBtn.setForeground(UIConstants.TEXT_PRIMARY);
         unselectBtn.setFocusPainted(false);
         unselectBtn.setBorderPainted(false);
@@ -104,7 +104,7 @@ public class EmployeeManagerDialog extends JDialog {
         listPanel.add(topPanel, BorderLayout.NORTH);
         
         JScrollPane scrollPane = new JScrollPane(employeeList);
-        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(220, 220, 220), 1));
+        scrollPane.setBorder(BorderFactory.createLineBorder(UIConstants.BORDER_COLOR, 1));
         listPanel.add(scrollPane, BorderLayout.CENTER);
 
         add(listPanel, BorderLayout.CENTER);
@@ -128,7 +128,7 @@ public class EmployeeManagerDialog extends JDialog {
     // Buttons at bottom
     private JPanel createButtonPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 12, 15));
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(UIConstants.WHITE);
         panel.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createMatteBorder(2, 0, 0, 0, UIConstants.PRIMARY_LIGHT),
             new EmptyBorder(8, 15, 8, 15)));
@@ -136,13 +136,14 @@ public class EmployeeManagerDialog extends JDialog {
         JButton addBtn = createButton("Add Employee", UIConstants.PRIMARY_COLOR, UIConstants.PRIMARY_DARK);
         addBtn.addActionListener(e -> addEmployee());
 
-        JButton editBtn = createButton("Edit Employee", new Color(52, 152, 219), new Color(41, 128, 185));
+        JButton editBtn = createButton("Edit Employee", UIConstants.ACCENT_COLOR, UIConstants.ACCENT_DARK);
         editBtn.addActionListener(e -> editEmployee());
 
         JButton removeBtn = createButton("Remove Selected", UIConstants.DANGER_COLOR, UIConstants.DANGER_DARK);
         removeBtn.addActionListener(e -> removeEmployee());
 
-        JButton closeBtn = createButton("Close", new Color(149, 165, 166), new Color(127, 140, 141));
+        JButton closeBtn = createButton("Close", UIConstants.GREY_COLOR, UIConstants.TEXT_SUBTITLE);
+        closeBtn.setForeground(UIConstants.TEXT_PRIMARY);
         closeBtn.addActionListener(e -> dispose());
 
         panel.add(addBtn);
@@ -156,8 +157,8 @@ public class EmployeeManagerDialog extends JDialog {
     // Create styled button
     private JButton createButton(String text, Color bgColor, Color hoverColor) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Segoe UI", Font.BOLD, 13));
-        button.setPreferredSize(new Dimension(150, 40));
+        button.setFont(UIConstants.BUTTON_FONT);
+        button.setPreferredSize(UIConstants.LARGE_BUTTON_DIMENSION);
         button.setBackground(bgColor);
         button.setForeground(Color.WHITE);
         button.setFocusPainted(false);

@@ -51,7 +51,7 @@ public class QRCodePanel extends JPanel {
         this.productRepository = new ProductRepository(this.userId);
 
         setLayout(new BorderLayout());
-        setBorder(new EmptyBorder(15, 15, 15, 15));
+        setBorder(new EmptyBorder(UIConstants.PANEL_PADDING, UIConstants.PANEL_PADDING, UIConstants.PANEL_PADDING, UIConstants.PANEL_PADDING));
         setBackground(UIConstants.BACKGROUND_COLOR);
 
         // Employees can't access this - show error message
@@ -73,7 +73,7 @@ public class QRCodePanel extends JPanel {
         
         JPanel messageBox = new JPanel();
         messageBox.setLayout(new BoxLayout(messageBox, BoxLayout.Y_AXIS));
-        messageBox.setBackground(Color.WHITE);
+        messageBox.setBackground(UIConstants.WHITE);
         messageBox.setBorder(BorderFactory.createCompoundBorder(
             new LineBorder(Color.BLACK, 3, false),
             new EmptyBorder(50, 70, 50, 70)
@@ -81,7 +81,7 @@ public class QRCodePanel extends JPanel {
         
         // Access denied icon
         JLabel iconLabel = new JLabel("ACCESS DENIED");
-        iconLabel.setFont(new Font("Segoe UI", Font.BOLD, 32));
+        iconLabel.setFont(UIConstants.TITLE_FONT.deriveFont(32f));
         iconLabel.setForeground(UIConstants.DANGER_COLOR);
         iconLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         messageBox.add(iconLabel);
@@ -90,7 +90,7 @@ public class QRCodePanel extends JPanel {
         
         // Red title
         JLabel titleLabel = new JLabel("Access Restricted");
-        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 32));
+        titleLabel.setFont(UIConstants.TITLE_FONT.deriveFont(32f));
         titleLabel.setForeground(UIConstants.DANGER_COLOR);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         messageBox.add(titleLabel);
@@ -102,7 +102,7 @@ public class QRCodePanel extends JPanel {
             "QR Code generation is available to Administrators only.<br><br>" +
             "Please contact your system administrator<br>to generate QR codes for products." +
             "</center></html>");
-        messageLabel.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        messageLabel.setFont(UIConstants.LABEL_FONT_PLAIN_15);
         messageLabel.setForeground(UIConstants.TEXT_SECONDARY);
         messageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         messageBox.add(messageLabel);

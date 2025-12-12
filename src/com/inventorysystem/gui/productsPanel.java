@@ -93,7 +93,7 @@ public class productsPanel extends JPanel {
         this.productRepository = new ProductRepository(effectiveUserId);
 
         setLayout(new BorderLayout(10, 10));
-        setBackground(Color.WHITE);
+        setBackground(UIConstants.WHITE);
         setBorder(new EmptyBorder(20, 20, 20, 20));
 
         JScrollPane tableScrollPane = createTablePanel();
@@ -124,7 +124,7 @@ public class productsPanel extends JPanel {
 
     private JPanel createTopPanel() {
         JPanel topPanel = new JPanel(new BorderLayout(15, 0));
-        topPanel.setBackground(Color.WHITE);
+        topPanel.setBackground(UIConstants.WHITE);
         topPanel.setBorder(new EmptyBorder(0, 0, 10, 0)); // Padding bottom
         
         // title
@@ -134,7 +134,7 @@ public class productsPanel extends JPanel {
 
         // right side container with search and refresh button
         JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 0));
-        rightPanel.setBackground(Color.WHITE);
+        rightPanel.setBackground(UIConstants.WHITE);
 
         // search field
         JTextField searchField = new JTextField(20);
@@ -177,9 +177,9 @@ public class productsPanel extends JPanel {
         JButton exportButton = new JButton("\u2193 Export CSV"); // ↓ symbol
         exportButton.setFont(UIConstants.BUTTON_FONT);
         exportButton.setFocusPainted(false);
-        exportButton.setBackground(new Color(40, 167, 69)); // Clean green
-        exportButton.setForeground(Color.WHITE);
-        exportButton.setPreferredSize(new Dimension(130, 35));
+        exportButton.setBackground(UIConstants.EXPORT_BTN_COLOR); // Clean green
+        exportButton.setForeground(UIConstants.WHITE);
+        exportButton.setPreferredSize(UIConstants.BUTTON_DIMENSION);
         exportButton.setBorderPainted(false);
         exportButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         exportButton.setToolTipText("Export table data to CSV file");
@@ -234,7 +234,7 @@ public class productsPanel extends JPanel {
         javax.swing.table.JTableHeader header = productsTable.getTableHeader();
         header.setFont(UIConstants.TABLE_HEADER_FONT);
         header.setBackground(UIConstants.PRIMARY_COLOR);
-        header.setForeground(Color.WHITE);
+        header.setForeground(UIConstants.WHITE);
         header.setReorderingAllowed(false);
         header.setPreferredSize(new Dimension(header.getWidth(), 40)); // Taller header
         
@@ -245,7 +245,7 @@ public class productsPanel extends JPanel {
                     boolean isSelected, boolean hasFocus, int row, int column) {
                 JLabel c = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 c.setBackground(UIConstants.PRIMARY_COLOR);
-                c.setForeground(Color.WHITE);
+                c.setForeground(UIConstants.WHITE);
                 c.setFont(UIConstants.TABLE_HEADER_FONT);
                 c.setHorizontalAlignment(JLabel.CENTER);
                 c.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
@@ -270,10 +270,10 @@ public class productsPanel extends JPanel {
                     setBackground(table.getSelectionBackground());
                     setForeground(table.getSelectionForeground());
                 } else {
-                    setBackground(row % 2 == 0 ? Color.WHITE : new Color(248, 249, 250));
+                    setBackground(row % 2 == 0 ? UIConstants.WHITE : UIConstants.BACKGROUND_COLOR);
                     setForeground(UIConstants.TEXT_PRIMARY);
                 }
-                setFont(new Font("Segoe UI", Font.PLAIN, 10));
+                setFont(UIConstants.TABLE_SMALL_FONT);
                 setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
                 return this;
             }
@@ -294,7 +294,7 @@ public class productsPanel extends JPanel {
 
         JScrollPane scrollPane = new JScrollPane(productsTable);
         scrollPane.setBorder(BorderFactory.createLineBorder(UIConstants.BORDER_COLOR, 1));
-        scrollPane.getViewport().setBackground(Color.WHITE); // Ensures empty table area is white
+        scrollPane.getViewport().setBackground(UIConstants.WHITE); // Ensures empty table area is white
         
         // Enable fast mouse wheel scrolling on entire panel
         scrollPane.addMouseWheelListener(e -> {

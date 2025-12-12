@@ -32,9 +32,9 @@ public class SignupPanel extends JPanel {
 
         // Signup form
         JPanel formPanel = new JPanel(new GridBagLayout());
-        formPanel.setBackground(new Color(255, 255, 255, 240)); // White
+        formPanel.setBackground(UIConstants.OVERLAY_BACKGROUND); // White with transparency
         formPanel.setBorder(new CompoundBorder(
-            new LineBorder(new Color(189, 195, 199), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(50, 60, 50, 60)
         ));
         formPanel.setPreferredSize(new Dimension(500, 600));
@@ -45,8 +45,8 @@ public class SignupPanel extends JPanel {
 
         // Title
         JLabel titleLabel = new JLabel("Create Admin Account", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
-        titleLabel.setForeground(new Color(41, 128, 185));
+        titleLabel.setFont(UIConstants.TITLE_FONT.deriveFont(Font.BOLD, 28f));
+        titleLabel.setForeground(UIConstants.PRIMARY_COLOR);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(0, 0, 30, 0);
@@ -55,8 +55,8 @@ public class SignupPanel extends JPanel {
         // Info
         JLabel infoLabel = new JLabel("<html><center>Only Admin accounts can be created here.<br>" +
             "Admins can add Employee accounts later.</center></html>", SwingConstants.CENTER);
-        infoLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        infoLabel.setForeground(new Color(127, 140, 141));
+        infoLabel.setFont(UIConstants.LABEL_FONT_PLAIN_12);
+        infoLabel.setForeground(UIConstants.TEXT_SUBTITLE);
         gbc.gridy = 1;
         gbc.insets = new Insets(0, 0, 25, 0);
         formPanel.add(infoLabel, gbc);
@@ -65,16 +65,16 @@ public class SignupPanel extends JPanel {
         gbc.gridy = 2;
         gbc.insets = new Insets(12, 0, 5, 0);
         JLabel userLabel = new JLabel("Username");
-        userLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        userLabel.setFont(UIConstants.LABEL_BOLD_FONT);
         formPanel.add(userLabel, gbc);
 
         // Username input
         gbc.gridy = 3;
         gbc.insets = new Insets(0, 0, 18, 0);
         JTextField userField = new JTextField(20);
-        userField.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        userField.setFont(UIConstants.INPUT_FONT.deriveFont(15f));
         userField.setBorder(new CompoundBorder(
-            new LineBorder(new Color(189, 195, 199), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(12, 15, 12, 15)
         ));
         
@@ -84,20 +84,20 @@ public class SignupPanel extends JPanel {
         gbc.gridy = 4;
         gbc.insets = new Insets(12, 0, 5, 0);
         JLabel passLabel = new JLabel("Password");
-        passLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        passLabel.setFont(UIConstants.LABEL_BOLD_FONT);
         formPanel.add(passLabel, gbc);
 
         // Password input
         gbc.gridy = 5;
         gbc.insets = new Insets(0, 0, 25, 0);
         JPasswordField passField = new JPasswordField(20);
-        passField.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        passField.setFont(UIConstants.INPUT_FONT.deriveFont(15f));
         passField.setBorder(new EmptyBorder(12, 15, 12, 45));
         
         JLabel passToggle = new JLabel("👁");
-        passToggle.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 16));
+        passToggle.setFont(UIConstants.FONT_EMOJI_SMALL);
         passToggle.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        passToggle.setForeground(new Color(100, 100, 100));
+        passToggle.setForeground(UIConstants.TEXT_SECONDARY);
         passToggle.setBorder(new EmptyBorder(0, 0, 0, 10));
         passToggle.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -123,9 +123,9 @@ public class SignupPanel extends JPanel {
         });
         
         JPanel passPanel = new JPanel(new BorderLayout());
-        passPanel.setBackground(Color.WHITE);
+        passPanel.setBackground(UIConstants.FORM_COLOR);
         passPanel.setBorder(new CompoundBorder(
-            new LineBorder(new Color(189, 195, 199), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(0, 0, 0, 0)
         ));
         passPanel.add(passField, BorderLayout.CENTER);
@@ -161,10 +161,10 @@ public class SignupPanel extends JPanel {
     // Back/Admin panel
     private JPanel createButtonPanel(JTextField userField, JPasswordField passField) {
         JPanel panel = new JPanel(new GridLayout(1, 2, 15, 0));
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(UIConstants.FORM_COLOR);
 
-        JButton backButton = createStyledButton("Back", new Color(127, 140, 141), new Color(100, 110, 120));
-        JButton signupButton = createStyledButton("Create Admin", new Color(231, 76, 60), new Color(192, 57, 43));
+        JButton backButton = createStyledButton("Back",  UIConstants.PRIMARY_COLOR, UIConstants.PRIMARY_DARK);
+        JButton signupButton = createStyledButton("Create Admin", UIConstants.SUCCESS_GREEN, UIConstants.SUCCESS_GREEN_HOVER);
 
         panel.add(backButton);
         panel.add(signupButton);
@@ -178,7 +178,7 @@ public class SignupPanel extends JPanel {
     // Button style
     private JButton createStyledButton(String text, Color bgColor, Color hoverColor) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Segoe UI", Font.BOLD, 15));
+        button.setFont(UIConstants.BUTTON_FONT.deriveFont(15f));
         button.setPreferredSize(new Dimension(150, 45));
         button.setBackground(bgColor);
         button.setForeground(Color.WHITE);
@@ -261,7 +261,7 @@ public class SignupPanel extends JPanel {
     }
 
     private void showStyledMessage(String message, String title, int messageType) {
-        UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.PLAIN, 14));
+        UIManager.put("OptionPane.messageFont", UIConstants.LABEL_FONT);
         JOptionPane.showMessageDialog(this, message, title, messageType);
     }
 

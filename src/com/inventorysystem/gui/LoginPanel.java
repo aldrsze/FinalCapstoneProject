@@ -33,11 +33,11 @@ public class LoginPanel extends JPanel {
 
         setLayout(new GridBagLayout());
 
-        // Login form
+        // Login form - Exact match to SignupPanel layout
         JPanel formPanel = new JPanel(new GridBagLayout());
-        formPanel.setBackground(new Color(255, 255, 255, 240)); // White
+        formPanel.setBackground(UIConstants.OVERLAY_BACKGROUND);
         formPanel.setBorder(new CompoundBorder(
-            new LineBorder(new Color(189, 195, 199), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(50, 60, 50, 60)
         ));
         formPanel.setPreferredSize(new Dimension(500, 600));
@@ -46,10 +46,10 @@ public class LoginPanel extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(8, 0, 8, 0);
 
-        // App name
+        // App name (Brand)
         JLabel brandLabel = new JLabel("SmartStock", SwingConstants.CENTER);
-        brandLabel.setFont(new Font("Segoe UI", Font.BOLD, 36));
-        brandLabel.setForeground(new Color(41, 128, 185));
+        brandLabel.setFont(UIConstants.FONT_BRAND);
+        brandLabel.setForeground(UIConstants.PRIMARY_COLOR);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(0, 0, 5, 0);
@@ -57,64 +57,65 @@ public class LoginPanel extends JPanel {
 
         // Subtitle
         JLabel subtitleLabel = new JLabel("Inventory Management System", SwingConstants.CENTER);
-        subtitleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        subtitleLabel.setForeground(new Color(127, 140, 141));
+        subtitleLabel.setFont(UIConstants.LABEL_FONT);
+        subtitleLabel.setForeground(UIConstants.TEXT_SUBTITLE);
         gbc.gridy = 1;
-        gbc.insets = new Insets(0, 0, 40, 0);
+        gbc.insets = new Insets(0, 0, 30, 0);
         formPanel.add(subtitleLabel, gbc);
 
-        // Welcome
-        JLabel welcomeLabel = new JLabel("Welcome to SmartStock!", SwingConstants.CENTER);
-        welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        welcomeLabel.setForeground(new Color(44, 62, 80));
+        // Welcome Text
+        JLabel welcomeLabel = new JLabel("Welcome!", SwingConstants.CENTER);
+        welcomeLabel.setFont(UIConstants.TITLE_FONT.deriveFont(Font.BOLD, 24f));
+        welcomeLabel.setForeground(UIConstants.TEXT_PRIMARY);
         gbc.gridy = 2;
-        gbc.insets = new Insets(0, 0, 30, 0);
+        gbc.insets = new Insets(0, 0, 25, 0);
         formPanel.add(welcomeLabel, gbc);
 
-        // Username
+        // Username Label
         gbc.gridy = 3;
         gbc.insets = new Insets(12, 0, 5, 0);
         JLabel userLabel = new JLabel("Username");
-        userLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        userLabel.setForeground(new Color(44, 62, 80));
+        userLabel.setFont(UIConstants.LABEL_BOLD_FONT);
+        userLabel.setForeground(UIConstants.TEXT_PRIMARY);
         formPanel.add(userLabel, gbc);
 
+        // Username Input
         gbc.gridy = 4;
         gbc.insets = new Insets(0, 0, 18, 0);
         JTextField userField = new JTextField(20);
-        userField.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        userField.setFont(UIConstants.INPUT_FONT.deriveFont(15f));
         userField.setBorder(new CompoundBorder(
-            new LineBorder(new Color(189, 195, 199), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(12, 15, 12, 15)
         ));
-        
         formPanel.add(userField, gbc);
 
-        // Password
+        // Password Label
         gbc.gridy = 5;
         gbc.insets = new Insets(12, 0, 5, 0);
         JLabel passLabel = new JLabel("Password");
-        passLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        passLabel.setForeground(new Color(44, 62, 80));
+        passLabel.setFont(UIConstants.LABEL_BOLD_FONT);
+        passLabel.setForeground(UIConstants.TEXT_PRIMARY);
         formPanel.add(passLabel, gbc);
 
+        // Password Input
         gbc.gridy = 6;
         gbc.insets = new Insets(0, 0, 25, 0);
         JPasswordField passField = new JPasswordField(20);
-        passField.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        passField.setFont(UIConstants.INPUT_FONT.deriveFont(15f));
         passField.setBorder(new EmptyBorder(12, 15, 12, 45));
         
         JLabel passToggle = new JLabel("👁");
-        passToggle.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 16));
+        passToggle.setFont(UIConstants.FONT_EMOJI_SMALL);
         passToggle.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        passToggle.setForeground(new Color(100, 100, 100));
+        passToggle.setForeground(UIConstants.TEXT_SECONDARY);
         passToggle.setBorder(new EmptyBorder(0, 0, 0, 10));
         passToggle.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 if (passField.getEchoChar() == '\u0000') {
                     passField.setEchoChar('•');
-                    passToggle.setForeground(new Color(100, 100, 100));
+                    passToggle.setForeground(UIConstants.TEXT_SECONDARY);
                 } else {
                     passField.setEchoChar('\u0000');
                     passToggle.setForeground(UIConstants.PRIMARY_COLOR);
@@ -127,15 +128,15 @@ public class LoginPanel extends JPanel {
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
                 if (passField.getEchoChar() != '\u0000') {
-                    passToggle.setForeground(new Color(100, 100, 100));
+                    passToggle.setForeground(UIConstants.TEXT_SECONDARY);
                 }
             }
         });
         
         JPanel passPanel = new JPanel(new BorderLayout());
-        passPanel.setBackground(Color.WHITE);
+        passPanel.setBackground(UIConstants.FORM_COLOR);
         passPanel.setBorder(new CompoundBorder(
-            new LineBorder(new Color(189, 195, 199), 1, true),
+            UIConstants.BORDER_INPUT,
             new EmptyBorder(0, 0, 0, 0)
         ));
         passPanel.add(passField, BorderLayout.CENTER);
@@ -147,10 +148,10 @@ public class LoginPanel extends JPanel {
         gbc.gridy = 7;
         gbc.insets = new Insets(15, 0, 0, 0);
         JPanel buttonPanel = createButtonPanel(userField, passField);
-        buttonPanel.setBackground(Color.WHITE);
+        buttonPanel.setBackground(UIConstants.FORM_COLOR); // Match form background (white)
         formPanel.add(buttonPanel, gbc);
         
-        // Enter key to login
+        // Enter key listener
         java.awt.event.KeyAdapter enterKeyListener = new java.awt.event.KeyAdapter() {
             @Override
             public void keyPressed(java.awt.event.KeyEvent e) {
@@ -169,24 +170,23 @@ public class LoginPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (backgroundImage != null) {
-            // Draw background image scaled to fit panel
             Graphics2D g2d = (Graphics2D) g;
             g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
             g2d.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         } else {
-            // Fallback to solid color
-            g.setColor(new Color(236, 240, 241));
+            g.setColor(UIConstants.BACKGROUND_COLOR);
             g.fillRect(0, 0, getWidth(), getHeight());
         }
     }
 
-    // Login and Sign Up buttons
+    // Button Panel - Matches SignupPanel GridLayout
     private JPanel createButtonPanel(JTextField userField, JPasswordField passField) {
         JPanel panel = new JPanel(new GridLayout(1, 2, 15, 0));
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(UIConstants.FORM_COLOR);
 
-        JButton loginButton = createStyledButton("Login", new Color(41, 128, 185), new Color(31, 97, 141));
-        JButton signupButton = createStyledButton("Sign Up", new Color(46, 204, 113), new Color(39, 174, 96));
+        // Using standard sizes from SignupPanel (150x45)
+        JButton loginButton = createStyledButton("Login", UIConstants.PRIMARY_COLOR, UIConstants.PRIMARY_DARK);
+        JButton signupButton = createStyledButton("Sign Up", UIConstants.SUCCESS_GREEN, UIConstants.SUCCESS_GREEN_HOVER);
 
         panel.add(loginButton);
         panel.add(signupButton);
@@ -201,11 +201,11 @@ public class LoginPanel extends JPanel {
         return panel;
     }
 
-    // Styled button with hover effect
+    // Styled button - Matches SignupPanel dimensions
     private JButton createStyledButton(String text, Color bgColor, Color hoverColor) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Segoe UI", Font.BOLD, 15));
-        button.setPreferredSize(new Dimension(150, 45));
+        button.setFont(UIConstants.BUTTON_FONT.deriveFont(15f));
+        button.setPreferredSize(new Dimension(150, 45)); // Same as SignupPanel
         button.setBackground(bgColor);
         button.setForeground(Color.WHITE);
         button.setFocusPainted(false);
@@ -224,7 +224,6 @@ public class LoginPanel extends JPanel {
         return button;
     }
 
-    // Authenticate user
     private void handleLogin(JTextField userField, JPasswordField passField) {
         String username = userField.getText().trim();
         String password = new String(passField.getPassword());
@@ -235,19 +234,14 @@ public class LoginPanel extends JPanel {
         }
 
         try {
-            // Show loading splash
             Startup splash = new Startup();
             splash.updateProgress(30, "Authenticating...");
             splash.showSplash();
 
-            // Simulate loading effect
             SwingUtilities.invokeLater(() -> {
-                try {
-                    Thread.sleep(400);
-                } catch (InterruptedException ignored) {}
+                try { Thread.sleep(400); } catch (InterruptedException ignored) {}
             });
 
-            // Check credentials
             User user = userRepository.login(username, password);
             if (user != null) {
                 splash.updateProgress(80, "Login successful!");
@@ -266,75 +260,52 @@ public class LoginPanel extends JPanel {
     }
 
     private void showStyledMessage(String message, String title, int messageType) {
-        UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.PLAIN, 14));
+        UIManager.put("OptionPane.messageFont", UIConstants.LABEL_FONT);
         JOptionPane.showMessageDialog(this, message, title, messageType);
     }
 
-    // Modern, clean, and borderless welcome dialog
     private void showWelcomeDialog(User user) {
         JDialog welcomeDialog = new JDialog(mainFrame, true);
         welcomeDialog.setUndecorated(true);
         welcomeDialog.setLayout(new BorderLayout());
-        welcomeDialog.setSize(380, 220); // Slightly larger for better spacing
+        welcomeDialog.setSize(UIConstants.DIALOG_LOGIN_WELCOME);
         welcomeDialog.setLocationRelativeTo(mainFrame);
         
-        // Main Container with a subtle border
         JPanel mainPanel = new JPanel(new GridBagLayout());
-        mainPanel.setBackground(Color.WHITE);
-        // Border matching the subtle background theme
-        mainPanel.setBorder(new LineBorder(new Color(220, 220, 220), 3));
+        mainPanel.setBackground(UIConstants.FORM_COLOR);
+        mainPanel.setBorder(new LineBorder(UIConstants.BORDER_COLOR, 3));
         
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0; 
-        gbc.gridy = 0;
+        gbc.gridx = 0; gbc.gridy = 0;
         gbc.insets = new Insets(5, 0, 5, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
-        // 1. Large Success Icon
         JLabel iconLabel = new JLabel();
-        iconLabel.setFont(new Font("Segoe UI", Font.BOLD, 55));
-        iconLabel.setForeground(new Color(46, 204, 113)); // Success Green
+        iconLabel.setFont(UIConstants.FONT_ICON_LARGE);
+        iconLabel.setForeground(UIConstants.SUCCESS_COLOR);
+        iconLabel.setText("\u2713");
         mainPanel.add(iconLabel, gbc);
 
-        // 2. "Success" Title
         gbc.gridy++;
         JLabel titleLabel = new JLabel("Login Successful");
-        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 22));
-        titleLabel.setForeground(new Color(50, 50, 50)); // Dark Gray
+        titleLabel.setFont(UIConstants.TITLE_FONT);
+        titleLabel.setForeground(UIConstants.TEXT_PRIMARY);
         mainPanel.add(titleLabel, gbc);
         
-        // 3. User Welcome Message
         gbc.gridy++;
-        gbc.insets = new Insets(5, 20, 20, 20); // Side padding
+        gbc.insets = new Insets(5, 20, 20, 20);
         JLabel userLabel = new JLabel("Welcome, " + user.username());
         userLabel.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-        userLabel.setForeground(new Color(100, 100, 100)); // Lighter Gray
+        userLabel.setForeground(UIConstants.TEXT_SECONDARY);
         mainPanel.add(userLabel, gbc);
         
         welcomeDialog.add(mainPanel, BorderLayout.CENTER);
-
-        // Play success sound
         SoundUtil.play("success.wav");
 
-        // Auto-close timer (3 seconds)
         Timer timer = new Timer(1500, e -> welcomeDialog.dispose());
         timer.setRepeats(false);
         timer.start();
 
-
-
         welcomeDialog.setVisible(true);
-    }
-
-    // Test method
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Login Test");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(800, 800);
-            frame.add(new LoginPanel(new userFrame()));
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-        });
     }
 }
