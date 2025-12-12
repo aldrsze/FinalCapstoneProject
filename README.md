@@ -469,7 +469,8 @@ This project is developed as an academic capstone project for educational purpos
 - **Quezon City University** - For educational support and guidance
 - **Project Professor** - For mentorship throughout development
 - **Classmates** - For feedback and testing
-- **Nicole G. Diaz** - For supporting me since day one of development
+
+*To Nicole, thank you so much for all the love and support that you give. I am so thankful to have you in my 1st Programming project as a first year student. I love you so much.*
 
 ---
 
