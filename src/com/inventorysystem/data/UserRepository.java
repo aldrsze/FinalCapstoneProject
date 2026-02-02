@@ -41,7 +41,7 @@ public class UserRepository {
             throw new IllegalArgumentException("Username and password cannot be empty.");
         }
 
-        String checkSql = "SELECT COUNT(*) FROM users WHERE BINARY username = ?";
+        String checkSql = "SELECT COUNT(*) FROM users WHERE username = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
             
@@ -148,7 +148,7 @@ public class UserRepository {
             throw new IllegalArgumentException("Username and password cannot be empty.");
         }
 
-        String checkSql = "SELECT COUNT(*) FROM users WHERE BINARY username = ?";
+        String checkSql = "SELECT COUNT(*) FROM users WHERE username = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
             
