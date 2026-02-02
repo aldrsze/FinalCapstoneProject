@@ -1,0 +1,25 @@
+
+
+Version:	3.50
+CmdLine:	D:\FINAL_CAPSTONE_PROJECT\SmartStock.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	D:\FINAL_CAPSTONE_PROJECT\.
+Requires JDK:	Yes
+Requires 64-Bit: Yes
+Java min ver:	1.021.000
+Java max ver:	
+JRE paths:	jre
+Check launcher:	D:\FINAL_CAPSTONE_PROJECT\jre\bin\javaw.exe (not found)
+64-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+64-bit search:	SOFTWARE\JavaSoft\JDK...
+Check:		SOFTWARE\JavaSoft\JDK\21.0.8
+Version string: 1.021.000_008 / 64-Bit (OK)
+Check launcher:	C:\Program Files\Java\jdk-21\bin\javaw.exe (OK)
+Check javac:	C:\Program Files\Java\jdk-21\bin\javac.exe (OK)
+Match:		1.021.000_008
+Runtime used:	1.021.000_008 (64-bit)
+Launcher:	C:\Program Files\Java\jdk-21\bin\javaw.exe
+Launcher args:	-jar "D:\FINAL_CAPSTONE_PROJECT\SmartStock.exe"
+Args length:	47/32768 chars
+Exit code:	0

@@ -2,8 +2,8 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>C:\Users\QCU\Desktop\FINAL_CAPSTONE_PROJECT\SmartStock.jar</jar>
-  <outfile>C:\Users\QCU\Desktop\FINAL_CAPSTONE_PROJECT\SmartStock.exe</outfile>
+  <jar>D:\FINAL_CAPSTONE_PROJECT\SmartStock.jar</jar>
+  <outfile>D:\FINAL_CAPSTONE_PROJECT\SmartStock.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -13,10 +13,10 @@
   <stayAlive>false</stayAlive>
   <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
-  <icon>C:\Users\QCU\Downloads\SmartStock.ico</icon>
+  <icon>D:\FINAL_CAPSTONE_PROJECT\src\resources\SmartStock.ico</icon>
   <jre>
     <path>jre</path>
-    <requiresJdk>false</requiresJdk>
+    <requiresJdk>true</requiresJdk>
     <requires64Bit>true</requires64Bit>
     <minVersion>21</minVersion>
     <maxVersion></maxVersion>

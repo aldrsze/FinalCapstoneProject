@@ -86,7 +86,7 @@ public class DashboardRepository {
     // Get income range
     public double getTotalIncome(int userId, java.sql.Date startDate, java.sql.Date endDate) throws SQLException {
         String sql = "SELECT COALESCE(SUM(total_amount), 0) FROM sales " +
-                     "WHERE user_id = ? AND DATE(sale_date) BETWEEN DATE(?) AND DATE(?)";
+                     "WHERE user_id = ? AND date(sale_date) BETWEEN date(?) AND date(?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, userId);
@@ -125,7 +125,7 @@ public class DashboardRepository {
         String sql = "SELECT COALESCE(SUM(si.quantity_sold * (si.unit_price - si.cost_price)), 0) AS total_profit " +
                      "FROM sales s " +
                      "JOIN sale_items si ON s.sale_id = si.sale_id " +
-                     "WHERE s.user_id = ? AND DATE(s.sale_date) BETWEEN DATE(?) AND DATE(?)";
+                     "WHERE s.user_id = ? AND date(s.sale_date) BETWEEN date(?) AND date(?)";
         
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -152,7 +152,7 @@ public java.util.List<Object[]> getBestSellers(int userId, java.sql.Date startDa
                      "JOIN sale_items si ON s.sale_id = si.sale_id " +
                      "JOIN products p ON si.product_id = p.product_id AND s.user_id = p.user_id " +
                      "WHERE s.user_id = ? " +
-                     "AND DATE(s.sale_date) BETWEEN DATE(?) AND DATE(?) " +
+                     "AND date(s.sale_date) BETWEEN date(?) AND date(?) " +
                      "GROUP BY p.product_id, p.name " +
                      "ORDER BY sales_amount DESC " +
                      "LIMIT ?";

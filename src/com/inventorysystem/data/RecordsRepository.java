@@ -22,7 +22,11 @@ public class RecordsRepository {
 
         String sql =
             "SELECT sl.log_date AS transaction_date, " +
-            "COALESCE(p.name, SUBSTRING_INDEX(sl.notes, 'Product deleted: ', -1), 'Unknown Product') AS product_name, " +
+            "COALESCE(p.name, " +
+            "  CASE " +
+            "    WHEN sl.notes LIKE 'Product deleted:%' THEN SUBSTR(sl.notes, 19) " +
+            "    ELSE 'Unknown Product' " +
+            "  END, 'Unknown Product') AS product_name, " +
             "COALESCE(p.unit_of_measurement, '-') AS unit, " +
             "sl.log_type AS transaction_type, " +
             "sl.quantity_changed AS quantity, " +
@@ -78,7 +82,11 @@ public class RecordsRepository {
 
         String sql =
             "SELECT sl.log_date AS transaction_date, " +
-            "COALESCE(p.name, SUBSTRING_INDEX(sl.notes, 'Product deleted: ', -1), 'Unknown Product') AS product_name, " +
+            "COALESCE(p.name, " +
+            "  CASE " +
+            "    WHEN sl.notes LIKE 'Product deleted:%' THEN SUBSTR(sl.notes, 19) " +
+            "    ELSE 'Unknown Product' " +
+            "  END, 'Unknown Product') AS product_name, " +
             "COALESCE(p.unit_of_measurement, '-') AS unit, " +
             "sl.log_type AS transaction_type, " +
             "sl.quantity_changed AS quantity, " +

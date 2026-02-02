@@ -27,26 +27,10 @@ public class ProductRepository {
         }
     }
 
-    // Add quantity_damaged column if missing
+    // Add quantity_damaged column if missing (SQLite-compatible)
     private void ensureQuantityDamagedColumn() throws SQLException {
-        String checkColumnSql = "SHOW COLUMNS FROM products LIKE 'quantity_damaged'";
-        String addColumnSql = "ALTER TABLE products ADD COLUMN quantity_damaged INT(11) NOT NULL DEFAULT 0 AFTER quantity_in_stock";
-        
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            boolean columnExists = false;
-            try (PreparedStatement checkStmt = conn.prepareStatement(checkColumnSql);
-                 ResultSet rs = checkStmt.executeQuery()) {
-                if (rs.next()) {
-                    columnExists = true;
-                }
-            }
-            
-            if (!columnExists) {
-                try (PreparedStatement addColStmt = conn.prepareStatement(addColumnSql)) {
-                    addColStmt.executeUpdate();
-                }
-            }
-        }
+        // Column is now automatically created by DatabaseConnection.initializeDatabase()
+        // No need for runtime column checks in SQLite
     }
 
     // Get all products for user
@@ -225,11 +209,12 @@ public class ProductRepository {
             // If productId > 0, it means product exists - will add to existing
         }
         
-        String upsertSql = "INSERT INTO products (product_id, name, unit_of_measurement, cost_price, quantity_in_stock, category_id, user_id) " +
-                           "VALUES (?, ?, ?, ?, ?, ?, ?) " +
-                           "ON DUPLICATE KEY UPDATE " +
-                           "name = VALUES(name), unit_of_measurement = VALUES(unit_of_measurement), cost_price = VALUES(cost_price), " +
-                           "quantity_in_stock = quantity_in_stock + VALUES(quantity_in_stock), category_id = VALUES(category_id)";
+        // SQLite UPSERT: Check if product exists first, then INSERT or UPDATE
+        String checkSql = "SELECT quantity_in_stock FROM products WHERE product_id = ? AND user_id = ?";
+        String insertSql = "INSERT INTO products (product_id, name, unit_of_measurement, cost_price, quantity_in_stock, category_id, user_id) " +
+                           "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String updateSql = "UPDATE products SET name = ?, unit_of_measurement = ?, cost_price = ?, " +
+                           "quantity_in_stock = quantity_in_stock + ?, category_id = ? WHERE product_id = ? AND user_id = ?";
         String logSql = "INSERT INTO stock_log (product_id, quantity_changed, log_type, notes, user_id) VALUES (?, ?, 'STOCK-IN', 'From QR Scan', ?)";
 
         if (costPrice < 0 || stockToAdd < 0) {
@@ -242,15 +227,40 @@ public class ProductRepository {
             conn = DatabaseConnection.getConnection();
             conn.setAutoCommit(false);
 
-            try (PreparedStatement upsertPstmt = conn.prepareStatement(upsertSql)) {
-                upsertPstmt.setInt(1, productId);
-                upsertPstmt.setString(2, name);
-                upsertPstmt.setString(3, unit);
-                upsertPstmt.setDouble(4, costPrice);
-                upsertPstmt.setInt(5, stockToAdd);
-                upsertPstmt.setInt(6, categoryId);
-                upsertPstmt.setInt(7, this.userId);
-                affectedRows = upsertPstmt.executeUpdate();
+            // Check if product exists
+            boolean productExists = false;
+            try (PreparedStatement checkPstmt = conn.prepareStatement(checkSql)) {
+                checkPstmt.setInt(1, productId);
+                checkPstmt.setInt(2, this.userId);
+                try (ResultSet rs = checkPstmt.executeQuery()) {
+                    productExists = rs.next();
+                }
+            }
+
+            if (productExists) {
+                // Update existing product
+                try (PreparedStatement updatePstmt = conn.prepareStatement(updateSql)) {
+                    updatePstmt.setString(1, name);
+                    updatePstmt.setString(2, unit);
+                    updatePstmt.setDouble(3, costPrice);
+                    updatePstmt.setInt(4, stockToAdd);
+                    updatePstmt.setInt(5, categoryId);
+                    updatePstmt.setInt(6, productId);
+                    updatePstmt.setInt(7, this.userId);
+                    affectedRows = updatePstmt.executeUpdate();
+                }
+            } else {
+                // Insert new product
+                try (PreparedStatement insertPstmt = conn.prepareStatement(insertSql)) {
+                    insertPstmt.setInt(1, productId);
+                    insertPstmt.setString(2, name);
+                    insertPstmt.setString(3, unit);
+                    insertPstmt.setDouble(4, costPrice);
+                    insertPstmt.setInt(5, stockToAdd);
+                    insertPstmt.setInt(6, categoryId);
+                    insertPstmt.setInt(7, this.userId);
+                    affectedRows = insertPstmt.executeUpdate();
+                }
             }
 
             if (affectedRows > 0) {
@@ -737,7 +747,12 @@ public class ProductRepository {
                     if (!rs.next()) throw new SQLException("Product ID " + productId + " not found.");
                     costPrice = rs.getDouble("cost_price");
                     retailPrice = rs.getDouble("retail_price");
-                    markupPercent = (Double) rs.getObject("markup_percent");
+                    Object markupObj = rs.getObject("markup_percent");
+                    if (markupObj instanceof Number) {
+                        markupPercent = ((Number) markupObj).doubleValue();
+                    } else {
+                        markupPercent = null;
+                    }
                 }
             }
 

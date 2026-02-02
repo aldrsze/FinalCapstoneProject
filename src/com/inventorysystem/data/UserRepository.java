@@ -14,7 +14,7 @@ public class UserRepository {
             return null;
         }
 
-        String sql = "SELECT user_id, username, user_role FROM users WHERE BINARY username = ? AND BINARY password = ?";
+        String sql = "SELECT user_id, username, user_role FROM users WHERE username = ? AND password = ?";
         
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -219,7 +219,7 @@ public class UserRepository {
 
     // Check password
     public boolean verifyPassword(int userId, String password) throws SQLException {
-        String sql = "SELECT COUNT(*) FROM users WHERE user_id = ? AND BINARY password = ?";
+        String sql = "SELECT COUNT(*) FROM users WHERE user_id = ? AND password = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
@@ -237,7 +237,7 @@ public class UserRepository {
     // Change username
     public void updateUsername(int userId, String newUsername) throws SQLException {
         // Check if username already exists
-        String checkSql = "SELECT COUNT(*) FROM users WHERE BINARY username = ? AND user_id != ?";
+        String checkSql = "SELECT COUNT(*) FROM users WHERE username = ? AND user_id != ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
             
@@ -273,7 +273,7 @@ public class UserRepository {
     // Change employee username
     public boolean updateEmployeeUsername(String oldUsername, String newUsername) throws SQLException {
         // Check if new username already exists
-        String checkSql = "SELECT COUNT(*) FROM users WHERE BINARY username = ? AND username != ?";
+        String checkSql = "SELECT COUNT(*) FROM users WHERE username = ? AND username != ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
             
@@ -298,7 +298,7 @@ public class UserRepository {
     // Change employee credentials
     public boolean updateEmployeeCredentials(String oldUsername, String newUsername, String newPassword) throws SQLException {
         // Check if new username already exists
-        String checkSql = "SELECT COUNT(*) FROM users WHERE BINARY username = ? AND username != ?";
+        String checkSql = "SELECT COUNT(*) FROM users WHERE username = ? AND username != ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
             

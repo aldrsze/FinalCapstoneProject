@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "DatabaseTest",
+      "request": "launch",
+      "mainClass": "com.inventorysystem.test.DatabaseTest",
+      "projectName": "FINAL_CAPSTONE_PROJECT_90ac1c0f"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "FINAL_CAPSTONE_PROJECT_90ac1c0f"
+    },
+    {
+      "type": "java",
       "name": "productsPanel",
       "request": "launch",
       "mainClass": "com.inventorysystem.gui.productsPanel",

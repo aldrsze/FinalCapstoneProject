@@ -71,6 +71,7 @@
 
 ## 💻 System Requirements
 
+- **Java 21** or higher
 - Webcam for QR code scanning
 - Microsoft Excel 2007+ for CSV viewing
 
@@ -96,7 +97,7 @@
 - **Java 21** - Main programming language
 - **Swing** - GUI framework
 - **JDBC** - Database connectivity
-- **XAMPP MySQL 8.0** - Database management
+- **SQLite** - Embedded database (no server required)
 
 ### Libraries
 - **ZXing 3.5.0** - QR code generation/decoding
@@ -351,39 +352,31 @@ java -version
 javac -version
 ```
 
-### 2. Install XAMPP
-- Download from [Apache Friends](https://www.apachefriends.org/)
-- Start Apache and MySQL services
+### 2. Database Setup
+The application uses SQLite embedded database - no separate installation required!
 
-### 3. Database Setup
 **Option A: With Sample Data**
-```sql
--- Import via phpMyAdmin: smartstock_presentation.sql
--- Test Accounts:
--- Admin: admin / admin123
--- Employee: employee1 / emp123
-```
+- Use the included `smartstock_sqlite.sql` file
+- Database will be created automatically on first run
+- **Test Accounts:**
+  - Admin: `admin` / `admin123`
+  - Employee: `employee1` / `employee123`
 
 **Option B: Clean Installation**
-```sql
--- Import: smartstock_clean.sql
--- Create first admin account via signup
-```
+- Application creates empty database on first run
+- Create first admin account via signup screen
 
-### 4. Configure Database Connection
-Edit `src/config.properties`:
+### 3. Configure Database Connection (Optional)
+Edit `src/config.properties` if needed:
 ```properties
-db.url=jdbc:mysql://localhost:3306/smartstock
-db.user=root
-db.password=
+db.url=jdbc:sqlite:smartstock.db
 ```
 
-### 5. Build & Run
-Open build.bat file
+### 4. Build & Run
+Open `build.bat` file to compile
 
-
-# Run
-Then open Jar file SmartStock.jar
+### 5. Launch Application
+Run the `SmartStock.jar` file
 
 ---
 
@@ -437,9 +430,9 @@ Then open Jar file SmartStock.jar
 ### Common Issues
 
 **Database Connection Error**
-- Verify XAMPP MySQL is running
-- Check config.properties credentials
-- Ensure database exists in phpMyAdmin
+- Ensure smartstock.db file exists in application directory
+- Check file permissions (read/write access required)
+- Verify SQLite JDBC driver is in lib folder
 
 **Webcam Not Working**
 - Grant camera permissions
