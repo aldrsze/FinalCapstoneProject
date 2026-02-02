@@ -8,23 +8,6 @@
 
 **SmartStock** is a comprehensive Java-based inventory management system designed specifically for Filipino retail businesses, featuring QR code integration, real-time analytics, and multi-user support.
 
-### Academic Information
-- **Course:** Bachelor of Science in Information Technology
-- **Subject:** Introduction to Programming (Capstone Project 1)
-- **Institution:** Quezon City University
-- **Section:** BSIT-1B | Group #3
-- **Development Period:** October 3 - December 13, 2025
-
-### Development Team
-| Name | Role |
-|------|------|
-| George Harold A. Alcantara | Project Manager / Documentation Writer |
-| Aldrin Miguel A. Jariel | System Analyst / Developer / QA / Documentation Writer |
-| John Christoper A. Perez | UI/UX Designer / Documentation Writer |
-| Ron Paulo G. Angeles | Documentation Writer |
-| Matthew Dane D. Calangian | Documentation Writer |
-
----
 
 ## 🎯 Key Features
 
@@ -77,19 +60,6 @@
 
 ---
 
-## 🗄️ Database Architecture
-
-### Tables
-1. **users** - User accounts with roles
-2. **stores** - Store profiles and settings
-3. **categories** - Product categories
-4. **products** - Product information
-5. **units** - Units of measurement
-6. **sales** - Sales transactions
-7. **sale_items** - Individual sale line items
-8. **stock_log** - Inventory change history
-
----
 
 ## 🔧 Technology Stack
 
@@ -104,12 +74,6 @@
 - **Webcam Capture 0.3.12** - Camera integration
 - **JSON** - Data serialization
 - **JCalendar 1.4** - Date picker components
-
-### Design Patterns
-- Repository Pattern (data access)
-- MVC Architecture (separation of concerns)
-- Record Pattern (immutable data models)
-- Singleton (database connections)
 
 ---
 
@@ -418,10 +382,7 @@ Run the `SmartStock.jar` file
 
 ## 📝 Default Accounts
 
-| Username | Password | Role | Access Level |
-|----------|----------|------|--------------|
-| admin | admin123 | Admin | Full Access |
-| employee1 | employee123 | Employee | View Only |
+    - CREATE ACCOUNT FIRST.
 
 ---
 
