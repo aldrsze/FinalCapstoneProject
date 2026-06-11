@@ -1,120 +1,22 @@
 # SmartStock Inventory Management System
-
-## Intro
 **SmartStock** is a professional, comprehensive Java-based inventory management system designed specifically for small to medium-sized retail businesses (SMEs). It features QR code integration, real-time analytics, secure multi-user support, and Excel-optimized reporting, providing a robust solution for modern inventory needs.
 
-## Video or Image Presentation if there is
-
-### 1. Application Startup & Authentication
-![](screenshots/1.png)
-*Figure 1.1: Startup Screen*
-
+### Authentication & Dashboard
 ![](screenshots/2.png)
-*Figure 1.2: Login Panel*
+*Signup Interface*
 
-![](screenshots/3.png)
-*Figure 1.3: User Signup*
-
-### 2. Dashboard & Analytics
 ![](screenshots/4.png)
-*Figure 2.1: Main Dashboard Overview*
+*Main Dashboard and Real-time Analytics*
 
-![](screenshots/5.png)
-*Figure 2.2: Sales Analytics*
-
-![](screenshots/6.png)
-*Figure 2.3: Stock Alerts*
-
-### 3. Product Management
+### Core Features
 ![](screenshots/7.png)
-*Figure 3.1: Product List View*
-
-![](screenshots/8.png)
-*Figure 3.2: Adding New Products*
-
-![](screenshots/9.png)
-*Figure 3.3: Product Search and Filter*
-
-![](screenshots/10.png)
-*Figure 3.4: Bulk Operations*
-
-![](screenshots/11.png)
-*Figure 3.5: Unit Management*
-
-![](screenshots/12.png)
-*Figure 3.6: Category Management*
-
-![](screenshots/13.png)
-*Figure 3.7: Pricing Configuration*
-
-![](screenshots/14.png)
-*Figure 3.8: Markup Settings*
-
-![](screenshots/15.png)
-*Figure 3.9: Return Processing*
-
-![](screenshots/16.png)
-*Figure 3.10: Transaction Logs*
-
-### 4. QR Code Integration
-![](screenshots/17.png)
-*Figure 4.1: QR Code Generation*
+*Product Management and Inventory List*
 
 ![](screenshots/18.png)
-*Figure 4.2: Scanning via Webcam*
-
-![](screenshots/19.png)
-*Figure 4.3: QR Code Sale Processing*
-
-![](screenshots/20.png)
-*Figure 4.4: File-based Scanning*
-
-![](screenshots/21.png)
-*Figure 4.5: Batch QR Generation*
-
-### 5. Stock & Transactions
-![](screenshots/22.png)
-*Figure 5.1: Stock Summary Panel*
+*Real-time QR Code Scanning via Webcam*
 
 ![](screenshots/23.png)
-*Figure 6.1: Detailed Transaction Records*
-
-### 6. Administration & Settings
-![](screenshots/25.png)
-*Figure 8.1: Store Settings*
-
-![](screenshots/26.png)
-*Figure 8.2: User Management*
-
-![](screenshots/27.png)
-*Figure 8.3: Role Configuration*
-
-![](screenshots/28.png)
-*Figure 8.4: Security Settings*
-
-### 7. Employee Management
-![](screenshots/29.png)
-*Figure 9.1: Employee List*
-
-![](screenshots/30.png)
-*Figure 9.2: Adding Employee Accounts*
-
-![](screenshots/31.png)
-*Figure 9.3: Permission Management*
-
-![](screenshots/32.png)
-*Figure 9.4: Activity Monitoring*
-
-![](screenshots/33.png)
-*Figure 9.5: Account Recovery*
-
-### 8. Help & User Guide
-![](screenshots/34.png)
-*Figure 10.1: Built-in Help System*
-
-### 9. System Exit
-![](screenshots/35.png)
-*Figure 11.1: Logout Confirmation*
+*Detailed Transaction and Sales Records*
 
 ## Technologies
 - **Java 21**: Core programming language and runtime.
