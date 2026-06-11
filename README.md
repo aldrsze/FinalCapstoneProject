@@ -1,444 +1,182 @@
-# SmartStock Inventory Management System - Documentation
+# SmartStock Inventory Management System
 
-**A Professional Inventory Solution for Small to Medium Business Enterprises**
+## Intro
+**SmartStock** is a professional, comprehensive Java-based inventory management system designed specifically for small to medium-sized retail businesses (SMEs). It features QR code integration, real-time analytics, secure multi-user support, and Excel-optimized reporting, providing a robust solution for modern inventory needs.
 
----
-
-## 📋 Project Overview
-
-**SmartStock** is a comprehensive Java-based inventory management system designed specifically for Filipino retail businesses, featuring QR code integration, real-time analytics, and multi-user support.
-
-
-## 🎯 Key Features
-
-### Product Management
-- CRUD operations with validation
-- Smart pricing with automatic retail price calculation
-- 8 built-in Units for Products
-- Bulk operations (Set markup, bulk delete, mass returns)
-- Advanced search and dynamic sorting
-- Stock alerts with visual indicators
-
-### QR Code Integration
-- Smart generation with embedded JSON product data
-- Multiple modes: Add/Update, Sell, Delete
-- Webcam support for real-time scanning
-- Image file scanning capability
-- Auto-save QR codes as PNG files
-
-### Sales & Transaction Management
-- Stock-Out operations (sales, removals, rejects)
-- Historical cost tracking for accurate profit calculation
-- Return processing (4 types: Customer Return, Damaged, Refund,)
-- Complete transaction log with date/time stamps
-- Date range filtering
-
-### Dashboard & Analytics
-- Real-time statistics (products, stock, sales, revenue)
-- Best sellers report
-- Stock alerts overview
-- Daily sales summary with profit margins
-
-### CSV Export (Excel-Optimized)
-- One-click export with UTF-8 BOM encoding
-- Professional formatting (currency, percentages, dates)
-- Excel-ready reports with metadata headers
-
-### User Management
-- Role-based access (Admin and Employee)
-- Secure authentication
-- Employee management interface
-- Account settings and security
-
----
-
-## 💻 System Requirements
-
-- **Java 21** or higher
-- Webcam for QR code scanning
-- Microsoft Excel 2007+ for CSV viewing
-
----
-
-
-## 🔧 Technology Stack
-
-### Core Technologies
-- **Java 21** - Main programming language
-- **Swing** - GUI framework
-- **JDBC** - Database connectivity
-- **SQLite** - Embedded database (no server required)
-
-### Libraries
-- **ZXing 3.5.0** - QR code generation/decoding
-- **Webcam Capture 0.3.12** - Camera integration
-- **JSON** - Data serialization
-- **JCalendar 1.4** - Date picker components
-
----
-
-## 📸 System Screenshots
+## Video or Image Presentation if there is
 
 ### 1. Application Startup & Authentication
-
 ![](screenshots/1.png)
-
-**Figure 1.1:**
-
----
+*Figure 1.1: Startup Screen*
 
 ![](screenshots/2.png)
-
-**Figure 1.2:** 
-
----
+*Figure 1.2: Login Panel*
 
 ![](screenshots/3.png)
-
-**Figure 1.3:**
-
----
+*Figure 1.3: User Signup*
 
 ### 2. Dashboard & Analytics
-
 ![](screenshots/4.png)
-
-**Figure 2.1:** 
-
----
+*Figure 2.1: Main Dashboard Overview*
 
 ![](screenshots/5.png)
-
-**Figure 2.2:** 
-
----
+*Figure 2.2: Sales Analytics*
 
 ![](screenshots/6.png)
-
-**Figure 2.3:** 
-
----
-
+*Figure 2.3: Stock Alerts*
 
 ### 3. Product Management
-
 ![](screenshots/7.png)
-
-**Figure 3.1:** 
-
----
+*Figure 3.1: Product List View*
 
 ![](screenshots/8.png)
-
-**Figure 3.2:** 
-
----
+*Figure 3.2: Adding New Products*
 
 ![](screenshots/9.png)
-
-**Figure 3.3:** 
-
----
+*Figure 3.3: Product Search and Filter*
 
 ![](screenshots/10.png)
-
-**Figure 3.4:** 
-
----
+*Figure 3.4: Bulk Operations*
 
 ![](screenshots/11.png)
-
-**Figure 3.5:** 
-
----
+*Figure 3.5: Unit Management*
 
 ![](screenshots/12.png)
-
-**Figure 3.6:** 
+*Figure 3.6: Category Management*
 
 ![](screenshots/13.png)
-
-**Figure 3.7:** 
-
----
+*Figure 3.7: Pricing Configuration*
 
 ![](screenshots/14.png)
-
-**Figure 3.8:** 
-
----
+*Figure 3.8: Markup Settings*
 
 ![](screenshots/15.png)
-
-**Figure 3.9:** 
-
----
+*Figure 3.9: Return Processing*
 
 ![](screenshots/16.png)
+*Figure 3.10: Transaction Logs*
 
-**Figure 3.10:** 
-
----
-
-### 4. QR CODE
-
+### 4. QR Code Integration
 ![](screenshots/17.png)
-
-**Figure 4.1:** 
-
----
+*Figure 4.1: QR Code Generation*
 
 ![](screenshots/18.png)
-
-**Figure 4.2:** 
-
----
+*Figure 4.2: Scanning via Webcam*
 
 ![](screenshots/19.png)
-
-**Figure 4.3:** 
-
----
+*Figure 4.3: QR Code Sale Processing*
 
 ![](screenshots/20.png)
-
-**Figure 4.4:** 
-
----
+*Figure 4.4: File-based Scanning*
 
 ![](screenshots/21.png)
+*Figure 4.5: Batch QR Generation*
 
-**Figure 4.5:** 
-
----
-
-### 5. Stock Summary Panel
-
+### 5. Stock & Transactions
 ![](screenshots/22.png)
-
-**Figure 5.1:**
-
----
-
-### 6. Transaction Records Panel
+*Figure 5.1: Stock Summary Panel*
 
 ![](screenshots/23.png)
+*Figure 6.1: Detailed Transaction Records*
 
-**Figure 6.1:** 
-
----
-
-### 7. ABOUT US
-
-![](screenshots/24.png)
-
-**Figure 7.1:**
-
----
-
-### 8. Settings & Administration
-
+### 6. Administration & Settings
 ![](screenshots/25.png)
-
-**Figure 8.1:**
-
----
+*Figure 8.1: Store Settings*
 
 ![](screenshots/26.png)
-
-**Figure 8.2:**
-
----
+*Figure 8.2: User Management*
 
 ![](screenshots/27.png)
-
-**Figure 8.3:**
-
----
+*Figure 8.3: Role Configuration*
 
 ![](screenshots/28.png)
+*Figure 8.4: Security Settings*
 
-**Figure 8.4:**
-
----
-
-### 9. Employee Customization
-
+### 7. Employee Management
 ![](screenshots/29.png)
-
-**Figure 9.1:**
-
----
+*Figure 9.1: Employee List*
 
 ![](screenshots/30.png)
-
-**Figure 9.2:**
-
----
+*Figure 9.2: Adding Employee Accounts*
 
 ![](screenshots/31.png)
-
-**Figure 9.3:**
-
----
+*Figure 9.3: Permission Management*
 
 ![](screenshots/32.png)
-
-**Figure 9.4:**
-
----
+*Figure 9.4: Activity Monitoring*
 
 ![](screenshots/33.png)
+*Figure 9.5: Account Recovery*
 
-**Figure 9.5:**
-
-### 10. Help and User Guide Dialog
-
----
-
+### 8. Help & User Guide
 ![](screenshots/34.png)
+*Figure 10.1: Built-in Help System*
 
-**Figure 10.1:**
-
-### 11. Logging out
-
+### 9. System Exit
 ![](screenshots/35.png)
+*Figure 11.1: Logout Confirmation*
 
+## Technologies
+- **Java 21**: Core programming language and runtime.
+- **Swing**: Graphical User Interface (GUI) framework.
+- **SQLite**: Embedded relational database for zero-configuration setup.
+- **JDBC**: Java Database Connectivity API for database operations.
+- **ZXing (3.5.0)**: Library for QR code generation and decoding.
+- **Webcam Capture (0.3.12)**: Integration for real-time camera scanning.
+- **JSON**: Used for data serialization within QR codes.
+- **JCalendar (1.4)**: Date picker components for transaction filtering.
 
----
+## Features
+- **Smart Product Management**: CRUD operations with automated retail price calculation and stock alerts.
+- **QR Code Integration**: Real-time scanning via webcam or image files for sales and stock updates.
+- **Advanced Analytics**: Real-time dashboard with best-sellers, revenue tracking, and profit margin analysis.
+- **Sales & Returns**: Comprehensive transaction logging with support for various return types (Damaged, Refund, etc.).
+- **Excel-Optimized Export**: Professional CSV reporting with UTF-8 BOM encoding for seamless Excel integration.
+- **Role-Based Security**: Secure authentication with Admin and Employee roles and granular permissions.
+- **Automated DB Initialization**: Self-repairing and self-initializing database schema on first run.
 
-### **Step by step guide on running the Program**
+## How I built it
+- **Architecture**: Developed using an MVC-inspired architectural pattern to separate GUI logic from data management.
+- **Database Design**: Implemented a normalized SQLite schema with 8 tables, ensuring data integrity through foreign key constraints and prepared statements.
+- **Hardware Integration**: Bridged the gap between software and hardware by implementing the Webcam Capture API for physical QR scanning.
+- **Business Logic**: Designed custom algorithms for markup calculation and historical cost tracking to ensure accurate profit reporting.
+- **UI Customization**: Leveraged Java Swing's extensibility to create a custom-themed, professional desktop experience tailored for retail environments.
 
-### 1. Install Java Development Kit (JDK 21)
-```bash
-# Verify installation
-java -version
-javac -version
-```
+## What I learned
+- **Full-Stack Desktop Development**: Mastered the complete lifecycle of a desktop application, from UI design to local database optimization.
+- **Relational Data Management**: Deepened understanding of SQL and JDBC, particularly in handling concurrent database connections and complex relational queries.
+- **Integration Challenges**: Overcame the complexities of integrating third-party libraries (ZXing, Webcam Capture) and handling various OS-level drivers.
+- **Retail Contextual Design**: Learned to design software based on specific user requirements, such as the unique needs of Filipino retail SMEs.
+- **Defensive Programming**: Developed robust error-handling and logging systems to ensure application stability in production environments.
 
-### 2. Database Setup
-The application uses SQLite embedded database - no separate installation required!
+## Future Enhancements
+- **Cloud Synchronization**: Migrating from local SQLite to a cloud database (PostgreSQL/Firebase) for multi-station synchronization.
+- **Mobile Companion**: Developing a lightweight mobile app for inventory tracking and remote dashboard monitoring.
+- **AI-Powered Insights**: Integrating basic machine learning for demand forecasting and inventory optimization.
+- **Supplier Portal**: A dedicated module for managing vendor relations, automated purchase orders, and lead-time tracking.
+- **Receipt Printing**: Native integration with thermal POS printers for physical receipt generation.
 
-**Option A: With Sample Data**
-- Use the included `smartstock_sqlite.sql` file
-- Database will be created automatically on first run
-- **Test Accounts:**
-  - Admin: `admin` / `admin123`
-  - Employee: `employee1` / `employee123`
+## How to run the project
 
-**Option B: Clean Installation**
-- Application creates empty database on first run
-- Create first admin account via signup screen
+### 1. Prerequisites
+- **Java Development Kit (JDK) 21** or higher.
+- A functional webcam (required for QR scanning features).
 
-### 3. Configure Database Connection (Optional)
-Edit `src/config.properties` if needed:
-```properties
-db.url=jdbc:sqlite:smartstock.db
-```
+### 2. Setup & Installation
+- Clone the repository to your local machine.
+- The application uses an embedded SQLite database (`smartstock.db`), which will be automatically generated upon the first execution.
 
-### 4. Build & Run
-Open `build.bat` file to compile
+### 3. Build the Application
+- Run the provided `build.bat` file to compile the source code and generate the executable JAR.
 
-### 5. Launch Application
-Run the `SmartStock.jar` file
+### 4. Launching the App
+- Execute the `SmartStock.jar` file or use the `SmartStock.exe` wrapper if available.
+- **Default Accounts**:
+  - You can create an initial Admin account via the signup screen.
+  - Test Admin: `admin` / `admin123`
+  - Test Employee: `employee1` / `employee123`
 
----
-
-## 📊 Project Statistics
-
-- **Total Lines of Code:** 8,000+
-- **Java Classes:** 30+
-- **Database Tables:** 8
-- **Features Implemented:** 50+
-- **Documentation:** 2,000+ lines
-- **Development Time:** Almost 3 Months
-
-
----
-
-## 🎓 Academic Highlights
-
-### Why SmartStock?
-✅ **Business-Focused** - Built for small Businesses with relevant products  
-✅ **Student-Friendly** - Clean code with educational documentation  
-✅ **Production-Ready** - Robust error handling and data validation  
-✅ **Excel Integration** - One-click CSV exports for business reporting  
-✅ **Modern Technology** - QR code integration for automatic operations  
-✅ **Accurate Accounting** - Historical cost tracking for true profit margins
-
-
----
-
-## 🔐 Security Features
-
-- Password-protected authentication
-- Role-based access control (Admin/Employee)
-- SQL injection prevention (prepared statements)
-- Transaction safety (database locks)
-- Input validation (client and server-side)
-- Secure error handling
-
----
-
-## 📝 Default Accounts
-
-    - CREATE ACCOUNT FIRST.
-
----
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Database Connection Error**
-- Ensure smartstock.db file exists in application directory
-- Check file permissions (read/write access required)
-- Verify SQLite JDBC driver is in lib folder
-
-**Webcam Not Working**
-- Grant camera permissions
-- Close other apps using webcam
-- Update webcam drivers
-
-**CSV Files Won't Open**
-- Right-click → Open with Excel
-- File has UTF-8 BOM encoding
-
----
-
-## 📄 License
-
-This project is developed as an academic capstone project for educational purposes.
-
-**Project Type:** Academic Capstone Project  
-**Development Period:** September - December 2025 
-
-**Purpose:** Educational Purposes
-
-
----
-
-## 🙏 Acknowledgments
-
-- **Quezon City University** - For educational support and guidance
-- **Project Professor** - For mentorship throughout development
-- **Classmates** - For feedback and testing
-
-*To Nicole, thank you so much for all the love and support that you give. I am so thankful to have you in my 1st Programming project as a first year student. I love you so much.*
-
----
-
-**© 2025 SmartStock Development Team. All Rights Reserved.**
-
-*SmartStock - Empowering Filipino Retailers with Smart Inventory Management*
-
----
-
-
-
-
-
-
-
-
-
+### 5. Troubleshooting
+- **Database Connection**: Ensure the application has write permissions to its own directory to create/update the `.db` file.
+- **Webcam Issues**: Ensure no other application is using the webcam and that drivers are up to date.
+- **CSV Export**: If CSV files don't display correctly, ensure they are opened with Microsoft Excel 2007+ which supports UTF-8 BOM.
